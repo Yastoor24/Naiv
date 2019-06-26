@@ -19,7 +19,7 @@ public class DroneScript : MonoBehaviour
 
     private float speed = 2.5f;
 
-    private void Awake()
+    void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -79,7 +79,7 @@ public class DroneScript : MonoBehaviour
             {
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
                 attacked = true;
-                //anim.play("Dronefly");
+                //anim.Play("Dronefly");
             }
         }
     }
