@@ -39,6 +39,7 @@ public class DroneScript : MonoBehaviour
     void Update()
     {
         MoveTheDrone();
+        ThrowTheNet();
     }
 
     void MoveTheDrone()
@@ -69,6 +70,45 @@ public class DroneScript : MonoBehaviour
         tempScale.x = direction;
         transform.localScale = tempScale;
     }
+
+    void ThrowTheNet()
+    {
+        if (!attacked)
+        {
+            if (Physics2D.Raycast (transform.position, Vector2.down, Mathf.Infinity, PlayerLayer))
+            {
+                Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                attacked = true;
+                //anim.play("Dronefly");
+            }
+        }
+    }
+
+
+    IEnumerator DroneDead()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Bullet")
+        {
+            //anim.Play("DroneDead");
+
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            myBody.bodyType = RigidbodyType2D.Dynamic;
+
+            canMove = false;
+
+            StartCoroutine(DroneDead());
+
+
+        }
+    }
+
 }
 
 
