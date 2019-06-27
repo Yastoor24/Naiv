@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         Movement();
 
 
-        if (Input.GetKeyDown(KeyCode.K) && isGrounded() == true)
+        if (Input.GetButton("XboxX") && isGrounded() == true)
         {
             _PlayerAnim.Attack();
             _SwordAudio.Play();
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
       
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetButton("XboxB"))
         {
 
          GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
 
 
         //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
+        if (Input.GetButton("XboxA") && isGrounded() == true)
         {
             Debug.Log("Jump!");
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
