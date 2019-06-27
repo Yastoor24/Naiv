@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 185854116}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1016,8 +1016,8 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &185854116
-TilemapCollider2D:
+--- !u!61 &185854116
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1029,9 +1029,19 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
+  m_Offset: {x: 3, y: -3.529583}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 28, y: 2.940834}
+  m_EdgeRadius: 0
 --- !u!1 &376123161
 GameObject:
   m_ObjectHideFlags: 3
@@ -1671,6 +1681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 182169637709167510, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 182169637709167501, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
         type: 3}
