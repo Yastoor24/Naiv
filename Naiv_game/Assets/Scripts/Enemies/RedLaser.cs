@@ -6,27 +6,20 @@ public class RedLaser : MonoBehaviour
 {
 
     private Animator _anim;
-    private float _xDirection, _yDirection;
-    private float _xSpeed, _ySpeed = 0.5f;
 
-    public Rigidbody2D _rb;
+    private float _speed = 0.5f;
 
+   
 
-    public void ChangeDirction(float _x, float _y)
-    {
-        _xDirection = _x;
-        _yDirection = _y;
-        Debug.Log("CAlled");
-    }
+    public Transform target;
 
+    private Vector3 dir;
+
+    float distanceThisFrame;
 
     void Awake()
     {
         //_anim = GetComponent<Animator>();
-        _xSpeed *= _xDirection;
-        _ySpeed *= _yDirection;
-
-        _rb = gameObject.GetComponent<Rigidbody2D>();
 
     }
 
@@ -34,24 +27,33 @@ public class RedLaser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rb.velocity = transform.right * _xSpeed;
+        dir = target.position - transform.position;
+        distanceThisFrame = 1f;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Move();
+
+
     }
 
     void Move()
     {
 
-        Vector2 temp = transform.position;
 
-        temp = new Vector2(transform.position.x  +0.1f, transform.position.y+ 0.1f);
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
-        transform.position = temp;
-        
+
     }
 
 
