@@ -305,7 +305,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1081565021
+--- !u!1001 &1368578238
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -317,15 +317,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8675171590385254291, guid: a551eac7c9941b148b57c7f6f5fd94a4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9
+      value: 0.7097009
       objectReference: {fileID: 0}
     - target: {fileID: 8675171590385254291, guid: a551eac7c9941b148b57c7f6f5fd94a4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.71
+      value: -9.77
       objectReference: {fileID: 0}
     - target: {fileID: 8675171590385254291, guid: a551eac7c9941b148b57c7f6f5fd94a4,
         type: 3}
@@ -498,6 +503,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 182169638367825582, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 182169637709167501, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -561,7 +571,7 @@ PrefabInstance:
     - target: {fileID: 182169637709167499, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.7389647
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 182169637709167499, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
         type: 3}
@@ -596,11 +606,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
         type: 3}
-    - target: {fileID: 182169638367825582, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 182169638367825571, guid: 3bee0ab4ccec64f4b8f746e5bea9bcfc,
         type: 3}
       propertyPath: m_WasSpriteAssigned

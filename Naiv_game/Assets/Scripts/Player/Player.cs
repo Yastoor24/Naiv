@@ -57,13 +57,13 @@ public class Player : MonoBehaviour
         Movement();
 
 
-        if (Input.GetMouseButtonDown(0) && isGrounded() == true)
+        if (Input.GetKeyDown(KeyCode.K) && isGrounded() == true)
         {
             _PlayerAnim.Attack();
             _SwordAudio.Play();
         }
     }
-
+    
     void Movement()
     {
 
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
       
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.O))
         {
 
          GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
