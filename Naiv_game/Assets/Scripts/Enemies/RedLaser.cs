@@ -28,7 +28,7 @@ public class RedLaser : MonoBehaviour
     void Start()
     {
         dir = target.position - transform.position;
-        distanceThisFrame = 1f;
+        distanceThisFrame = 0.05f;
 
     }
 
@@ -50,9 +50,7 @@ public class RedLaser : MonoBehaviour
     void Move()
     {
 
-
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-
+        transform.Translate(dir * distanceThisFrame, Space.World);
 
     }
 

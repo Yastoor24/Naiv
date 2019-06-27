@@ -19,6 +19,7 @@ public class Robot : MonoBehaviour
     private bool _canMove;
     private bool _attack = true;
 
+    private bool _leftDirction = false;
 
     GameObject _player;
 
@@ -59,9 +60,10 @@ public class Robot : MonoBehaviour
                 _moveDirection = Vector3.left;
                 changeDirection();
             }
-            else if (transform.position.x <= _movePosition.x)
+            else if (transform.position.x <= _movePosition.x )
             {
                 _moveDirection = Vector3.right;
+
                 changeDirection();
             }
         }
@@ -74,8 +76,9 @@ public class Robot : MonoBehaviour
         tempScale.x = transform.localScale.x * -1f;
         transform.localScale = tempScale;
 
+       // transform.transform.Rotate(0f, 180F, 0f);
 
-       _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
+        _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
     }
 
 
@@ -104,9 +107,24 @@ public class Robot : MonoBehaviour
 
                 StartCoroutine(WaitToFire(1f));
             }
+
+            //to flip the enemy
+              if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
+              {
+                  _moveDirection = Vector3.left;
+                  changeDirection();
+              }
+              else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
+              {
+                  _moveDirection = Vector3.right;
+                
+
+                  changeDirection();
+              }
+
         }
-       
-}
+
+    }
 
 
 
