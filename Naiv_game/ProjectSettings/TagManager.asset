@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - lader
   - Ground
   - Bullet
-  - Sword
+  - damage
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - Player
-  - Sword
+  - lader
+  - 
+  - 
   - 
   - 
   - 
