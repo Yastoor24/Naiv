@@ -10,7 +10,7 @@ public class NetScript : MonoBehaviour
     {
         if (target.gameObject.tag == "Player")
         {
-            target.gameObject.GetComponent<PlayerDamage>().DealDamage();
+            //target.gameObject.GetComponent<PlayerDamage>().DealDamage();
         }
 
 
