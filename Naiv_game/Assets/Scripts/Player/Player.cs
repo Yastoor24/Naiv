@@ -12,13 +12,13 @@ public class Player : MonoBehaviour
     private float _jumpForce = 5.0f;
     [SerializeField]
     private LayerMask _groundLayer;
-    private bool resetJumped = false;
+    private bool _resetJumped = false;
     [SerializeField]
     private float _speed = 5.0f;
     private SpriteRenderer _PlayerSprite;
     private SpriteRenderer _SwordArcSprite;
     private PlayerAnimation _PlayerAnim;
-   
+
     private bool _grounded = false;
 
 
@@ -29,12 +29,10 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
 
-
-
-        void Awake()
+    void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
-        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
+       // _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
 
     }
 
@@ -48,6 +46,8 @@ public class Player : MonoBehaviour
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
         _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+
+
     }
 
     // Update is called once per frame
@@ -57,41 +57,41 @@ public class Player : MonoBehaviour
         Movement();
 
 
-        if (Input.GetButton("XboxX") && isGrounded() == true)
+        if (Input.GetKeyDown(KeyCode.O)&& isGrounded() == true)
         {
             _PlayerAnim.Attack();
             _SwordAudio.Play();
         }
     }
-    
+
     void Movement()
     {
 
 
         float move = Input.GetAxisRaw("Horizontal");
-      
-
-        if (Input.GetButton("XboxB"))
-        {
-
-         GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
-
-            if (move > 0 || _PlayerSprite.flipX == false)
-            {
-                // _PlayerSprite.flipX = false;
-                bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-                _GunAudio.Play();
-
-            }
-            else if (move < 0 || _PlayerSprite.flipX == true)
-            {
-                // _PlayerSprite.flipX = true;
-                bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-                _GunAudio.Play();
-            }
 
 
-        }
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+
+        //    GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
+
+        //    if (move > 0 || _PlayerSprite.flipX == false)
+        //    {
+        //        // _PlayerSprite.flipX = false;
+        //        bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+        //        _GunAudio.Play();
+
+        //    }
+        //    else if (move < 0 || _PlayerSprite.flipX == true)
+        //    {
+        //        // _PlayerSprite.flipX = true;
+        //        bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
+        //        _GunAudio.Play();
+        //    }
+
+
+        //  }
         _grounded = isGrounded();
         if (move > 0)
         {
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
 
 
         //jump
-        if (Input.GetButton("XboxA") && isGrounded() == true)
+        if ( Input.GetKeyDown(KeyCode.Space)  && isGrounded() == true)
         {
             Debug.Log("Jump!");
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.down, Color.green);
         if (hitInfo.collider != null)
         {
-            if (resetJumped == false)
+            if (_resetJumped == false)
             {
                 Debug.Log("Grounded");
                 _PlayerAnim.Jump(false);
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
         return false;
 
     }
-    void Flip(bool faceRight)
+   void Flip(bool faceRight)
     {
         if (faceRight == true)
         {
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
             Vector3 newPos = _SwordArcSprite.transform.localPosition;
             newPos.x = 1.01f;
             _SwordArcSprite.transform.localPosition = newPos;
-          
+
 
         }
         if (faceRight == false)
@@ -161,15 +161,15 @@ public class Player : MonoBehaviour
             Vector3 newPos = _SwordArcSprite.transform.localPosition;
             newPos.x = -1.01f;
             _SwordArcSprite.transform.localPosition = newPos;
-            
+
         }
 
     }
     IEnumerator ResetJumpedRoutine()
     {
-        resetJumped = true;
+        _resetJumped = true;
         yield return new WaitForSeconds(0.1f);
-        resetJumped = false;
+        _resetJumped = false;
 
     }
 

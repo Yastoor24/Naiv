@@ -77,18 +77,18 @@ public class crabScript : MonoBehaviour
                 }
             }
         }
-             
+
 
         if (leftHit)
         {
-            if (leftHit.collider.gameObject.tag =="Player")
+            if (leftHit.collider.gameObject.tag == "Player")
             {
                 if (!stunned)
                 {
                     // APPLY DAMAGE TO PLAYER
                     print("L player damge");
                 }
-              
+
             }
         }
         if (rightHit)
@@ -100,7 +100,7 @@ public class crabScript : MonoBehaviour
                     // APPLY DAMAGE TO PLAYER
                     print("R player damge");
                 }
-            
+
             }
         }
 
@@ -135,7 +135,7 @@ public class crabScript : MonoBehaviour
     }
 
 
-  
+
 
     IEnumerator Dead(float timer)
     {
@@ -144,6 +144,18 @@ public class crabScript : MonoBehaviour
     }
 
 
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Bullet")
+        {
+            if (tag == "Crab" )
+            {
 
 
+                target.gameObject.SetActive(false);
+
+            }
+
+        }
+    }
 }
