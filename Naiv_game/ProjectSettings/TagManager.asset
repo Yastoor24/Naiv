@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Bullet
   - damage
+  - Crab
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,9 +20,9 @@ TagManager:
   - 
   - 
   - lader
-  - 
-  - 
-  - 
+  - Player
+  - Ground
+  - Sword
   - 
   - 
   - 
@@ -44,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 4265741347
     locked: 0

@@ -26,15 +26,18 @@ public class playerMove : MonoBehaviour
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
         rb.velocity = new Vector2(inputHorizontal * moveSpeed, 0f);
+
         if (isClimping)
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(inputHorizontal * moveSpeed, inputVertical * moveSpeed);
         }
+        
         else
         {
             rb.gravityScale = 20;
         }
+
         if (dtectionMode == detectionModes.layerMask)
         {
             if (rb.IsTouchingLayers(ladderMask))
