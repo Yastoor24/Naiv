@@ -74,6 +74,9 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  _health: 5
+  _explosionRef: {fileID: 2308016250449901348, guid: fc8f92b906ad0604e8bc50904669a3f8,
+    type: 3}
 --- !u!212 &7992388219611483521
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112,7 +115,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
