@@ -23,6 +23,17 @@ public class Robot : MonoBehaviour
 
     GameObject _player;
 
+
+    [SerializeField]
+    private int _health = 10;
+
+    private Material _matWahite;
+    private Material _matDefault;
+    SpriteRenderer _spr;
+
+    public UnityEngine.Object _explosionRef;
+
+
     void Awake()
     {
         _mybody = GetComponent<Rigidbody2D>();
@@ -40,6 +51,13 @@ public class Robot : MonoBehaviour
         _movePosition.x -= 6f;
 
         _canMove = true;
+
+        _spr = GetComponent<SpriteRenderer>();
+
+        _matWahite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        _matDefault = _spr.material;
+
+        //_explosionRef = Resources.Load("Explosion");
     }
 
     // Update is called once per frame
@@ -128,37 +146,53 @@ public class Robot : MonoBehaviour
 
 
 
-
-    IEnumerator RobotDead()
-    {
-        yield return new WaitForSeconds(3f);
-        gameObject.SetActive(false);
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            _anim.Play("BirdDead");
+            Destroy(collision.gameObject);
+            _spr.material = _matWahite; 
+            _health -= 1;               // decrease the health
+            Debug.Log("Health: "+_health);
+            if (_health <= 0)           
+            {
+               // _anim.Play("Dead");         //TODO: change the name to correct death animatoon name  
+                //GetComponent<CircleCollider2D>().isTrigger = true;
+                //_mybody.bodyType = RigidbodyType2D.Dynamic;
 
-            GetComponent<BoxCollider2D>().isTrigger = true;
-            _mybody.bodyType = RigidbodyType2D.Dynamic;
+                _canMove = false;
 
-            _canMove = false;
+                StartCoroutine(RobotDead());
 
-            StartCoroutine(RobotDead());
+            }
+            else
+            {
+                StartCoroutine(ResetMaterial(0.1f));
+            }
+
         }
     }
 
+    IEnumerator RobotDead()
+    {
+        yield return new WaitForSeconds(0f);
+        Debug.Log("IT IS DEAD: " );
+
+        GameObject _explosion = (GameObject)Instantiate(_explosionRef);
+        _explosion.transform.position = new Vector3(transform.position.x,transform.position.y ,transform.position.z);
+        gameObject.SetActive(false);
+    }
 
     IEnumerator WaitToFire(float time)
     {
         yield return new WaitForSeconds(time);
-
-        _attack = true;
-        
+        _attack = true;      
     }
 
+    IEnumerator ResetMaterial(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _spr.material = _matDefault;
+    }
 
 }

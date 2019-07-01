@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class crabScript : MonoBehaviour
 {
+    private int lifeScoreCount;
 
     public float moveSpeed = 1f;
     private Rigidbody2D myBody;
@@ -15,19 +16,28 @@ public class crabScript : MonoBehaviour
     public Transform left_Collision, right_Collision, top_Collision, down_Collision;
     private Vector3 left_Collision_Pos, right_Collision_Pos;
 
+
+
     void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         left_Collision_Pos = left_Collision.position;
         right_Collision_Pos = right_Collision.position;
+        lifeScoreCount = 5;
+
 
     }
+
+
+
 
     void Start()
     {
         moveLeft = true;
         canMove = true;
+
+
 
     }
 
@@ -73,7 +83,7 @@ public class crabScript : MonoBehaviour
 
                     anim.Play("Stunned");
                     stunned = true;
-                    StartCoroutine(Dead(0.5f));
+                    //StartCoroutine(Dead(0.5f));
                 }
             }
         }
@@ -146,16 +156,38 @@ public class crabScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.tag == "Bullet")
+        if (target.tag == "PlayerBullet")
         {
-            if (tag == "Crab" )
-            {
+           
 
 
+                lifeScoreCount--;
+
+                if (lifeScoreCount >= 0)
+                {
+
+                    target.gameObject.SetActive(false);
+
+                }
+
+                if (lifeScoreCount == 0)
+                {
+
+
+                  
+                anim.Play("Stunned");
+                stunned = true;
+                canMove = false;
+                myBody.velocity = new Vector2(0, 0);
+                gameObject.SetActive(false);
                 target.gameObject.SetActive(false);
-
+               
+            }
             }
 
         }
     }
-}
+
+
+    
+  
