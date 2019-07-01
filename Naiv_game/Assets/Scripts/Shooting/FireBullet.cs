@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    private float speed = 10f;
-    private Animator anim;
-    private bool canMove;
+    private float _speed = 10f;
+    private Animator _anim;
+    private bool _canMove;
 
 
 
-    // Start is called before the first frame update
 
+    //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
     }
+
+    // Start is called before the first frame update
     void Start()
     {
-        canMove = true;
+        _canMove = true;
         StartCoroutine(DisableBullet(5f));
     }
 
@@ -27,45 +29,42 @@ public class FireBullet : MonoBehaviour
     {
         Move();
     }
-
+    // transfor the gameobject (Bullet)
     void Move()
     {
-        if (canMove)
+        if (_canMove)
         {
             Vector3 temp = transform.position;
-            temp.x += speed * Time.deltaTime;
+            temp.x += _speed * Time.deltaTime;
             transform.position = temp;
         }
     }
 
+    // Encapsulation accsses for a private varible _speed 
     public float Speed
     {
         get
         {
-            return speed;
+            return _speed;
         }
         set
         {
-            speed = value;
+            _speed = value;
         }
 
 
     }
+
+
     IEnumerator DisableBullet(float timer)
     {
         yield return new WaitForSeconds(timer);
+        //Deactivate bullet if bullet doesn't hit anything 
         gameObject.SetActive(true);
     }
     void OnTriggerEnter2D(Collider2D target)
     {
-        //if (target.gameObject.tag == "Player")
-        //{
-        //    anim.Play("Explode");
-        //    canMove = false;
-        //    StartCoroutine(DisableBullet(0.1f));
-
-
-       // }
+        //
 
     }
 }
