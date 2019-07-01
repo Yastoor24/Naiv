@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1847221759889031550}
   - component: {fileID: 1847221759889031551}
-  - component: {fileID: 1847221759889031549}
+  - component: {fileID: 9135710390144697699}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -109,10 +109,10 @@ SpriteRenderer:
   m_Size: {x: 10, y: 5.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1847221759889031549
+--- !u!114 &9135710390144697699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1847221759889031520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71be0fc557e7a4c44aa08addb68cff53, type: 3}
+  m_Script: {fileID: 11500000, guid: f48f9b6aa11b2b24699aff5486fe3133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _barrelTip: {fileID: 1847221759609932653}
-  _bullet: {fileID: 7348577562032635209, guid: 958accc32e2a31b498721177ff17d091, type: 3}
+  _bullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4, type: 3}

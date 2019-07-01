@@ -5,7 +5,7 @@ using UnityEngine;
 public class Frog1Script : MonoBehaviour
 {
     private Animator anim;
-
+    private int lifeScoreCount;
     private bool animation_Started;
     private bool animation_Finished;
 
@@ -42,7 +42,7 @@ public class Frog1Script : MonoBehaviour
         if (animation_Finished && animation_Started)
         {
             animation_Started = false;
-
+            lifeScoreCount=1;
             transform.parent.position = transform.position;
             transform.localPosition = Vector3.zero;
         }
@@ -96,24 +96,36 @@ public class Frog1Script : MonoBehaviour
         }
     }
 
+  void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "PlayerBullet")
+        {
+
+
+
+                lifeScoreCount--;
+
+                if (lifeScoreCount >= 0)
+                {
+
+
+                    target.gameObject.SetActive(false);
+                }
+
+                if (lifeScoreCount == 0)
+                {
+
+
+                    gameObject.SetActive(false);
+                    target.gameObject.SetActive(false);
+
+
+
+
+
+            }
+
+        }
+    }
+
 } // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
