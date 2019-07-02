@@ -2,48 +2,120 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Bullet : MonoBehaviour
 {
 
+    private AudioSource _GunAudio;
+
+
     [SerializeField]
     private Transform _barrelTip;
+
     [SerializeField]
     private GameObject _bullet;
     private Vector2 _lookDirection;
     private float _lookAngle;
 
+    [SerializeField]
+    int _maxBullets = 5;
+    int _bullets ;
 
+    private bool _canShoot = true;
 
+    private AmmoText _AmmoText;
+
+    void Awake()
+    {
+        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
+        _bullets = _maxBullets;
+        _AmmoText = GameObject.FindWithTag("ScreenManagerAmmo").GetComponent<AmmoText>();
+
+    }
 
 
     void start()
     {
-        
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
-      
 
-        if (Input.GetMouseButtonDown(0))
+        if (_canShoot)
         {
-            FireBullet();
+            if (Input.GetMouseButtonDown(0) && _bullets >= 0)
+            {
+                _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
 
-            _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-           _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
-           transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
+                Debug.Log("Wrong shooting");
+                GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
+                fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
+
+                FireBullet(fireBullet);
+
+            }
+            else if (Input.GetKeyDown(KeyCode.J) && _bullets >= 0)
+            {
+                Debug.Log("Wrong shooting");
+
+                //GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, Quaternion.identity);
+                //fireBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x,  transform.position.y);
+
+                //FireBullet(fireBullet);
+
+            }
+            else if (Input.GetKeyDown(KeyCode.R) || _bullets <= 0)
+            {
+                Debug.Log("Wait to Reload");
+                _canShoot = false;
+                StartCoroutine(Reload());
+            }
+
         }
+      
     }
 
-
-
-
-    private void FireBullet()
+    private void FireBullet(GameObject fireBullet)
     {
-        GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
-        fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
+            _bullets -= 1;
+
+        
+
+        _AmmoText.UpdateAmmoText(_bullets, _maxBullets);
+
+            _GunAudio.Play();
+
+                Debug.Log("Shoot: "+ _bullets);
+
+              
+                //if (move > 0 || _PlayerSprite.flipX == false)
+                //{
+                //     _PlayerSprite.flipX = false;
+                //    fireBullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                    
+
+                //}
+                //else if (move < 0 || _PlayerSprite.flipX == true)
+                //{
+                //     _PlayerSprite.flipX = true;
+                //    fireBullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;              
+                //}
+
+                                 
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(2f);
+        _AmmoText.UpdateAmmoText(_maxBullets, _maxBullets);
+        _bullets = 5;
+        _canShoot = true;
+        Debug.Log("Reloaded");
 
     }
 
