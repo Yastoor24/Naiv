@@ -12,6 +12,9 @@ TagManager:
   - Enemy
   - Frog
   - PlayerBullet
+  - Life
+  - AidBox
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
