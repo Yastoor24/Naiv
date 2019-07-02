@@ -8,13 +8,18 @@ public class Player : MonoBehaviour
     private AudioSource _SwordAudio;
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
+
     [SerializeField]
     private float _jumpForce = 5.0f;
+
     [SerializeField]
     private LayerMask _groundLayer;
+
     private bool _resetJumped = false;
+
     [SerializeField]
     private float _speed = 5.0f;
+
     private SpriteRenderer _PlayerSprite;
     private SpriteRenderer _SwordArcSprite;
     private PlayerAnimation _PlayerAnim;
@@ -26,13 +31,17 @@ public class Player : MonoBehaviour
     public GameObject fireBullet;
 
 
+    [SerializeField]
+    private int _bullets = 10;
+
+
 
     // Update is called once per frame
 
     void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
-       // _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
+        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
 
     }
 
@@ -71,27 +80,27 @@ public class Player : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
 
 
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
+        if (Input.GetKeyDown(KeyCode.J))
+        {
 
-        //    GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
 
-        //    if (move > 0 || _PlayerSprite.flipX == false)
-        //    {
-        //        // _PlayerSprite.flipX = false;
-        //        bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-        //        _GunAudio.Play();
+            if (move > 0 || _PlayerSprite.flipX == false)
+            {
+                // _PlayerSprite.flipX = false;
+                bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                _GunAudio.Play();
 
-        //    }
-        //    else if (move < 0 || _PlayerSprite.flipX == true)
-        //    {
-        //        // _PlayerSprite.flipX = true;
-        //        bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-        //        _GunAudio.Play();
-        //    }
+            }
+            else if (move < 0 || _PlayerSprite.flipX == true)
+            {
+                // _PlayerSprite.flipX = true;
+                bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
+                _GunAudio.Play();
+            }
 
 
-        //  }
+        }
         _grounded = isGrounded();
         if (move > 0)
         {
