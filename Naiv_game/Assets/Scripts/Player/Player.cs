@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿
+
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +11,7 @@ public class Player : MonoBehaviour
 {
 
     private AudioSource _SwordAudio;
+    
     private Rigidbody2D _rigid;
 
     [SerializeField]
@@ -26,12 +32,16 @@ public class Player : MonoBehaviour
     public GameObject _fireBullet;
 
 
-
+    [SerializeField]
+    private int _power = 0;
+    [SerializeField]
+    private bool _CanTakePower = true;
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
+       
 
     }
 
@@ -45,13 +55,13 @@ public class Player : MonoBehaviour
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
         _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         //ShootBullet();
         Movement();
 
@@ -78,27 +88,23 @@ public class Player : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-               // GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
+            if (move > 0 || _PlayerSprite.flipX == false)
+            {
+                // when the player in a left side then will be used gun in the left side
+                _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+               
 
-                if (move > 0 || _PlayerSprite.flipX == false)
-                {
-                     _PlayerSprite.flipX = false;
-                 //   bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-
-                }
-                else if (move < 0 || _PlayerSprite.flipX == true)
-                {
-                     _PlayerSprite.flipX = true;
-                   // bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-                }
+            }
+            else if (move < 0 || _PlayerSprite.flipX == true)
+            {
+                // when the player in a right side then will be used gun in the right side
+                _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
+                
+            }
 
 
         }
-
-
-        _grounded = isGrounded();
+        // when player just move without any anthor action
         if (move > 0)
         {
             // the player move in right side
@@ -115,8 +121,6 @@ public class Player : MonoBehaviour
         // if the user pressed on space then will be jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
         {
-           // Debug.Log("Jump!");
-            _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
 
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
             StartCoroutine(ResetJumpedRoutine());
@@ -140,12 +144,12 @@ public class Player : MonoBehaviour
             // if the palyer jump false then collider for grounded true
             if (_resetJumped == false)
             {
-                //Debug.Log("Grounded");
+
                 _PlayerAnim.Jump(false);
                 return true;
             }
         }
-        //Debug.Log("jummmmmmmmmmmmmmmp");
+        // if the palyer jump true then collider for grounded false
         return false;
 
     }
@@ -190,5 +194,50 @@ public class Player : MonoBehaviour
 
 
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PowerIcon")
+        {
+            collision.gameObject.SetActive(false);
+
+            if (_CanTakePower)
+            {
+                _power += 1;
+
+                if (_power >= 3)
+                {
+
+                    _power += 0;
+
+                    _speed = 8.0f;
+                    _jumpForce = 8.0f;
+
+                    _CanTakePower = false;
+
+                    Debug.Log("POWERED!!!" + _power);
+
+
+                }
+                else
+                {
+                    Debug.Log("NOT POWERED!!!" + _power);
+                }
+            }
+
+        }
+    }
+
+
+
+    IEnumerator Buff()
+    {
+
+        yield return new WaitForSeconds(10f);
+        _speed = 5.0f;
+        _jumpForce = 5.0f;
+        _CanTakePower = true;
+
+    }
 
 }
