@@ -4,50 +4,43 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - lader
-  - Ground
-  - Bullet
-  - damage
-  - Crab
-  - Enemy
-  - ScreenManagerAmmo
+  - Transport
+  - Life
+  - AidBox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
-  - lader
-  - Player
-  - Ground
-  - Sword
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Ground
-    uniqueID: 4265741347
     locked: 0

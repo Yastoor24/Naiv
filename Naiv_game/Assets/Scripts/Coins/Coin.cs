@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
 {
     private Text _lifeTextScore;
     private Text _aidBoxTextScore;
-    private int _lifeCount;
+    private int _lifeCount =2;
     private int _aidBoxCount;  
    
   
