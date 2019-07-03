@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class RedLaserGenrater : MonoBehaviour
+public class AmmoText : MonoBehaviour
 {
 
-
-
-
+    public Text _AmmoText;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +20,10 @@ public class RedLaserGenrater : MonoBehaviour
         
     }
 
-
-    
-
-
+    public void UpdateAmmoText(int _currentAmmo, int _maxAmmo)
+    {
+        _AmmoText.text = _currentAmmo + "/" + _maxAmmo;
+    }
 
 
 }
-
-
-
