@@ -5,51 +5,109 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    protected Rigidbody2D myBody;
+    protected Animator anim;
+    public LayerMask playerLayer;
+    protected bool canMove;
+    public float speed;
 
-    private int lifeScoreCount;
-    // Start is called before the first frame update
-    void Start()
+    protected int _enemyHealth;
+    public GameObject _life;
+    public GameObject _aidBox;
+    protected bool _lifeState = false;
+    protected bool _aidBoxtState = false;
+
+
+    public Enemy()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnCollisionEnter2D(Collision2D target)
     {
-        
-    }
-
-
-    void OnTriggerEnter2D(Collider2D target)
-    {
-        if (target.tag == "PlayerBullet")
+        if (target.gameObject.tag == "PlayerBullet" || target.gameObject.tag == "Player")
         {
-            if (tag == "Enemy")
+
+            print("enemy health" + _enemyHealth);
+            _enemyHealth--;
+            if (_enemyHealth == 0)
             {
+                canMove = false;
+                myBody.velocity = new Vector2(0, 0);
 
+                StartCoroutine(ResetMaterial(0.4f));
 
-                lifeScoreCount--;
-
-                if (lifeScoreCount >= 0)
-                {
-
-
-                    target.gameObject.SetActive(false);
-                }
-
-                if (lifeScoreCount == 0)
-                {
-
-
-                    gameObject.SetActive(false);
-
-
-
-
-                }
             }
+
+
 
         }
     }
+
+
+    // called when enemy Dead 
+    public void DropEnemies()
+    {
+
+        int _randNum = (int)Random.Range(1f, 10f);
+        
+        if (_randNum <= 2 || _randNum == 5 || _randNum == 6 || _randNum == 8 || _randNum == 9)
+        {
+            // nothing happiend
+     
+
+        }
+        else if (_randNum == 4)
+        {
+            Vector3 life = transform.position;
+            _life.transform.position = life;
+            _life.SetActive(true);
+            _lifeState = true;
+            ObjectRepetition();
+           
+
+            // life
+        }
+        else if (_randNum == 3 || _randNum == 7 || _randNum == 10)
+        {
+            //   aid
+            Vector3 aid = transform.position;
+            _aidBox.transform.position = aid;
+            _aidBoxtState = true;
+            ObjectRepetition();
+          
+
+        }
+
+
+    }
+
+
+    // create more than one coins to DropEnemies method
+    public void ObjectRepetition()
+    {
+        if (_lifeState)
+        {
+            GameObject t = Instantiate(_life);
+            _lifeState = false;
+        }
+        else if (_aidBoxtState)
+        {
+            GameObject t = Instantiate(_aidBox);
+            _aidBoxtState = false;
+        }
+
+    }
+
+    public IEnumerator ResetMaterial(float time)
+    {
+      
+        yield return new WaitForSeconds(time);
+        this.gameObject.SetActive(false);
+        DropEnemies();
+    }
+
+
+
 }
 
