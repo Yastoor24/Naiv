@@ -17,7 +17,7 @@ public class DroneScript : MonoBehaviour
 
     private bool canMove;
 
-    private float speed = 2.5f;
+    private float speed = 2f;
 
     void Awake()
     {
@@ -28,10 +28,10 @@ public class DroneScript : MonoBehaviour
     void Start()
     {
         originPosition = transform.position;
-        originPosition.x += 6f;
+        originPosition.x += 2f;
 
         movePosition = transform.position;
-        movePosition.x -= 6f;
+        movePosition.x -= 2f;
 
         canMove = true;
     }
@@ -92,22 +92,22 @@ public class DroneScript : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D target)
-    {
-        if (target.tag == "Bullet")
-        {
+    //void OnTriggerEnter2D(Collider2D target)
+    //{
+      //  if (target.tag == "Bullet")
+        //{
             //anim.Play("DroneDead");
 
-            GetComponent<BoxCollider2D>().isTrigger = true;
-            myBody.bodyType = RigidbodyType2D.Dynamic;
+         //   GetComponent<BoxCollider2D>().isTrigger = true;
+          //  myBody.bodyType = RigidbodyType2D.Dynamic;
 
-            canMove = false;
+            //canMove = false;
+            
+            //StartCoroutine(DroneDead());
 
-            StartCoroutine(DroneDead());
 
-
-        }
-    }
+        //}
+    //}
 
 }
 
