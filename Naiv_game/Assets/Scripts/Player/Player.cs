@@ -6,33 +6,29 @@ public class Player : MonoBehaviour
 {
 
     private AudioSource _SwordAudio;
+    private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
-
     [SerializeField]
     private float _jumpForce = 5.0f;
-
     [SerializeField]
     private LayerMask _groundLayer;
-
     private bool _resetJumped = false;
-
     [SerializeField]
     private float _speed = 5.0f;
-
     private SpriteRenderer _PlayerSprite;
     private SpriteRenderer _SwordArcSprite;
-    private PlayerAnimation _PlayerAnim;
+    public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
     public GameObject _fireBullet;
-
-
+    public static bool b1 = true;
+    public static bool b2 = false;
 
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
-
+        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
     }
 
 
@@ -45,13 +41,13 @@ public class Player : MonoBehaviour
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
         _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         //ShootBullet();
         Movement();
 
@@ -78,27 +74,25 @@ public class Player : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-               // GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
+            if (move > 0 || _PlayerSprite.flipX == false)
+            {
+                // when the player in a left side then will be used gun in the left side
+                _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                _GunAudio.Play();
+                // b1 = _PlayerSprite.flipX;
 
-                if (move > 0 || _PlayerSprite.flipX == false)
-                {
-                     _PlayerSprite.flipX = false;
-                 //   bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-
-                }
-                else if (move < 0 || _PlayerSprite.flipX == true)
-                {
-                     _PlayerSprite.flipX = true;
-                   // bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-                }
+            }
+            else if (move < 0 || _PlayerSprite.flipX == true)
+            {
+                // when the player in a right side then will be used gun in the right side
+                _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
+                _GunAudio.Play();
+                //  b2 = _PlayerSprite.flipX;
+            }
 
 
         }
-
-
-        _grounded = isGrounded();
+        // when player just move without any anthor action
         if (move > 0)
         {
             // the player move in right side
@@ -115,8 +109,6 @@ public class Player : MonoBehaviour
         // if the user pressed on space then will be jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
         {
-           // Debug.Log("Jump!");
-            _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
 
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
             StartCoroutine(ResetJumpedRoutine());
@@ -140,12 +132,12 @@ public class Player : MonoBehaviour
             // if the palyer jump false then collider for grounded true
             if (_resetJumped == false)
             {
-                //Debug.Log("Grounded");
+
                 _PlayerAnim.Jump(false);
                 return true;
             }
         }
-        //Debug.Log("jummmmmmmmmmmmmmmp");
+        // if the palyer jump true then collider for grounded false
         return false;
 
     }
@@ -159,6 +151,9 @@ public class Player : MonoBehaviour
             _PlayerSprite.flipX = false;
             _SwordArcSprite.flipX = false;
             _SwordArcSprite.flipY = false;
+            Vector3 pos = _PlayerSprite.transform.localPosition;
+            pos.x = -0.073f;
+            _PlayerSprite.transform.localPosition = pos;
             Vector3 newPos = _SwordArcSprite.transform.localPosition;
             newPos.x = 1.01f;
             _SwordArcSprite.transform.localPosition = newPos;
@@ -171,6 +166,10 @@ public class Player : MonoBehaviour
             _PlayerSprite.flipX = true;
             _SwordArcSprite.flipX = true;
             _SwordArcSprite.flipY = true;
+
+            Vector3 pos = _PlayerSprite.transform.localPosition;
+            pos.x = 0.3f;
+            _PlayerSprite.transform.localPosition = pos;
             Vector3 newPos = _SwordArcSprite.transform.localPosition;
             newPos.x = -1.01f;
             _SwordArcSprite.transform.localPosition = newPos;
@@ -187,7 +186,6 @@ public class Player : MonoBehaviour
         _resetJumped = false;
 
     }
-
 
 
 
