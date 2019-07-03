@@ -66,7 +66,9 @@ public class Coin : MonoBehaviour
 
         }
 
-
+        if(target.gameObject.tag == "EnemyBullet")
+        { playerDead(); }
+       
 
     }
 
@@ -75,41 +77,48 @@ public class Coin : MonoBehaviour
     // detect the collision the player with enemy &  PlayerBullet and decrease the player life or dead him
     void OnCollisionEnter2D (Collision2D target)
     {
-        if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "EnemyBullet")
-        {
-            if (_lifeCount > 0)
+        if (target.gameObject.tag == "Enemy")
             {
-                // decrease the life by one
-                _lifeCount--;
-                _lifeTextScore.text = "Life " + _lifeCount;
-                print("dead");
-                // player dead and back to last place
-
-                 /* كود شيماء */
-
-            }
-            else if (_lifeCount == 0)
-            {
-                // player dead;
-
-                /* كود شيماء */
-
-
-
-                // reset the score to default 
-
-                print("Game over");
-                _lifeCount = 2;
-                _aidBoxCount = 0;
-            }
-
+            
+            playerDead();
         }
 
     }
 
 
-  
-  
+
+    void playerDead()
+    {
+
+
+    print("EnemyBullet");
+    if (_lifeCount > 0)
+    {
+        // decrease the life by one
+        _lifeCount--;
+        _lifeTextScore.text = "Life " + _lifeCount;
+        print("dead");
+        // player dead and back to last place
+
+        /* كود شيماء */
+
+    }
+    else if (_lifeCount == 0)
+    {
+        // player dead;
+
+        /* كود شيماء */
+
+
+
+        // reset the score to default 
+
+        print("Game over");
+        _lifeCount = 2;
+        _aidBoxCount = 0;
+    }
+
+}
 
 
 

@@ -16,7 +16,7 @@ public class crabScript : Enemy
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
        
-        _enemyHealth = 1;
+        _enemyHealth = 3;
         speed = 1f;
         canMove = true;
 

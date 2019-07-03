@@ -25,8 +25,9 @@ public class Enemy : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D target)
     {
-        if (target.gameObject.tag == "PlayerBullet" || target.gameObject.tag == "Player")
+        if (target.gameObject.tag == "PlayerBullet")
         {
+            print("bullet good");
 
             print("enemy health" + _enemyHealth);
             _enemyHealth--;

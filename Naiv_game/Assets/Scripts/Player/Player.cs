@@ -79,14 +79,14 @@ public class Player : MonoBehaviour
             {
                 // when the player in a left side then will be used gun in the left side
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-               _GunAudio.Play();
+               // _GunAudio.Play();
 
             }
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
                 // when the player in a right side then will be used gun in the right side
                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-               _GunAudio.Play();
+              // _GunAudio.Play();
             }
 
 
