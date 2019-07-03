@@ -12,12 +12,12 @@ public class DroneScript : MonoBehaviour
     private Vector3 movePosition;
 
     public GameObject droneNet;
-    public LayerMask PlayerLayer;
+    public LayerMask playerLayer;
     private bool attacked;
 
     private bool canMove;
 
-    private float speed = 2.5f;
+    private float speed = 2f;
 
     void Awake()
     {
@@ -28,10 +28,10 @@ public class DroneScript : MonoBehaviour
     void Start()
     {
         originPosition = transform.position;
-        originPosition.x += 6f;
+        originPosition.x += 2f;
 
         movePosition = transform.position;
-        movePosition.x -= 6f;
+        movePosition.x -= 2f;
 
         canMove = true;
     }
@@ -75,7 +75,7 @@ public class DroneScript : MonoBehaviour
     {
         if (!attacked)
         {
-            if (Physics2D.Raycast (transform.position, Vector2.down, Mathf.Infinity, PlayerLayer))
+            if (Physics2D.Raycast (transform.position, Vector2.down, Mathf.Infinity, playerLayer))
             {
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
                 attacked = true;
@@ -92,22 +92,22 @@ public class DroneScript : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D target)
-    {
-        if (target.tag == "Bullet")
-        {
+    //void OnTriggerEnter2D(Collider2D target)
+    //{
+      //  if (target.tag == "Bullet")
+        //{
             //anim.Play("DroneDead");
 
-            GetComponent<BoxCollider2D>().isTrigger = true;
-            myBody.bodyType = RigidbodyType2D.Dynamic;
+         //   GetComponent<BoxCollider2D>().isTrigger = true;
+          //  myBody.bodyType = RigidbodyType2D.Dynamic;
 
-            canMove = false;
+            //canMove = false;
+            
+            //StartCoroutine(DroneDead());
 
-            StartCoroutine(DroneDead());
 
-
-        }
-    }
+        //}
+    //}
 
 }
 
