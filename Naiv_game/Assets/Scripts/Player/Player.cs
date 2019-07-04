@@ -6,33 +6,29 @@ public class Player : MonoBehaviour
 {
 
     private AudioSource _SwordAudio;
+    private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
-
     [SerializeField]
     private float _jumpForce = 5.0f;
-
     [SerializeField]
     private LayerMask _groundLayer;
-
     private bool _resetJumped = false;
-
     [SerializeField]
     private float _speed = 5.0f;
-
     private SpriteRenderer _PlayerSprite;
     private SpriteRenderer _SwordArcSprite;
-    private PlayerAnimation _PlayerAnim;
+    public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
     public GameObject _fireBullet;
-
-
+    public static bool b1 = true;
+    public static bool b2 = false;
 
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
-
+        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
     }
 
 
@@ -45,13 +41,13 @@ public class Player : MonoBehaviour
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
         _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         //ShootBullet();
         Movement();
 
@@ -153,29 +149,31 @@ public class Player : MonoBehaviour
 
         void Flip(bool faceRight)
         {
-            // when the player flip (faceRight)
-            if (faceRight == true)
-            {
-                _PlayerSprite.flipX = false;
-                _SwordArcSprite.flipX = false;
-                _SwordArcSprite.flipY = false;
-                Vector3 newPos = _SwordArcSprite.transform.localPosition;
-                newPos.x = 1.01f;
-                _SwordArcSprite.transform.localPosition = newPos;
+            _PlayerSprite.flipX = false;
+            _SwordArcSprite.flipX = false;
+            _SwordArcSprite.flipY = false;
+            Vector3 pos = _PlayerSprite.transform.localPosition;
+            pos.x = -0.073f;
+            _PlayerSprite.transform.localPosition = pos;
+            Vector3 newPos = _SwordArcSprite.transform.localPosition;
+            newPos.x = 1.01f;
+            _SwordArcSprite.transform.localPosition = newPos;
 
 
-            }
-            // when the player flip (faceleft)
-            if (faceRight == false)
-            {
-                _PlayerSprite.flipX = true;
-                _SwordArcSprite.flipX = true;
-                _SwordArcSprite.flipY = true;
-                Vector3 newPos = _SwordArcSprite.transform.localPosition;
-                newPos.x = -1.01f;
-                _SwordArcSprite.transform.localPosition = newPos;
+        }
+        // when the player flip (faceleft)
+        if (faceRight == false)
+        {
+            _PlayerSprite.flipX = true;
+            _SwordArcSprite.flipX = true;
+            _SwordArcSprite.flipY = true;
 
-            }
+            Vector3 pos = _PlayerSprite.transform.localPosition;
+            pos.x = 0.3f;
+            _PlayerSprite.transform.localPosition = pos;
+            Vector3 newPos = _SwordArcSprite.transform.localPosition;
+            newPos.x = -1.01f;
+            _SwordArcSprite.transform.localPosition = newPos;
 
         }
 
@@ -191,5 +189,4 @@ public class Player : MonoBehaviour
 
 
 
-    }
-
+}
