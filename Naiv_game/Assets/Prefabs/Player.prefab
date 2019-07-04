@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrelTip: {fileID: 106571971540980832}
+  _fireBullet: {fileID: 0}
   _bullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4, type: 3}
+  _maxBullets: 5
 --- !u!1 &4347363831513592569
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +117,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   _speed: 5
-  fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
+  _fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
     type: 3}
 --- !u!114 &4347363831513592568
 MonoBehaviour:

@@ -17,19 +17,18 @@ public class Player : MonoBehaviour
     private float _speed = 5.0f;
     private SpriteRenderer _PlayerSprite;
     private SpriteRenderer _SwordArcSprite;
-    private PlayerAnimation _PlayerAnim;
+    public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
     public GameObject _fireBullet;
-
-
+    public static bool b1 = true;
+    public static bool b2 = false;
 
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
-       _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
-
+        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
     }
 
 
@@ -119,22 +118,38 @@ public class Player : MonoBehaviour
         _PlayerAnim.Move(move);
 
 
-    }
+        void Flip(bool faceRight)
+        {
+            _PlayerSprite.flipX = false;
+            _SwordArcSprite.flipX = false;
+            _SwordArcSprite.flipY = false;
+            Vector3 pos = _PlayerSprite.transform.localPosition;
+            pos.x = -0.073f;
+            _PlayerSprite.transform.localPosition = pos;
+            Vector3 newPos = _SwordArcSprite.transform.localPosition;
+            newPos.x = 1.01f;
+            _SwordArcSprite.transform.localPosition = newPos;
 
     bool isGrounded()
     {
         // collider grounded and jump
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 8);
 
-        if (hitInfo.collider != null)
+        }
+        // when the player flip (faceleft)
+        if (faceRight == false)
         {
-            // if the palyer jump false then collider for grounded true
-            if (_resetJumped == false)
-            {
+            _PlayerSprite.flipX = true;
+            _SwordArcSprite.flipX = true;
+            _SwordArcSprite.flipY = true;
 
-                _PlayerAnim.Jump(false);
-                return true;
-            }
+            Vector3 pos = _PlayerSprite.transform.localPosition;
+            pos.x = 0.3f;
+            _PlayerSprite.transform.localPosition = pos;
+            Vector3 newPos = _SwordArcSprite.transform.localPosition;
+            newPos.x = -1.01f;
+            _SwordArcSprite.transform.localPosition = newPos;
+
         }
         // if the palyer jump true then collider for grounded false
         return false;
@@ -176,9 +191,5 @@ public class Player : MonoBehaviour
         _resetJumped = true;
         yield return new WaitForSeconds(0.1f);
         _resetJumped = false;
-
-    }
-
-
 
 }

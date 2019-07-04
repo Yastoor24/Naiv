@@ -12,7 +12,7 @@ public class DroneScript : MonoBehaviour
     private Vector3 movePosition;
 
     public GameObject droneNet;
-    public LayerMask PlayerLayer;
+    public LayerMask playerLayer;
     private bool attacked;
 
     private bool canMove;
@@ -75,7 +75,7 @@ public class DroneScript : MonoBehaviour
     {
         if (!attacked)
         {
-            if (Physics2D.Raycast (transform.position, Vector2.down, Mathf.Infinity, PlayerLayer))
+            if (Physics2D.Raycast (transform.position, Vector2.down, Mathf.Infinity, playerLayer))
             {
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
                 attacked = true;
