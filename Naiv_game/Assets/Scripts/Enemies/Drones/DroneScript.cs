@@ -13,7 +13,7 @@ public class DroneScript : MonoBehaviour
 
     public GameObject droneNet;
     public LayerMask playerLayer;
-    private bool attacked;
+    private bool attacked = true;
 
     private bool canMove;
 
@@ -52,62 +52,73 @@ public class DroneScript : MonoBehaviour
             {
                 moveDirection = Vector3.left;
 
-                ChangeDirection(1f);
+               // ChangeDirection(1f);
             }
 
             else if (transform.position.x <= movePosition.x)
             {
                 moveDirection = Vector3.right;
 
-                ChangeDirection(-1f);
+               // ChangeDirection(-1f);
             }
         }
     }
 
-    void ChangeDirection(float direction)
-    {
-        Vector3 tempScale = transform.localScale;
-        tempScale.x = direction;
-        transform.localScale = tempScale;
-    }
+    // void ChangeDirection(float direction)
+    //{
+    //  Vector3 tempScale = transform.localScale;
+    //tempScale.x = direction;
+    //transform.localScale = tempScale;
+    //  }
 
-    void ThrowTheNet()
+
+    private void ThrowTheNet()
     {
-        if (!attacked)
+        if (Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, playerLayer))
         {
-            if (Physics2D.Raycast (transform.position, Vector2.down, Mathf.Infinity, playerLayer))
+
+            if (attacked == true)
             {
+                attacked = false;
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-                attacked = true;
-                //anim.Play("Dronefly");
+                anim.Play("Dronefly"); 
+                StartCoroutine(WaitToThrow());
             }
+            
         }
     }
 
 
-    IEnumerator DroneDead()
+    IEnumerator WaitToThrow()
+    {
+        yield return new WaitForSeconds(3f);
+        attacked = true;
+
+    }
+
+        IEnumerator DroneDead()
     {
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
     }
 
 
-    //void OnTriggerEnter2D(Collider2D target)
-    //{
-      //  if (target.tag == "Bullet")
-        //{
-            //anim.Play("DroneDead");
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "PlayerBullet")
+        {
+            anim.Play("droneDead");
 
-         //   GetComponent<BoxCollider2D>().isTrigger = true;
-          //  myBody.bodyType = RigidbodyType2D.Dynamic;
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            myBody.bodyType = RigidbodyType2D.Dynamic;
 
-            //canMove = false;
+            canMove = false;
             
-            //StartCoroutine(DroneDead());
+            StartCoroutine(DroneDead());
 
 
-        //}
-    //}
+        }
+    }
 
 }
 

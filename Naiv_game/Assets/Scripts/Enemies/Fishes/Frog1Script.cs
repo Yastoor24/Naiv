@@ -50,7 +50,7 @@ public class Frog1Script : MonoBehaviour
 
     IEnumerator FrogJump()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 4f));
+        yield return new WaitForSeconds(Random.Range(1f, 2f));
 
         animation_Started = true;
         animation_Finished = false;
