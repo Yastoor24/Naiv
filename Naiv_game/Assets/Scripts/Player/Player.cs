@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
     private AudioSource _SwordAudio;
-    private AudioSource _GunAudio;
+    
     private Rigidbody2D _rigid;
     [SerializeField]
     private float _jumpForce = 5.0f;
@@ -22,13 +22,15 @@ public class Player : MonoBehaviour
     public GameObject _fireBullet;
     public static bool b1 = true;
     public static bool b2 = false;
-
+    public bool _canMove = true;
+    private int _powerPoint = 0;
+    private bool _canPower = true;
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
         _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
-        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
+        
     }
 
 
@@ -48,15 +50,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ShootBullet();
-        Movement();
 
-        // if the user pressed on O then will be attack by sword
-        if (Input.GetKeyDown(KeyCode.O) && isGrounded() == true)
+        if (_canMove)
         {
-            _PlayerAnim.Attack();
-            _SwordAudio.Play();
+            //ShootBullet();
+            Movement();
+
+            // if the user pressed on O then will be attack by sword
+            if (Input.GetKeyDown(KeyCode.O) && isGrounded() == true)
+            {
+                _PlayerAnim.Attack();
+                _SwordAudio.Play();
+            }
         }
+
+
     }
 
     void Movement()
@@ -74,80 +82,79 @@ public class Player : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (move > 0 || _PlayerSprite.flipX == false)
             {
-                // GameObject bullet = Instantiate(fireBullet, transform.position, Quaternion.identity);
+                // when the player in a left side then will be used gun in the left side
+                _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                
+                // b1 = _PlayerSprite.flipX;
 
-                if (move > 0 || _PlayerSprite.flipX == false)
-                {
-                    _PlayerSprite.flipX = false;
-                    //   bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-
-                }
-                else if (move < 0 || _PlayerSprite.flipX == true)
-                {
-                    _PlayerSprite.flipX = true;
-                    // bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-                }
-
-
+            }
+            else if (move < 0 || _PlayerSprite.flipX == true)
+            {
+                // when the player in a right side then will be used gun in the right side
+                _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
+                
+                //  b2 = _PlayerSprite.flipX;
             }
 
 
-            _grounded = isGrounded();
-            if (move > 0)
-            {
-                // the player move in right side
-                Flip(true);
-            }
-            else if (move < 0)
-            {
-                //the player move in left side
-                Flip(false);
-            }
-
-
-
-            // if the user pressed on space then will be jump
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
-            {
-                // Debug.Log("Jump!");
-                _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
-
-                _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
-                StartCoroutine(ResetJumpedRoutine());
-                _PlayerAnim.Jump(true);
-
-            }
-            // speed for the player jump
-            _rigid.velocity = new Vector2(move * _speed, _rigid.velocity.y);
-            _PlayerAnim.Move(move);
-
-
-        } }
-
-        bool isGrounded()
+        }
+        // when player just move without any anthor action
+        if (move > 0)
         {
-            // collider grounded and jump
-            RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 8);
-
-            if (hitInfo.collider != null)
-            {
-                // if the palyer jump false then collider for grounded true
-                if (_resetJumped == false)
-                {
-                    //Debug.Log("Grounded");
-                    _PlayerAnim.Jump(false);
-                    return true;
-                }
-            }
-            //Debug.Log("jummmmmmmmmmmmmmmp");
-            return false;
-
+            // the player move in right side
+            Flip(true);
+        }
+        else if (move < 0)
+        {
+            //the player move in left side
+            Flip(false);
         }
 
 
-        void Flip(bool faceRight)
+
+        // if the user pressed on space then will be jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
+        {
+
+            _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
+            StartCoroutine(ResetJumpedRoutine());
+            _PlayerAnim.Jump(true);
+
+        }
+        // speed for the player jump
+        _rigid.velocity = new Vector2(move * _speed, _rigid.velocity.y);
+        _PlayerAnim.Move(move);
+
+
+    }
+
+    bool isGrounded()
+    {
+        // collider grounded and jump
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 8);
+
+        if (hitInfo.collider != null)
+        {
+            // if the palyer jump false then collider for grounded true
+            if (_resetJumped == false)
+            {
+
+                _PlayerAnim.Jump(false);
+                return true;
+            }
+        }
+        // if the palyer jump true then collider for grounded false
+        return false;
+
+    }
+
+
+    void Flip(bool faceRight)
+    {
+        // when the player flip (faceRight)
+        if (faceRight == true)
         {
             _PlayerSprite.flipX = false;
             _SwordArcSprite.flipX = false;
@@ -177,16 +184,48 @@ public class Player : MonoBehaviour
 
         }
 
-        IEnumerator ResetJumpedRoutine()
-        {
-            //activate && Deactivate jump  and wait few seconds between them
-            _resetJumped = true;
-            yield return new WaitForSeconds(0.1f);
-            _resetJumped = false;
+    }
 
+    IEnumerator ResetJumpedRoutine()
+    {
+        //activate && Deactivate jump  and wait few seconds between them
+        _resetJumped = true;
+        yield return new WaitForSeconds(0.1f);
+        _resetJumped = false;
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "PowerIcon")
+        {
+            if (_canPower)
+            {
+                collision.gameObject.SetActive(false);
+                if (_powerPoint < 3)
+                {
+                    _powerPoint += 1;
+                }
+                else
+                {
+                    _canPower = false;
+                    _powerPoint = 0;
+                    _speed = 8;
+                    _jumpForce = 8;
+                    StartCoroutine(WaitBuff());
+                }
+            }
         }
 
+    }
 
 
+    IEnumerator WaitBuff()
+    {
+        yield return new WaitForSeconds(5f);
+        _canPower = true;
+        _speed = 5f;
+        _jumpForce = 5f;
+    }
 
 }
