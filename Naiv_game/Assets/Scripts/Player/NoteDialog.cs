@@ -24,7 +24,7 @@ public class NoteDialog : MonoBehaviour
         if (_stop)
         {
             //Time.timeScale = 0f;
-            _noteDialog.SetActive(false);
+           // _noteDialog.SetActive(false);
         }
         else
         {

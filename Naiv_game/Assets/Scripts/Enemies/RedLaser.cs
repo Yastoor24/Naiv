@@ -71,8 +71,9 @@ public class RedLaser : MonoBehaviour
     {
 
         //_anim.Play("Destroy");              //change the name of the animation
-        if (collision.gameObject.tag != "Enemy")
+        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "PowerIcon")
         {
+            Debug.Log(collision.gameObject.name);
             gameObject.SetActive(false);        //to destroy the bullet
 
         }

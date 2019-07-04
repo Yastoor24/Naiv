@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     public static bool b1 = true;
     public static bool b2 = false;
     public bool _canMove = true;
-
+    private int _powerPoint = 0;
+    private bool _canPower = true;
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
@@ -194,6 +195,37 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "PowerIcon")
+        {
+            if (_canPower)
+            {
+                collision.gameObject.SetActive(false);
+                if (_powerPoint < 3)
+                {
+                    _powerPoint += 1;
+                }
+                else
+                {
+                    _canPower = false;
+                    _powerPoint = 0;
+                    _speed = 8;
+                    _jumpForce = 8;
+                    StartCoroutine(WaitBuff());
+                }
+            }
+        }
 
+    }
+
+
+    IEnumerator WaitBuff()
+    {
+        yield return new WaitForSeconds(5f);
+        _canPower = true;
+        _speed = 5f;
+        _jumpForce = 5f;
+    }
 
 }
