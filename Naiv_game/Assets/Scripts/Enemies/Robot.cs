@@ -14,7 +14,7 @@ public class Robot : MonoBehaviour
     private Vector3 _movePosition;
 
     public GameObject _bullet;
-    public LayerMask _playerLayer;
+    //public LayerMask _playerLayer;
 
     private bool _canMove;
     private bool _attack = true;
