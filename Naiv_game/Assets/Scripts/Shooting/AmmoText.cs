@@ -22,7 +22,7 @@ public class AmmoText : MonoBehaviour
 
     public void UpdateAmmoText(int _currentAmmo, int _maxAmmo)
     {
-        _AmmoText.text = _currentAmmo + "/" + _maxAmmo;
+        //_AmmoText.text = _currentAmmo + "/" + _maxAmmo;
     }
 
 

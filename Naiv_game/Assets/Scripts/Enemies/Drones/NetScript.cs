@@ -6,6 +6,8 @@ public class NetScript : MonoBehaviour
 {
 
 
+
+
     void OnCollisionEnter2D(Collision2D target)
     {
         if (target.gameObject.tag == "Player")
@@ -16,7 +18,6 @@ public class NetScript : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
 
 
 }

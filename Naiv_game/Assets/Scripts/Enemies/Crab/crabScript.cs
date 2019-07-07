@@ -5,18 +5,19 @@ using UnityEngine;
 public class crabScript : Enemy
 {
 
+
     private bool moveLeft;
     private bool stunned;
     public Transform down_Collision;
- 
+
 
 
     void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-       
-        _enemyHealth = 1;
+
+        _enemyHealth = 3;
         speed = 1f;
         canMove = true;
 
@@ -86,8 +87,6 @@ public class crabScript : Enemy
         transform.localScale = tempScale;
 
     }
-
-
 
 
 

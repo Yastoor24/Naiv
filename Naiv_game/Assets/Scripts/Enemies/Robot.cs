@@ -148,7 +148,7 @@ public class Robot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "PlayerBullet")
         {
             Destroy(collision.gameObject);
             _spr.material = _matWahite; 

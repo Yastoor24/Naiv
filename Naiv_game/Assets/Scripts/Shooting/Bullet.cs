@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     int _bullets;
     private bool _resetJumped = false;
     private bool _canShoot = true;
-  //private AmmoText _AmmoText;
+    private AmmoText _AmmoText;
 
 
 
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
     {
         _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
         _bullets = _maxBullets;
-        //  _AmmoText = GameObject.FindWithTag("ScreenManagerAmmo").GetComponent<AmmoText>();
+          _AmmoText = GameObject.FindWithTag("ScreenManagerAmmo").GetComponent<AmmoText>();
  }
 
 
@@ -98,14 +98,14 @@ public class Bullet : MonoBehaviour
 
 
 
-        //  _AmmoText.UpdateAmmoText(_bullets, _maxBullets);
+          _AmmoText.UpdateAmmoText(_bullets, _maxBullets);
 
-        _GunAudio.Play();
+
 
         Debug.Log("Shoot: " + _bullets);
 
 
-         // fireBullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
+          fireBullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
       
 
 
@@ -113,7 +113,7 @@ public class Bullet : MonoBehaviour
     IEnumerator Reload()
     {
         yield return new WaitForSeconds(2f);
-        // _AmmoText.UpdateAmmoText(_maxBullets, _maxBullets);
+         _AmmoText.UpdateAmmoText(_maxBullets, _maxBullets);
         _bullets = 5;
         _canShoot = true;
         Debug.Log("Reloaded");

@@ -33,11 +33,12 @@ public class transport : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Canvas");
-
+        GameObject[] aa = GameObject.FindGameObjectsWithTag("PlayerBullet");
         if (collision.tag == "Player")
         {
             DontDestroyOnLoad(collision.gameObject);
            DontDestroyOnLoad(objs[0]);
+            DontDestroyOnLoad(aa[0]);
             LoadHighScoreLevel();
             print("on trigger");
             collision.gameObject.transform.Translate(x, y, 1);
