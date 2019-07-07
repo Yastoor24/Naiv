@@ -172,6 +172,7 @@ public class Player : MonoBehaviour
 
 
         }
+
         // when the player flip (faceleft)
         if (faceRight == false)
         {
