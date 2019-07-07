@@ -13,7 +13,7 @@ public class NoteDialog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class NoteDialog : MonoBehaviour
         if (_stop)
         {
             //Time.timeScale = 0f;
-            _noteDialog.SetActive(false);
+           // _noteDialog.SetActive(false);
         }
         else
         {
@@ -35,7 +35,7 @@ public class NoteDialog : MonoBehaviour
 
     }
 
-    
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -46,7 +46,7 @@ public class NoteDialog : MonoBehaviour
             _noteDialog.SetActive(true);
 
             //show dialog with exit
-            //when exit close the dialog and active the player 
+            //when exit close the dialog and active the player
             Debug.Log("Dialooog!!");
 
 
