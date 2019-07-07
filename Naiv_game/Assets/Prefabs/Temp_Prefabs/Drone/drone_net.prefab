@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3182705629090763777}
   - component: {fileID: 4067728417625653743}
   - component: {fileID: 6514295854726385025}
-  - component: {fileID: 7917149858486530100}
+  - component: {fileID: -2384309359130819745}
   m_Layer: 8
   m_Name: drone_net
   m_TagString: Untagged
@@ -130,7 +130,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7917149858486530100
+--- !u!114 &-2384309359130819745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
