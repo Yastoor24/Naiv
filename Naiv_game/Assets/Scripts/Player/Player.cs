@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D _rigid;
     [SerializeField]
-    private float _jumpForce = 1.0f;
+    private float _jumpForce = 5f;
     [SerializeField]
     private LayerMask _groundLayer;
     private bool _resetJumped = false;
@@ -206,6 +206,7 @@ public class Player : MonoBehaviour
             if (_canPower)
             {
                 collision.gameObject.SetActive(false);
+                Debug.Log("POwer Icon !!");
                 if (_powerPoint < 3)
                 {
                     _powerPoint += 1;
