@@ -14,9 +14,10 @@ public class OptionMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            optionMenu.gameObject.SetActive(true);
+            optionMenu.gameObject.SetActive(!optionMenu.gameObject.activeSelf);
+
 
         }
     }
