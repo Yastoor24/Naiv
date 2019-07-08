@@ -18,9 +18,8 @@ public class AbkarBoss : MonoBehaviour
     [SerializeField]
     private GameObject _down;
 
-    private int _laserCount = 5;
-    //private bool _count = true;
-
+    private int _laserCount =10;
+    private bool _attack = true;
 
     void Awake()
     {
@@ -54,11 +53,25 @@ public class AbkarBoss : MonoBehaviour
 
             if (_laserCount>0) {
 
-                Instantiate(_redLaser, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
-                _redLaser.gameObject.GetComponent<RedLaser>().target = _player.transform;
-                print(" Attack");
-                _laserCount--;
-              }
+                if (_attack)
+                {
+                    Instantiate(_redLaser, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
+                    _redLaser.gameObject.GetComponent<RedLaser>().target = _player.transform;
+                    print(" Attack");
+                    _laserCount--;
+                    _attack = false;
+                    if (_laserCount > 0)
+                    { StartCoroutine(waitForLaser(0.5f)); }
+
+                    if (_laserCount == 0)
+                    {
+                        StartCoroutine(waitForLaser(4f));
+                    }
+                }
+              
+            }
+
+           
         }
       
 
@@ -92,11 +105,18 @@ public class AbkarBoss : MonoBehaviour
 
     }
 
-    IEnumerator wait (float time)
+    IEnumerator waitForLaser (float time)
     {
         yield return new WaitForSeconds(time);
-        _laserCount = 20;
+        if (_laserCount == 0)
+        {
+            _laserCount = 10;
+        }
+
+        _attack = true;
     }
+
+ 
 
 
     void changeDirection()
