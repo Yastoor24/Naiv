@@ -1,30 +1,30 @@
 fileFormatVersion: 2
-guid: 19e476aee19f63a4ba064e756afc8bff
+guid: 8706dd25c10d24ba3a0cab78831f8cf9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: Background_1
+      213: -2627533804160497951
+    second: Edge_002_0
   - first:
-      213: 21300002
-    second: Ground
+      213: -3372361046622467473
+    second: Edge_002_1
   - first:
-      213: 21300004
-    second: Sun_rays_1
+      213: -7316487490021412466
+    second: Edge_002_2
   - first:
-      213: 21300006
-    second: Sun_rays_2
+      213: -8334245076516312937
+    second: Edge_002_3
   - first:
-      213: 21300008
-    second: Grass_4
+      213: -3068280604746261323
+    second: Edge_002_4
   - first:
-      213: -130310159261658884
-    second: Atlas_2_4K_0
+      213: -5231549932662996827
+    second: Edge_002_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -45,12 +45,12 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -3
-  maxTextureSize: 8192
+  textureFormat: 1
+  maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -78,10 +78,32 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,118 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background_1
+      name: Edge_002_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 6032
-        width: 4096
-        height: 2160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d26904c669074714b79ac5842b04c5f
-      internalID: 21300000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ground
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 5056
-        width: 2312
-        height: 924
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 115b979fb44c348f59f12816f778bb45
-      internalID: 21300002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sun_rays_1
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 2914
-        width: 3973
-        height: 2048
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e895a74aa2d9499aafb8b02ac2587cd
-      internalID: 21300004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sun_rays_2
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 694
-        width: 3839
-        height: 2108
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: faaa4a7964ce649e5af77cd76b83b711
-      internalID: 21300006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_4
-      rect:
-        serializedVersion: 2
-        x: 572
-        y: 78
-        width: 2953
-        height: 504
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f11ca4a83ea994fc3bf069fd66295526
-      internalID: 21300008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_2_4K_0
-      rect:
-        serializedVersion: 2
-        x: 2259
-        y: 4985
-        width: 1837
-        height: 1021
+        y: 805
+        width: 1024
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,8 +127,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01011426be128445fb2f53f67be68758
-      internalID: -130310159261658884
+      spriteID: e6e40999ad6fe425d905183c473c8309
+      internalID: -2627533804160497951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edge_002_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 713
+        width: 1024
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ec8db162d63402a906ea82939c781c
+      internalID: -3372361046622467473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edge_002_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 515
+        width: 1024
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dbbe14724a9e4f15bf06cf56dcf13a6
+      internalID: -7316487490021412466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edge_002_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 1024
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c12943c976b4619b90ef50dc80fe03
+      internalID: -8334245076516312937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edge_002_4
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 125
+        width: 42
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc84cb4c499b541fdab30c6a44d749e7
+      internalID: -3068280604746261323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Edge_002_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 119
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10de3ed8fb5d74f71bb99c5521661306
+      internalID: -5231549932662996827
       vertices: []
       indices: 
       edges: []
@@ -219,7 +241,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 439bd2ba22e45473aa4ddca03435c84a
+    spriteID: 6f1ff2350136847a89242cee9d76f7ed
     internalID: 0
     vertices: []
     indices: 
