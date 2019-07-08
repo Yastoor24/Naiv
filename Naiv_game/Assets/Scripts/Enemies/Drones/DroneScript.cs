@@ -81,7 +81,11 @@ public class DroneScript : MonoBehaviour
             {
                 attacked = false;
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-              //  anim.Play("Dronefly");
+//<<<<<<< Updated upstream
+//                anim.Play("Dronefly");
+//=======
+//                anim.Play("Dronefly");
+//>>>>>>> Stashed changes
                 StartCoroutine(WaitToThrow());
             }
 
