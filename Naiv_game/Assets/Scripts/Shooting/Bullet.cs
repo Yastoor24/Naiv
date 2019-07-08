@@ -7,8 +7,6 @@ public class Bullet : MonoBehaviour
 {
 
     private AudioSource _GunAudio;
-    private SpriteRenderer _PlayerSprite;
-    private bool _grounded = false;
     [SerializeField]
     private Transform _barrelTip;
     public GameObject _fireBullet;
@@ -24,7 +22,10 @@ public class Bullet : MonoBehaviour
     private bool _canShoot = true;
     private AmmoText _AmmoText;
     private Animator anim;
- 
+    public static Player _Player;
+   
+    public static bool b1 = true;
+    public static bool b2 = false;
 
     void Awake()
     {
@@ -36,40 +37,44 @@ public class Bullet : MonoBehaviour
 
 
     void start() {
-        
-       }
+        _Player = GetComponent<Player>();
+        _PlayerAnim = GetComponent<PlayerAnimation>();
+    }
 
 
 
     // Update is called once per frame
     void Update()
     {
+
+
+
         if (_canShoot)
         {
             if (Input.GetMouseButtonDown(0) && _bullets >= 0)
             {
-              
-                {
-                    _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-                        _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
-                        transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
-                        GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
-                        fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
-                        Vector3 newPos = transform.localPosition;
-                        newPos.x = 0.078f;
-                        transform.localPosition = newPos;
-                        fireBullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-                      
-              
+
+                Debug.Log("hhhhhhhhhhhhhhhhhhh");
+                _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
+                GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
+                fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
+                Vector3 newPos = transform.localPosition;
+                newPos.x = 1.5f;
+                newPos.y = 1.88f;
+                transform.localPosition = newPos;
+                fireBullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                FireBullet(fireBullet);
 
 
-
-                        FireBullet(fireBullet);
-                   
-
-
-                }
             }
+          
+
+
+        }
+
+
 
             else if (Input.GetKeyDown(KeyCode.R) || _bullets <= 0)
             {
@@ -82,7 +87,7 @@ public class Bullet : MonoBehaviour
 
         }
 
-    }
+    
 
     private void FireBullet(GameObject fireBullet)
     {
