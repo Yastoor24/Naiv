@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
     public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
     public GameObject _fireBullet;
-    public static bool b1 = true;
-    public static bool b2 = false;
     public bool _canMove = true;
     private int _powerPoint = 0;
     private bool _canPower = true;

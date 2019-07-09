@@ -162,11 +162,3 @@ public class Coin : MonoBehaviour
         SceneManager.LoadScene("Village House");
     }
 }
-
-
-
-
-
-
-
-
