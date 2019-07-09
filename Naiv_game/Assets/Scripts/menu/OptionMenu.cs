@@ -16,7 +16,8 @@ public class OptionMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            optionMenu.gameObject.SetActive(true);
+            optionMenu.gameObject.SetActive(!optionMenu.gameObject.activeSelf);
+
 
         }
     }
