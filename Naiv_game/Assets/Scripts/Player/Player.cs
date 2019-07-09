@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private float _speed = 5.0f;
     private SpriteRenderer _PlayerSprite;
     //private SpriteRenderer _SwordArcSprite;
+    private SpriteRenderer _BulletSprite;
     public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
     public GameObject _fireBullet;
@@ -24,7 +25,10 @@ public class Player : MonoBehaviour
     private bool _canPower = true;
     private Animator _anim;
     private GameObject _bullet;
-    private GameObject ddt;
+    [SerializeField]
+    public Transform HitBox1;
+    [SerializeField]
+    public Transform HitBox2;
 
 
     //Awake is used to initialize any variables or game state before the game starts
@@ -43,8 +47,9 @@ public class Player : MonoBehaviour
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
        // _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         _anim = GetComponentInChildren<Animator>();
+        _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
-        ddt = GetComponent<GameObject>();
+
 
     }
 
@@ -58,10 +63,11 @@ public class Player : MonoBehaviour
             Movement();
 
             // if the user pressed on O then will be attack by sword
-            if (Input.GetKeyDown(KeyCode.O) && isGrounded() == true)
+            if (Input.GetKeyDown(KeyCode.H) && isGrounded() == true)
             {
                 _PlayerAnim.Attack();
-                _SwordAudio.Play();
+                //_SwordAudio.Play();
+
             }
         }
 
@@ -69,55 +75,51 @@ public class Player : MonoBehaviour
     }
 
 
-    public float  moveii()
-    {
-        float move = Input.GetAxisRaw("Horizontal");
-        return move; 
-    }
-    void Movement()
+
+   public void Movement()
     {
 
         // player move horizontal (left and right )
         float move = Input.GetAxisRaw("Horizontal");
         _grounded = isGrounded();
-       
+
 
         // if the user pressed on O then will be attack by bullet
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) )
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
-          
+
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
-          
-          
+
+
             if (move > 0 || _PlayerSprite.flipX == false)
             {
                 // when the player in a left side then will be used gun in the left side
-               
 
-                //_bullet.transform.localPosition = posBullet;
 
-                Flip(true);
+
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
 
-               
+
+
+
                 _anim.Play("Shoot");
 
-                // b1 = _PlayerSprite.flipX;
+
 
             }
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
-                _bullet.transform.localPosition = ddt.transform.position;
-                // when the player in a right side then will be used gun in the right side
-                //Vector3 posBullet1 = _PlayerSprite.transform.localPosition;
-                Flip(false);
-                //_bullet.transform.localPosition = posBullet1;
-                _bullet.GetComponent<FireBullet>().Speed *= ddt.transform.position.x;
+
+                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
+
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position ;
+
                 _anim.Play("Shoot");
-              
-                //  b2 = _PlayerSprite.flipX;
+
+
             }
 
 
@@ -183,7 +185,8 @@ public class Player : MonoBehaviour
             _PlayerSprite.flipX = false;
            Vector3 pos = _PlayerSprite.transform.localPosition;
             _PlayerSprite.transform.localPosition = pos;
-            
+
+
         }
 
         // when the player flip (faceleft)
@@ -191,6 +194,7 @@ public class Player : MonoBehaviour
         {
             _PlayerSprite.flipX = true;
             Vector3 pos = _PlayerSprite.transform.localPosition;
+
         }
     }
 
@@ -227,8 +231,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-
     IEnumerator WaitBuff()
     {
         yield return new WaitForSeconds(5f);
