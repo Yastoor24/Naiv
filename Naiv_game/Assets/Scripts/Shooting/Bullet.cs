@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     private AmmoText _AmmoText;
     private Animator anim;
     public static Player _Player;
-   
+
     public static bool b1 = true;
     public static bool b2 = false;
 
@@ -69,7 +69,7 @@ public class Bullet : MonoBehaviour
 
 
             }
-          
+
 
 
         }
@@ -81,23 +81,23 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Wait to Reload");
                 _canShoot = false;
 
-              
+
                 StartCoroutine(Reload());
             }
 
         }
 
-    
+
 
     private void FireBullet(GameObject fireBullet)
     {
         _bullets -= 1;
-        
+
           _AmmoText.UpdateAmmoText(_bullets, _maxBullets);
-        
+
         Debug.Log("Shoot: " + _bullets);
           fireBullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-   
+
     }
     IEnumerator Reload()
     {
