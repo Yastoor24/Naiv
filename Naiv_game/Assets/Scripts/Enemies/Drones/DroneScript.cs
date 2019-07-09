@@ -81,7 +81,12 @@ public class DroneScript : MonoBehaviour
             {
                 attacked = false;
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-              //  anim.Play("Dronefly");
+                anim.Play("Dronefly");
+//<<<<<<< Updated upstream
+//                anim.Play("Dronefly");
+//=======
+//                anim.Play("Dronefly");
+//>>>>>>> Stashed changes
                 StartCoroutine(WaitToThrow());
             }
 
@@ -107,7 +112,7 @@ public class DroneScript : MonoBehaviour
     {
         if (target.tag == "PlayerBullet")
         {
-            anim.Play("droneDead");
+            anim.Play("DroneDead");
 
             GetComponent<BoxCollider2D>().isTrigger = true;
             myBody.bodyType = RigidbodyType2D.Dynamic;

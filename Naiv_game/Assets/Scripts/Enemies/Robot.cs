@@ -14,7 +14,7 @@ public class Robot : MonoBehaviour
     private Vector3 _movePosition;
 
     public GameObject _bullet;
-    public LayerMask _playerLayer;
+    //public LayerMask _playerLayer;
 
     private bool _canMove;
     private bool _attack = true;
@@ -25,7 +25,7 @@ public class Robot : MonoBehaviour
 
 
     [SerializeField]
-    private int _health = 10;
+    private int _health = 1;
 
     private Material _matWahite;
     private Material _matDefault;
@@ -39,6 +39,10 @@ public class Robot : MonoBehaviour
         _mybody = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
+
+
+        
+
     }
 
     // Start is called before the first frame update
@@ -107,7 +111,8 @@ public class Robot : MonoBehaviour
 
         if (_distance > 8f)
         {
-            _canMove = true;           
+            _canMove = true;
+            _anim.Play("Walk_Rifle_IP");
         }
 
         if ( _distance < 5)
@@ -116,12 +121,13 @@ public class Robot : MonoBehaviour
 
             if (_attack)
             {
+                _anim.Play("Attack_Rifle");
                     Instantiate(_bullet, _firePoint.gameObject.transform.position  , _firePoint.gameObject.transform.rotation);
                     _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;   //pass the player position to bullet script
 
                 _attack = false;
 
-                //_anim.Play("BirdFly");                                //TODO:change the animation
+                _anim.Play("Idel_Rifle");                               //TODO:change the animation
 
                 StartCoroutine(WaitToFire(1f));
             }
@@ -151,17 +157,17 @@ public class Robot : MonoBehaviour
         if (collision.gameObject.tag == "PlayerBullet")
         {
             Destroy(collision.gameObject);
+            //Debug.Log("got Hit");
             _spr.material = _matWahite; 
             _health -= 1;               // decrease the health
             Debug.Log("Health: "+_health);
             if (_health <= 0)           
             {
-               // _anim.Play("Dead");         //TODO: change the name to correct death animatoon name  
-                //GetComponent<CircleCollider2D>().isTrigger = true;
-                //_mybody.bodyType = RigidbodyType2D.Dynamic;
+                
 
                 _canMove = false;
 
+                _anim.Play("Death_Rifle");
                 StartCoroutine(RobotDead());
 
             }
@@ -175,7 +181,8 @@ public class Robot : MonoBehaviour
 
     IEnumerator RobotDead()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(1f);
+        
         Debug.Log("IT IS DEAD: " );
 
         GameObject _explosion = (GameObject)Instantiate(_explosionRef);

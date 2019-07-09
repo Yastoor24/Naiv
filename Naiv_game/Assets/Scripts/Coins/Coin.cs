@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour
     private Text _aidBoxTextScore;
     private int _lifeCount = 2;
     private int _aidBoxCount;
-    public Transform _beganPosition;
+  
 
 
 
@@ -134,12 +134,9 @@ public class Coin : MonoBehaviour
         {
 
 
-            // player dead;
+            // player dead; if lifes for player <0 then return from began (game over).
 
-            /* كود شيماء */
-            //transform.position = _beganPosition.position;
-            //Destroy(gameObject);
-           // Time.timeScale = 0f;
+           
             StartCoroutine(RestartGame());
             Debug.Log("game over");
 
@@ -162,11 +159,3 @@ public class Coin : MonoBehaviour
         SceneManager.LoadScene("Village House");
     }
 }
-
-
-
-
-
-
-
-
