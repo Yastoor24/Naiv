@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Bullet : MonoBehaviour
 {
-
+    public static PlayerAnimation _PlayerAnim;
     private AudioSource _GunAudio;
     [SerializeField]
     private Transform _barrelTip;
@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     private GameObject _bullet;
     private Vector2 _lookDirection;
     private float _lookAngle;
-    private PlayerAnimation _PlayerAnim;
+   
     [SerializeField]
     int _maxBullets = 5;
     int _bullets;
@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour
     private bool _canShoot = true;
     private AmmoText _AmmoText;
     private Animator anim;
+    [SerializeField]
     public static Player _Player;
    
     public static bool b1 = true;
@@ -38,7 +39,7 @@ public class Bullet : MonoBehaviour
 
     void start() {
         _Player = GetComponent<Player>();
-        _PlayerAnim = GetComponent<PlayerAnimation>();
+       
     }
 
 
@@ -46,28 +47,25 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(_canShoot);
 
 
         if (_canShoot)
         {
-            if (Input.GetMouseButtonDown(0) && _bullets >= 0)
+            if ((Input.GetMouseButtonDown(0) && _bullets >= 0) || Input.GetButton("XboxY"))
             {
 
-                Debug.Log("hhhhhhhhhhhhhhhhhhh");
+                Debug.Log("HHHHHHHHH");
+               
                 _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
                 GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
                 fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
-                Vector3 newPos = transform.localPosition;
-                newPos.x = 1.5f;
-                newPos.y = 1.88f;
-                transform.localPosition = newPos;
-                fireBullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+            
                 FireBullet(fireBullet);
 
-
+              
             }
           
 

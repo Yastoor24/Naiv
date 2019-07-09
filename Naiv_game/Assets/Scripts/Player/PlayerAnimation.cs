@@ -1,16 +1,18 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator _anim;
-    private Animator _sword;
+    //private Animator _sword;
+    private Animator _playerBullet;
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponentInChildren<Animator>();
-        _sword = transform.GetChild(1).GetComponent<Animator>();
+        // _sword = transform.GetChild(1).GetComponent<Animator>();
+       
     }
 
     // define variable animator for the player movement
@@ -27,7 +29,8 @@ public class PlayerAnimation : MonoBehaviour
     // define variable animator for the player attack
     public void Attack()
     {
-        _anim.SetTrigger("Attack");
-        _sword.SetTrigger("SwordAnimation");
+        _anim.SetTrigger("Shoot");
+        // _sword.SetTrigger("SwordAnimation");
+        _playerBullet.SetTrigger("bulletAnimation");
     }
 }
