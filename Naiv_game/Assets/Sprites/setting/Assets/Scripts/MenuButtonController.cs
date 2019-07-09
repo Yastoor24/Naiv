@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class MenuButtonController : MonoBehaviour {
 
 	// Use this for initialization
@@ -18,6 +18,7 @@ public class MenuButtonController : MonoBehaviour {
 	void Update () {
 		if(Input.GetAxis ("Vertical") != 0){
 			if(!keyDown){
+       
 				if (Input.GetAxis ("Vertical") < 0) {
 					if(index < maxIndex){
 						index++;
@@ -36,6 +37,11 @@ public class MenuButtonController : MonoBehaviour {
 		}else{
 			keyDown = false;
 		}
+
+	}
+	public void NewGameBtn(string _newGameLevel)
+	{
+			SceneManager.LoadScene(_newGameLevel);
 
 	}
 

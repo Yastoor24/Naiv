@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
                  _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
 
-                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position ;
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position;
 
                 _anim.Play("Shoot");
 
