@@ -39,10 +39,10 @@ public class MenuButtonController : MonoBehaviour {
 		}
 
 	}
-	public void NewGameBtn(string _newGameLevel)
-	{
-			SceneManager.LoadScene(_newGameLevel);
+	//public void NewGameBtn(string _newGameLevel)
+	//{
+		//	SceneManager.LoadScene(_newGameLevel);
 
-	}
+//	}
 
 }

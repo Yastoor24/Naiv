@@ -12,6 +12,7 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] string Scene;
 
 
+
     // Update is called once per frame
 
     void Update()
@@ -20,18 +21,26 @@ public class MenuButton : MonoBehaviour
 		{
 			animator.SetBool ("selected", true);
 			if(Input.GetAxis ("Submit") == 1){
-
-				animator.SetBool ("pressed", true);
-				  NewGameBtn( Scene);
+                NewGameBtn(Scene);
+                animator.SetBool ("pressed", true);
+				  
 			}else if (animator.GetBool ("pressed")){
-				animator.SetBool ("pressed", false);
 
-				animatorFunctions.disableOnce = true;
-			}
+                animator.SetBool ("pressed", false);
+                if (Input.GetAxis("Submit") == 2)
+                {
+                    NewGameBtn(Scene);
+                    animatorFunctions.disableOnce = true;
+                }
+            }
 		}else{
 			animator.SetBool ("selected", false);
-			 ExitGameBtn();
-		}
+            if (Input.GetAxis("Submit") == 3)
+            {
+                NewGameBtn(Scene);
+            }
+
+            }
     }
    // the method for PLay .. which will take u to the first level
 		public void NewGameBtn(string _newGameLevel)
@@ -39,10 +48,13 @@ public class MenuButton : MonoBehaviour
         SceneManager.LoadScene(_newGameLevel);
 
     }
+
 		// for exit the game ..
 		public void ExitGameBtn()
 		{
 				Application.Quit();
 
-		}
+		} 
+     //for exit from the level the player gose to welcome m
+
 }
