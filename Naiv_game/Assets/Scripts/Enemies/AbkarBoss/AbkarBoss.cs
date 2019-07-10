@@ -61,7 +61,9 @@ public class AbkarBoss : MonoBehaviour
                     _laserCount--;
                     _attack = false;
                     if (_laserCount > 0)
-                    { StartCoroutine(waitForLaser(0.5f)); }
+                    { StartCoroutine(waitForLaser(0.5f));
+                        print(_laserCount);
+                    }
 
                     if (_laserCount == 0)
                     {
