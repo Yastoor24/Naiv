@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     private GameObject _bullet;
     private Vector2 _lookDirection;
     private float _lookAngle;
-   
+
     [SerializeField]
     int _maxBullets = 5;
     int _bullets;
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     private Animator anim;
     [SerializeField]
     public static Player _Player;
-   
+
     public static bool b1 = true;
     public static bool b2 = false;
 
@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
 
     void start() {
         _Player = GetComponent<Player>();
-       
+
     }
 
 
@@ -47,27 +47,27 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(_canShoot);
 
 
         if (_canShoot)
         {
-            if (Input.GetMouseButtonDown(0) && _bullets >= 0)
+            if ((Input.GetMouseButtonDown(0) && _bullets >= 0) || Input.GetButton("XboxY"))
             {
 
-               
-               
+                Debug.Log("HHHHHHHHH");
+
                 _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
                 GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
                 fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
-            
+
                 FireBullet(fireBullet);
 
-              
+
             }
-          
+
 
 
         }
@@ -79,23 +79,23 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Wait to Reload");
                 _canShoot = false;
 
-              
+
                 StartCoroutine(Reload());
             }
 
         }
 
-    
+
 
     private void FireBullet(GameObject fireBullet)
     {
         _bullets -= 1;
-        
+
           _AmmoText.UpdateAmmoText(_bullets, _maxBullets);
-        
+
         Debug.Log("Shoot: " + _bullets);
           fireBullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-   
+
     }
     IEnumerator Reload()
     {

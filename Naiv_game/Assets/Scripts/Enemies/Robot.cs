@@ -33,6 +33,8 @@ public class Robot : MonoBehaviour
 
     public UnityEngine.Object _explosionRef;
 
+    public float _distanceToMove = 4f;
+
 
     void Awake()
     {
@@ -49,10 +51,10 @@ public class Robot : MonoBehaviour
     void Start()
     {
         _originPosition = transform.position;
-        _originPosition.x += 6f;
+        _originPosition.x += _distanceToMove;
 
         _movePosition = transform.position;
-        _movePosition.x -= 6f;
+        _movePosition.x -= _distanceToMove;
 
         _canMove = true;
 

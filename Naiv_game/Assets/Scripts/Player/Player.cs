@@ -115,7 +115,6 @@ float directionX;
                 // when the player in a left side then will be used gun in the left side
 
 
-
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
 
