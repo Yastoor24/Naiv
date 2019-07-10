@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//using UnityStandardAssets.CrossPlatformInput;
 public class Player : MonoBehaviour
 {
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public Transform HitBox1;
     [SerializeField]
     public Transform HitBox2;
-
+float directionX;
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
@@ -52,11 +52,28 @@ public class Player : MonoBehaviour
 
 
     }
+//if(_rigid.velocity.y == 0){
+//  _rigid.AddForce(new Vector2(0,_jumpForce),ForceMode2D.Force);
+//}
+//  }
 
+//  void Fire(){
+
+
+//  }
     // Update is called once per frame
     void Update()
     {
+//directionX = CrossPlatformInputManager.GetAxis("Horizontal");
+  //_rigid.velocity = new Vector2(directionX*10 , 0);
 
+  // if( CrossPlatformInputManager.GetButtonDown("Jump")){
+     //DoJump();
+//  }
+
+  // if( CrossPlatformInputManager.GetButtonDown("Fire")){
+//   Fire();
+  //  }
         if (_canMove)
         {
             //ShootBullet();
