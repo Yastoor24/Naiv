@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
                  _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
 
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position;
-
+_bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
                 _anim.Play("Shoot");
 
 
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
         // LayerMask mask = (1 <<8 );
         // collider grounded and jump
-         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 3.5f, 1<<8);
+         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 2f, 1<<8);
 
        // RaycastHit2D hitInfo = Physics2D.CircleCast(transform.position, 1f, Vector2.down * 0.35f);
 

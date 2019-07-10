@@ -858,6 +858,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
         type: 3}
+    - target: {fileID: 3360415491622315062, guid: 9f8351202e1df8941a659269f2bfae5a,
+        type: 3}
+      propertyPath: _speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360415491622315062, guid: 9f8351202e1df8941a659269f2bfae5a,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3360415491718110492, guid: 9f8351202e1df8941a659269f2bfae5a,
         type: 3}
       propertyPath: m_Sprite
@@ -966,7 +976,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876062794
 GameObject:
