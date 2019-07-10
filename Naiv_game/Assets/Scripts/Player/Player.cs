@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private int _powerPoint = 0;
     private bool _canPower = true;
     private Animator _anim;
-    public GameObject _bullet;
+    private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
     [SerializeField]
@@ -75,51 +75,50 @@ public class Player : MonoBehaviour
     }
 
 
-   
+
    public void Movement()
     {
 
         // player move horizontal (left and right )
         float move = Input.GetAxisRaw("Horizontal");
         _grounded = isGrounded();
-       
+
 
         // if the user pressed on O then will be attack by bullet
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) )
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
-          
+
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
 
-           
+
             if (move > 0 || _PlayerSprite.flipX == false)
             {
                 // when the player in a left side then will be used gun in the left side
-               
 
 
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
-               
+
 
 
 
                 _anim.Play("Shoot");
 
-               
+
 
             }
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
-               
+
                  _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
-            
-                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position ;
-                
+
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position;
+_bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
                 _anim.Play("Shoot");
-               
-              
+
+
             }
 
 
@@ -157,7 +156,7 @@ public class Player : MonoBehaviour
 
         // LayerMask mask = (1 <<8 );
         // collider grounded and jump
-         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 3.5f, 1<<8);
+         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 2f, 1<<8);
 
        // RaycastHit2D hitInfo = Physics2D.CircleCast(transform.position, 1f, Vector2.down * 0.35f);
 
@@ -185,7 +184,7 @@ public class Player : MonoBehaviour
             _PlayerSprite.flipX = false;
            Vector3 pos = _PlayerSprite.transform.localPosition;
             _PlayerSprite.transform.localPosition = pos;
-            
+
 
         }
 
@@ -194,7 +193,7 @@ public class Player : MonoBehaviour
         {
             _PlayerSprite.flipX = true;
             Vector3 pos = _PlayerSprite.transform.localPosition;
-           
+
         }
     }
 
@@ -231,8 +230,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-
     IEnumerator WaitBuff()
     {
         yield return new WaitForSeconds(5f);
