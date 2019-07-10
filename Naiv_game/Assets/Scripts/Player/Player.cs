@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
 
     private AudioSource _SwordAudio;
-
     private Rigidbody2D _rigid;
     [SerializeField]
     private float _jumpForce = 5f;
@@ -16,18 +15,26 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 5.0f;
     private SpriteRenderer _PlayerSprite;
-    private SpriteRenderer _SwordArcSprite;
+    //private SpriteRenderer _SwordArcSprite;
+    private SpriteRenderer _BulletSprite;
     public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
     public GameObject _fireBullet;
     public bool _canMove = true;
     private int _powerPoint = 0;
     private bool _canPower = true;
+    private Animator _anim;
+    public GameObject _bullet;
+    [SerializeField]
+    public Transform HitBox1;
+    [SerializeField]
+    public Transform HitBox2;
+
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
-        _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
+       // _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
 
     }
 
@@ -38,7 +45,9 @@ public class Player : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _PlayerAnim = GetComponent<PlayerAnimation>();
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
-        _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+       // _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        _anim = GetComponentInChildren<Animator>();
+        _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
 
 
@@ -54,46 +63,63 @@ public class Player : MonoBehaviour
             Movement();
 
             // if the user pressed on O then will be attack by sword
-            if (Input.GetKeyDown(KeyCode.O) && isGrounded() == true)
+            if (Input.GetKeyDown(KeyCode.H) && isGrounded() == true)
             {
                 _PlayerAnim.Attack();
-                _SwordAudio.Play();
+                //_SwordAudio.Play();
+
             }
         }
 
 
     }
 
-    void Movement()
+
+   
+   public void Movement()
     {
 
         // player move horizontal (left and right )
         float move = Input.GetAxisRaw("Horizontal");
         _grounded = isGrounded();
-        GameObject _bullet;
+       
 
         // if the user pressed on O then will be attack by bullet
         if (Input.GetKeyDown(KeyCode.J))
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
+          
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
 
+           
             if (move > 0 || _PlayerSprite.flipX == false)
             {
                 // when the player in a left side then will be used gun in the left side
+               
+
+
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
+               
 
 
-                // b1 = _PlayerSprite.flipX;
+
+                _anim.Play("Shoot");
+
+               
 
             }
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
-                // when the player in a right side then will be used gun in the right side
-                _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-
-                //  b2 = _PlayerSprite.flipX;
+               
+                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
+            
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position ;
+                
+                _anim.Play("Shoot");
+               
+              
             }
 
 
@@ -109,8 +135,6 @@ public class Player : MonoBehaviour
             //the player move in left side
             Flip(false);
         }
-
-
 
         // if the user pressed on space then will be jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
@@ -159,15 +183,9 @@ public class Player : MonoBehaviour
         if (faceRight == true)
         {
             _PlayerSprite.flipX = false;
-            _SwordArcSprite.flipX = false;
-            _SwordArcSprite.flipY = false;
-            Vector3 pos = _PlayerSprite.transform.localPosition;
-            pos.x = -0.073f;
+           Vector3 pos = _PlayerSprite.transform.localPosition;
             _PlayerSprite.transform.localPosition = pos;
-            Vector3 newPos = _SwordArcSprite.transform.localPosition;
-            newPos.x = 1.01f;
-            _SwordArcSprite.transform.localPosition = newPos;
-
+            
 
         }
 
@@ -175,18 +193,9 @@ public class Player : MonoBehaviour
         if (faceRight == false)
         {
             _PlayerSprite.flipX = true;
-            _SwordArcSprite.flipX = true;
-            _SwordArcSprite.flipY = true;
-
             Vector3 pos = _PlayerSprite.transform.localPosition;
-            pos.x = 0.3f;
-            _PlayerSprite.transform.localPosition = pos;
-            Vector3 newPos = _SwordArcSprite.transform.localPosition;
-            newPos.x = -1.01f;
-            _SwordArcSprite.transform.localPosition = newPos;
-
+           
         }
-
     }
 
     IEnumerator ResetJumpedRoutine()

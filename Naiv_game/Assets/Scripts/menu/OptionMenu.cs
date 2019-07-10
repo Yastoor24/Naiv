@@ -8,7 +8,7 @@ public class OptionMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,7 +16,8 @@ public class OptionMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            optionMenu.gameObject.SetActive(true);
+            optionMenu.gameObject.SetActive(!optionMenu.gameObject.activeSelf);
+
 
         }
     }
