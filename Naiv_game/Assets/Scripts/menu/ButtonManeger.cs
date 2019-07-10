@@ -13,12 +13,12 @@ public class ButtonManeger : MonoBehaviour
         SceneManager.LoadScene(_newGameLevel);
 
     }
-    // for going to setting menu  
+    // for going to setting menu
     public void SettingGameBtn(string _setting)
     {
         SceneManager.LoadScene(_setting);
 
-    }  
+    }
     // for close the game during playing and moving the player to welcome menu
     public  void ExitLocalFromGameBtn(string _exit)
     {

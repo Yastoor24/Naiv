@@ -1,14 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Bullet : MonoBehaviour
 {
-
+    public static PlayerAnimation _PlayerAnim;
     private AudioSource _GunAudio;
-    private SpriteRenderer _PlayerSprite;
-    private bool _grounded = false;
     [SerializeField]
     private Transform _barrelTip;
     public GameObject _fireBullet;
@@ -16,7 +14,7 @@ public class Bullet : MonoBehaviour
     private GameObject _bullet;
     private Vector2 _lookDirection;
     private float _lookAngle;
-    private PlayerAnimation _PlayerAnim;
+
     [SerializeField]
     int _maxBullets = 5;
     int _bullets;
@@ -24,7 +22,11 @@ public class Bullet : MonoBehaviour
     private bool _canShoot = true;
     private AmmoText _AmmoText;
     private Animator anim;
- 
+    [SerializeField]
+    public static Player _Player;
+
+    public static bool b1 = true;
+    public static bool b2 = false;
 
     void Awake()
     {
@@ -36,63 +38,64 @@ public class Bullet : MonoBehaviour
 
 
     void start() {
-        
-       }
+        _Player = GetComponent<Player>();
+
+    }
 
 
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_canShoot);
+
+
         if (_canShoot)
         {
-            if (Input.GetMouseButtonDown(0) && _bullets >= 0)
+            if ((Input.GetMouseButtonDown(0) && _bullets >= 0) || Input.GetButton("XboxY"))
             {
-              
-                {
-                    _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-                        _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
-                        transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
-                        GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
-                        fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
-                        Vector3 newPos = transform.localPosition;
-                        newPos.x = 0.078f;
-                        transform.localPosition = newPos;
-                        fireBullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-                      
-              
+
+                Debug.Log("HHHHHHHHH");
+
+                _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle - 90f);
+                GameObject fireBullet = Instantiate(_bullet, _barrelTip.position, _barrelTip.rotation);
+                fireBullet.GetComponent<Rigidbody2D>().velocity = _barrelTip.up * 10f;
+
+                FireBullet(fireBullet);
 
 
-
-                        FireBullet(fireBullet);
-                   
-
-
-                }
             }
+
+
+
+        }
+
+
 
             else if (Input.GetKeyDown(KeyCode.R) || _bullets <= 0)
             {
                 Debug.Log("Wait to Reload");
                 _canShoot = false;
 
-              
+
                 StartCoroutine(Reload());
             }
 
         }
 
-    }
+
 
     private void FireBullet(GameObject fireBullet)
     {
         _bullets -= 1;
-        
+
           _AmmoText.UpdateAmmoText(_bullets, _maxBullets);
-        
+
         Debug.Log("Shoot: " + _bullets);
           fireBullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-   
+
     }
     IEnumerator Reload()
     {
