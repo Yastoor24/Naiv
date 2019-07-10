@@ -17,9 +17,11 @@ public class AbkarBoss : MonoBehaviour
     private GameObject _up;
     [SerializeField]
     private GameObject _down;
-
+    private float _health = 100f;
     private int _laserCount =10;
     private bool _attack = true;
+    private bool _flip = true;
+
 
     void Awake()
     {
@@ -83,22 +85,30 @@ public class AbkarBoss : MonoBehaviour
     {
         float _playerPostionX = _player.transform.position.x;
 
-        
 
         if (_playerPostionX > _bossX)
         {
-            
-            print("flip +");
-            // flip +
+            if (!_flip)
+            {
+                _flip = true;
+                print("flip +");
+                // flip +
+                changeDirection();
+            }
           
             bossAttack();
         }
         else if (_playerPostionX <= _bossX)
         {
+            if (_flip)
+            {
+                _flip = false;               
+                print("flip -");
+                //flip-
+                changeDirection();
+            }
 
-            
-            print("flip -");
-            //flip-
+
             bossAttack();
         }
 
@@ -127,13 +137,29 @@ public class AbkarBoss : MonoBehaviour
         tempScale.x = transform.localScale.x * -1f;
         transform.localScale = tempScale;
 
-        // transform.transform.Rotate(0f, 180F, 0f);
-
+        // transform.transform.Rotate(0f, 180F, 0f)
         _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Destroy(collision.gameObject);
+
+            // 5%
+
+            float _precentage = (_health / 100) * 5;
+            _health -= _precentage;
+            print(_health);
+
+        }
+
+
+
+        }
 
 
 

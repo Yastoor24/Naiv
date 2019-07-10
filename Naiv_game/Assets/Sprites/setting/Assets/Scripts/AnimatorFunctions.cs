@@ -8,9 +8,9 @@ public class AnimatorFunctions : MonoBehaviour
     public AudioClip musicClip;
     public AudioSource MusicSource; 
      
-    public start()
+    public void start()
     {
-        MusicSource.clip = MusicSource;
+        MusicSource.clip = musicClip;
 
     }
 	public bool disableOnce;
