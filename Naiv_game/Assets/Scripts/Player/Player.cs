@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public Transform HitBox1;
     [SerializeField]
     public Transform HitBox2;
-float directionX;
+
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
@@ -102,7 +102,7 @@ float directionX;
 
 
         // if the user pressed on O then will be attack by bullet
-        if (Input.GetKeyDown(KeyCode.J) )
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxB") )
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
@@ -132,7 +132,7 @@ float directionX;
                  _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
 
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position;
-_bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
+               _bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
                 _anim.Play("Shoot");
 
 
@@ -153,7 +153,7 @@ _bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
         }
 
         // if the user pressed on space then will be jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
         {
 
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
@@ -173,7 +173,7 @@ _bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
 
         // LayerMask mask = (1 <<8 );
         // collider grounded and jump
-         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 2f, 1<<8);
+         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 1f, 1<<8);
 
        // RaycastHit2D hitInfo = Physics2D.CircleCast(transform.position, 1f, Vector2.down * 0.35f);
 

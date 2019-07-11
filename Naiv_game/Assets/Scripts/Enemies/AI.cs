@@ -14,6 +14,12 @@ public class AI : MonoBehaviour
     private Vector3 _originPosition;
     private Vector3 _movePosition;
 
+    private Vector3 _position1;
+    private Vector3 _position2;
+    private Vector3 _position3;
+    private Vector3 _position4;
+
+
     public GameObject _bullet;
     //public LayerMask _playerLayer;
 
@@ -43,7 +49,10 @@ public class AI : MonoBehaviour
         _anim = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
 
-
+        _position1 = new Vector3(11.76f, -2.05f,0f);
+        _position2 = new Vector3(-10.96f, -2.05f, 0f);
+        _position3 = new Vector3(-4.69f, 3.04f, 0f);
+        _position4 = new Vector3(4.96f, 3.04f, 0f);
 
 
     }
@@ -51,11 +60,11 @@ public class AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _originPosition = transform.position;
-        _originPosition.x += _distanceToMove;
+        //_originPosition = transform.position;
+        //_originPosition.x += _distanceToMove;
 
-        _movePosition = transform.position;
-        _movePosition.x -= _distanceToMove;
+        //_movePosition = transform.position;
+        //_movePosition.x -= _distanceToMove;
 
         _canMove = true;
 
@@ -65,6 +74,9 @@ public class AI : MonoBehaviour
         _matDefault = _spr.material;
 
         //_explosionRef = Resources.Load("Explosion");
+
+        StartCoroutine(changePosition(0.1f));
+
     }
 
     // Update is called once per frame
@@ -72,27 +84,56 @@ public class AI : MonoBehaviour
     {
         Move();
         Fire();
-        _anim.Play("Woman_Rifle_Walk");
-
+      
     }
 
     void Move()
     {
-        if (_canMove)
+        if (_canMove )
         {
-            transform.Translate(_moveDirection * 2f * Time.smoothDeltaTime);
+            Vector3 temp = transform.position;
 
-            if (transform.position.x >= _originPosition.x)
-            {
-                _moveDirection = Vector3.left;
-                changeDirection();
-            }
-            else if (transform.position.x <= _movePosition.x)
-            {
-                _moveDirection = Vector3.right;
 
-                changeDirection();
+            if (transform.position.x != _moveDirection.x)
+            {
+                if (transform.position.x < _moveDirection.x)
+                {
+                    temp.x += 0.25f;
+
+                }
+                else if (transform.position.x > _moveDirection.x)
+                {
+                    temp.x -= 0.25f;
+
+                }
             }
+            
+
+            if (transform.position.y <= _moveDirection.y)
+            {
+                temp.y += 1;
+
+            }
+            Debug.Log("Moved!!");
+            //_canMove = false;
+
+
+            //transform.Translate(_moveDirection * 2f * Time.smoothDeltaTime);
+
+            
+            transform.position = temp;
+
+            //if (transform.position.x >= _originPosition.x)
+            //{
+            //    _moveDirection = Vector3.left;
+            //    changeDirection();
+            //}
+            //else if (transform.position.x <= _movePosition.x)
+            //{
+            //    _moveDirection = Vector3.right;
+
+            //    changeDirection();
+            //}
         }
     }
 
@@ -116,8 +157,8 @@ public class AI : MonoBehaviour
 
         if (_distance > 8f)
         {
-            _canMove = true;
-            _anim.Play("Woman_Rifle_Walk");
+            //_canMove = true;
+           // _anim.Play("Woman_Rifle_Walk");
         }
 
         if (_distance < 5)
@@ -173,7 +214,7 @@ public class AI : MonoBehaviour
 
                 _canMove = false;
 
-                _anim.Play("Death_Rifle");
+                
                 StartCoroutine(RobotDead());
 
             }
@@ -208,7 +249,36 @@ public class AI : MonoBehaviour
         _spr.material = _matDefault;
     }
 
+    IEnumerator changePosition(float time)
+    {
+        yield return new WaitForSeconds(time);
+        int _random = Random.Range(0, 4);
 
+        switch (_random)
+        {
+            case 0:
+                _moveDirection = _position1 ;
+                break;
+
+            case 1:
+                _moveDirection = _position2;
+
+
+                break;
+
+            case 2:
+                _moveDirection = _position3;
+
+
+                break;
+
+            case 3:
+                _moveDirection = _position4;
+
+                break;
+        }
+
+    }
 
 
 

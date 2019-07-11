@@ -93,7 +93,7 @@ public class Coin : MonoBehaviour
 
         }
 
-        if (target.gameObject.tag == "EnemyBullet")
+        if (target.gameObject.tag == "EnemyBullet"  || target.gameObject.tag == "SuperEnemyBullet")
         { playerDead(); }
 
 
@@ -118,7 +118,7 @@ public class Coin : MonoBehaviour
     {
 
 
-        print("EnemyBullet");
+       
         if (_lifeCount > 0)
         {
             // decrease the life by one
