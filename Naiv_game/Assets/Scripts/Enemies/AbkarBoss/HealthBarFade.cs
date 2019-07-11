@@ -15,8 +15,8 @@ public class HealthBarFade : MonoBehaviour
 
     private void Awake()
     {
-        barImage = transform.Find("bar").GetComponent<Image>();
-        damagedBarImage = transform.Find("damagedBar").GetComponent<Image>();
+    //    barImage = transform.Find("bar").GetComponent<Image>();
+      //  damagedBarImage = transform.Find("damagedBar").GetComponent<Image>();
     }
 
     private void Start()

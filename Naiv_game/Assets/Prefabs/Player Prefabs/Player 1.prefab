@@ -464,7 +464,7 @@ Transform:
   m_GameObject: {fileID: 3360415491622315061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.15, y: -7.3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 1}
   m_Children:
   - {fileID: 3360415490345184472}
   - {fileID: 7951490519574497335}
@@ -538,7 +538,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _speed: 10
-  _fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
+  _fireBullet: {fileID: 8675171590385254316, guid: ad234f7d97470dc44843788ce94b1839,
     type: 3}
   _canMove: 1
   HitBox1: {fileID: 3546624520428447616}
