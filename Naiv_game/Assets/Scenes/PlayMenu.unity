@@ -120,6 +120,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &110796175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 915038852}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110796176}
+  m_Layer: 0
+  m_Name: Canvas (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &110796176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 915038852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110796175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 883044812}
+  m_Father: {fileID: 1685700694}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &291970130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 6787914802155310370, guid: 06b51f424ebb5e84c967f83c4b072f09,
         type: 3}
       propertyPath: m_Text
-      value: 'C O N T I N U '
+      value: C O N T I N U E
       objectReference: {fileID: 0}
     - target: {fileID: 6331584184484216588, guid: 06b51f424ebb5e84c967f83c4b072f09,
         type: 3}
@@ -260,18 +291,18 @@ PrefabInstance:
     - target: {fileID: 6395821950513245144, guid: 06b51f424ebb5e84c967f83c4b072f09,
         type: 3}
       propertyPath: MusicSource
-      value:
-      objectReference: {fileID: 348624965}
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6395821950097371785, guid: 06b51f424ebb5e84c967f83c4b072f09,
         type: 3}
       propertyPath: MusicSource
-      value:
-      objectReference: {fileID: 348624965}
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6395821948669241320, guid: 06b51f424ebb5e84c967f83c4b072f09,
         type: 3}
       propertyPath: MusicSource
-      value:
-      objectReference: {fileID: 348624965}
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06b51f424ebb5e84c967f83c4b072f09, type: 3}
 --- !u!224 &291970131 stripped
@@ -349,12 +380,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27af4b239e3fd094bb4e6333650a2ac0, type: 3}
---- !u!82 &348624965 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5861583074749674376, guid: 27af4b239e3fd094bb4e6333650a2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 348624964}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &863037123
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,12 +459,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!224 &883044812 stripped
+--- !u!224 &883044812
 RectTransform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 5096169114736102921, guid: da85c2a9043d04e0eb31d27b17e5dc7e,
     type: 3}
   m_PrefabInstance: {fileID: 915038852}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951443171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 110796176}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &915038852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,7 +604,7 @@ PrefabInstance:
     - target: {fileID: 5306914536697013737, guid: da85c2a9043d04e0eb31d27b17e5dc7e,
         type: 3}
       propertyPath: MusicSource
-      value:
+      value: 
       objectReference: {fileID: 1229669125}
     - target: {fileID: 5716457735871549219, guid: da85c2a9043d04e0eb31d27b17e5dc7e,
         type: 3}
@@ -580,7 +619,7 @@ PrefabInstance:
     - target: {fileID: 5306914535839248520, guid: da85c2a9043d04e0eb31d27b17e5dc7e,
         type: 3}
       propertyPath: MusicSource
-      value:
+      value: 
       objectReference: {fileID: 1229669125}
     - target: {fileID: 5096169115716205837, guid: da85c2a9043d04e0eb31d27b17e5dc7e,
         type: 3}
@@ -590,10 +629,26 @@ PrefabInstance:
     - target: {fileID: 5306914535179938265, guid: da85c2a9043d04e0eb31d27b17e5dc7e,
         type: 3}
       propertyPath: MusicSource
-      value:
+      value: 
       objectReference: {fileID: 1229669125}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da85c2a9043d04e0eb31d27b17e5dc7e, type: 3}
+--- !u!1 &951443171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 915038852}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883044812}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &1229669124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750,9 +805,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 863037124}
-  - {fileID: 883044812}
+  - {fileID: 291970131}
+  - {fileID: 110796176}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899372143
 GameObject:
@@ -782,8 +838,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -801,8 +857,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -818,5 +874,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
