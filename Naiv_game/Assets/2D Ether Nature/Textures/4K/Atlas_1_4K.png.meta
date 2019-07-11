@@ -1,60 +1,147 @@
 fileFormatVersion: 2
 guid: acabed843a62a48469b4179554fb9b5e
-timeCreated: 1489664506
-licenseType: Store
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Fog
-    21300002: Background_Mountain_All
-    21300004: Bush_1
-    21300006: Bush_2
-    21300008: Bush_6
-    21300010: Bush_5
-    21300012: Background_Mountain_2
-    21300014: Background_Mountain_3
-    21300016: Bush_4
-    21300018: Stone_1
-    21300020: Stone_4
-    21300022: Stone_6
-    21300024: Stone_5
-    21300026: Background_Mountain_1
-    21300028: Bush_3
-    21300030: Front_background_1
-    21300032: Tree_1
-    21300034: Tree_4
-    21300036: Tree_3
-    21300038: Tree_8
-    21300040: Tree_11
-    21300042: Front_background_2
-    21300044: Grass_5
-    21300046: Front_background_3
-    21300048: Front_background_4
-    21300050: Tree_9
-    21300052: Tree_13
-    21300054: Tree_10
-    21300056: Tree_12
-    21300058: Tree_5
-    21300060: Tree_6
-    21300062: Tree_7
-    21300064: Grass_1
-    21300066: Background_Tree_1
-    21300068: Tree_2
-    21300070: Stone_8
-    21300072: Grass_2
-    21300074: Background_Tree_2
-    21300076: Grass_3
-    21300078: Stone_7
-    21300080: Moss_1
-    21300082: Stone_3
-    21300084: Stone_2
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Fog
+  - first:
+      213: 21300002
+    second: Background_Mountain_All
+  - first:
+      213: 21300004
+    second: Bush_1
+  - first:
+      213: 21300006
+    second: Bush_2
+  - first:
+      213: 21300008
+    second: Bush_6
+  - first:
+      213: 21300010
+    second: Bush_5
+  - first:
+      213: 21300012
+    second: Background_Mountain_2
+  - first:
+      213: 21300014
+    second: Background_Mountain_3
+  - first:
+      213: 21300016
+    second: Bush_4
+  - first:
+      213: 21300018
+    second: Stone_1
+  - first:
+      213: 21300020
+    second: Stone_4
+  - first:
+      213: 21300022
+    second: Stone_6
+  - first:
+      213: 21300024
+    second: Stone_5
+  - first:
+      213: 21300026
+    second: Background_Mountain_1
+  - first:
+      213: 21300028
+    second: Bush_3
+  - first:
+      213: 21300030
+    second: Front_background_1
+  - first:
+      213: 21300032
+    second: Tree_1
+  - first:
+      213: 21300034
+    second: Tree_4
+  - first:
+      213: 21300036
+    second: Tree_3
+  - first:
+      213: 21300038
+    second: Tree_8
+  - first:
+      213: 21300040
+    second: Tree_11
+  - first:
+      213: 21300042
+    second: Front_background_2
+  - first:
+      213: 21300044
+    second: Grass_5
+  - first:
+      213: 21300046
+    second: Front_background_3
+  - first:
+      213: 21300048
+    second: Front_background_4
+  - first:
+      213: 21300050
+    second: Tree_9
+  - first:
+      213: 21300052
+    second: Tree_13
+  - first:
+      213: 21300054
+    second: Tree_10
+  - first:
+      213: 21300056
+    second: Tree_12
+  - first:
+      213: 21300058
+    second: Tree_5
+  - first:
+      213: 21300060
+    second: Tree_6
+  - first:
+      213: 21300062
+    second: Tree_7
+  - first:
+      213: 21300064
+    second: Grass_1
+  - first:
+      213: 21300066
+    second: Background_Tree_1
+  - first:
+      213: 21300068
+    second: Tree_2
+  - first:
+      213: 21300070
+    second: Stone_8
+  - first:
+      213: 21300072
+    second: Grass_2
+  - first:
+      213: 21300074
+    second: Background_Tree_2
+  - first:
+      213: 21300076
+    second: Grass_3
+  - first:
+      213: 21300078
+    second: Stone_7
+  - first:
+      213: 21300080
+    second: Moss_1
+  - first:
+      213: 21300082
+    second: Stone_3
+  - first:
+      213: 21300084
+    second: Stone_2
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -63,35 +150,65 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 8192
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -107,7 +224,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: aeb3d6da0ab28e244bbd579fa132cedb
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Background_Mountain_All
       rect:
@@ -120,7 +245,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 79904a535fc39e04f8f2c1d8d25aeed2
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Bush_1
       rect:
@@ -133,7 +266,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 80f40ee9904a4884c985e47adfa078ba
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Bush_2
       rect:
@@ -146,7 +287,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 04793d3ed357f93459abbd2cffc4c85e
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Bush_6
       rect:
@@ -159,7 +308,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 38aa912d9099bae419a1777ac7b428ae
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Bush_5
       rect:
@@ -172,7 +329,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 3fbff417dffcb1f40bc159a0336b2297
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Background_Mountain_2
       rect:
@@ -185,7 +350,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ccb112c4fb01d8b49ba63b39bd11685b
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Background_Mountain_3
       rect:
@@ -198,7 +371,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 60bd4ceb6eaa4c7459f2312b5cd295ed
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Bush_4
       rect:
@@ -211,7 +392,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: d1ee93d129227b047bd99e40228773ba
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_1
       rect:
@@ -224,7 +413,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2eaacf15b20ea3449a06f727a6649f13
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_4
       rect:
@@ -237,7 +434,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 03e81f6f595cef34a809a24b43ed68a3
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_6
       rect:
@@ -250,7 +455,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 5c876f60c255079498b881076b63ac6e
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_5
       rect:
@@ -263,7 +476,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 292a383c516721248aa7b9ef9e38932a
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Background_Mountain_1
       rect:
@@ -276,7 +497,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 7a935073286de234b87114e92fe77744
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Bush_3
       rect:
@@ -289,7 +518,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 1da3410d1494c444db54ebb53cc74317
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Front_background_1
       rect:
@@ -302,7 +539,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c4adc97491fac834e9b7ada3eed4f737
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_1
       rect:
@@ -315,7 +560,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 31f1d013fc2123b40a5efc4b5abd3b56
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_4
       rect:
@@ -328,7 +581,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 06dd497f7c001df43a5a1001c22dde2f
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_3
       rect:
@@ -341,7 +602,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2ac69a771ed5eeb44ac001280b064098
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_8
       rect:
@@ -354,7 +623,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 9b26de89142cfb547886c4e5019e72b7
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_11
       rect:
@@ -367,7 +644,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 46cc2c2f47ee90d4ebcf651052aeaf9a
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Front_background_2
       rect:
@@ -380,7 +665,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e2b74d066bdf0ba458adf43a805ef9cc
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Grass_5
       rect:
@@ -393,7 +686,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c1f27bec1686fb940982f795356c44c3
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Front_background_3
       rect:
@@ -406,7 +707,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 3ed3cd987a76ff1429ddf0fbcd06c2cf
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Front_background_4
       rect:
@@ -419,7 +728,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 75e45dbf51e9be240bc433912c51d75c
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_9
       rect:
@@ -432,7 +749,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 144e74276a622b3459d6bd67d7cae4cb
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_13
       rect:
@@ -445,7 +770,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ffcfdc5e3dece764193b01e440b4345c
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_10
       rect:
@@ -458,7 +791,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e9319f3428250d6409561d0d8a6951fe
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_12
       rect:
@@ -471,7 +812,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 1601c280665178c488747e3b4db00af9
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_5
       rect:
@@ -484,7 +833,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c948f375393ae0142848d7bfea5cf338
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_6
       rect:
@@ -497,7 +854,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: fb525a36d72c42845b331f8c2b0d58cf
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_7
       rect:
@@ -510,7 +875,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8751feb702f1e404ea8c5f6f1c99b073
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Grass_1
       rect:
@@ -523,7 +896,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 46a42a08445e31343a37b77e5368e8ea
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Background_Tree_1
       rect:
@@ -536,7 +917,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 5d05227543d89c84eb3d4a5b21dcaccd
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Tree_2
       rect:
@@ -549,7 +938,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a897776b8a028fc4593d3c24d7f10a39
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_8
       rect:
@@ -562,7 +959,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 72e89a6f1f9efb749a5659cd759c257b
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Grass_2
       rect:
@@ -575,7 +980,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 189980385b9a69d43adf49752ee9efe0
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Background_Tree_2
       rect:
@@ -588,7 +1001,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0a0c61b1918ae254c89e94e0497a655b
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Grass_3
       rect:
@@ -601,7 +1022,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f51a85833692d944baf1e36be58484c5
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_7
       rect:
@@ -614,7 +1043,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 767a2502f6232ab47920ad07e6dd1e42
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Moss_1
       rect:
@@ -627,7 +1064,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: ff3a7fe8c388e2540a4d4b6ddb4594a2
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_3
       rect:
@@ -640,7 +1085,15 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: d9555051c7f00ee4baf08e53e880de6b
+      internalID: 21300082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Stone_2
       rect:
@@ -653,9 +1106,28 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 9d1cfc3600edd8b4cb20a9b16ea3db94
+      internalID: 21300084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
