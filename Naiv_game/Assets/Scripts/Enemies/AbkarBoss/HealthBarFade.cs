@@ -11,12 +11,15 @@ public class HealthBarFade : MonoBehaviour
     private Image barImage;
     private Image damagedBarImage;
     private float damagedHealthShrinkTimer;
-    private HealthSystem healthSystem;
+    public HealthSystem healthSystem;
+    public static bool damState=false;
+    public static bool EnemyDead = false;
+    public static int healthValue=100;
 
     private void Awake()
     {
-    //    barImage = transform.Find("bar").GetComponent<Image>();
-      //  damagedBarImage = transform.Find("damagedBar").GetComponent<Image>();
+        barImage = transform.Find("bar").GetComponent<Image>();
+        damagedBarImage = transform.Find("damageBar").GetComponent<Image>();
     }
 
     private void Start()
@@ -24,12 +27,10 @@ public class HealthBarFade : MonoBehaviour
         healthSystem = new HealthSystem(100);
         SetHealth(healthSystem.GetHealthNormalized());
         damagedBarImage.fillAmount = barImage.fillAmount;
+       
 
-        healthSystem.OnDamaged += HealthSystem_OnDamaged;
-        healthSystem.OnHealed += HealthSystem_OnHealed;
 
-       // transform.Find("damageBtn").GetComponent<Button_UI>().ClickFunc = () => healthSystem.Damage(10);
-     //   transform.Find("healBtn").GetComponent<Button_UI>().ClickFunc = () => healthSystem.Heal(10);
+
     }
 
     private void Update()
@@ -39,19 +40,34 @@ public class HealthBarFade : MonoBehaviour
         {
             if (barImage.fillAmount < damagedBarImage.fillAmount)
             {
-                float shrinkSpeed = 1f;
+                float shrinkSpeed = 0.5f;
                 damagedBarImage.fillAmount -= shrinkSpeed * Time.deltaTime;
             }
         }
+
+        if (damState)
+        { 
+        if (healthSystem.healthAmount != 0)
+        {
+            healthSystem.Damage(5);
+            HealthSystem_OnDamaged();
+             damState = false;
+                healthValue = healthSystem.healthAmount;
+        }
+        else if(healthSystem.healthAmount <= 0)
+            {
+                EnemyDead = true;
+
+            }
     }
 
-    private void HealthSystem_OnHealed(object sender, System.EventArgs e)
-    {
-        SetHealth(healthSystem.GetHealthNormalized());
-        damagedBarImage.fillAmount = barImage.fillAmount;
+
     }
 
-    private void HealthSystem_OnDamaged(object sender, System.EventArgs e)
+
+   
+
+    private void HealthSystem_OnDamaged()
     {
         damagedHealthShrinkTimer = DAMAGED_HEALTH_SHRINK_TIMER_MAX;
         SetHealth(healthSystem.GetHealthNormalized());

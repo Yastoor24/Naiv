@@ -14,7 +14,6 @@ public class AbkarBoss : MonoBehaviour
     private GameObject _bulletMood;
     public GameObject _firePoint;
     private Vector3 _moveDirection = Vector3.right;
-
     private float _bossX;
     [SerializeField]
     private GameObject _up;
@@ -33,10 +32,11 @@ public class AbkarBoss : MonoBehaviour
     private float _playerPostionX;
     private float _liftGround;
     private float _health = 100f;
-    private int _laserCount =1;
+    private int _laserCount =3;
     private bool _attack = true;
     private bool _flip = true;
     private bool _bulletState = false;
+    public  HealthBarFade _healthBar;
 
 
     void Awake()
@@ -47,10 +47,15 @@ public class AbkarBoss : MonoBehaviour
        
         _bossX = _myBody.transform.position.x;
         _liftGround = _lift.transform.position.x;
-        _rightGround = _right.transform.position.x;             
+        _rightGround = _right.transform.position.x;
+      
     }
 
-
+    void Start()
+    {
+         _healthBar = new HealthBarFade();
+     
+    }
 
     void Update()
     {
@@ -58,7 +63,6 @@ public class AbkarBoss : MonoBehaviour
 
         bossMovement();
     }
-
 
     void bossAttack()
     {
@@ -152,21 +156,6 @@ public class AbkarBoss : MonoBehaviour
 
     }
 
-    IEnumerator waitForLaser (float time)
-    {
-        yield return new WaitForSeconds(time);
-        if (_laserCount == 0)
-        {
-            _laserCount = 1;
-        }
-
-        _attack = true;
-
-    }
-
- 
-
-
     void changeDirection()
     {
         Vector3 tempScale = transform.localScale;
@@ -177,78 +166,74 @@ public class AbkarBoss : MonoBehaviour
         _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
     }
 
-
-
-
-
- 
     void OnTriggerEnter2D(Collider2D collision)
     {
-      
-    
         if (collision.tag == "PlayerBullet")
         {
             _canvas.SetActive(true);
             _playerPostionX = _player.transform.position.x;
            
             Destroy(collision.gameObject);
-            if (_playerPostionX <= _rightGround && _playerPostionX > _liftGround) { 
-            // 5%
-            float _precentage = (_health / 100) * 5;
-            _health -=(int) _precentage;
-                print(_health);
-              
-                
-                if ((_health <= 71 && _health >= 63) || (_health <= 46 && _health >= 39) || _health <= 21)
+            if (_playerPostionX <= _rightGround && _playerPostionX > _liftGround) {
+
+                HealthBarFade.damState = true;
+
+                if ((HealthBarFade.healthValue<= 70 && HealthBarFade.healthValue <= 80) || (HealthBarFade.healthValue >= 50 && HealthBarFade.healthValue <= 60) || HealthBarFade.healthValue <= 15)
                 {
                     _bulletState = true;
                 }
                 else
                 { _bulletState = false; }
 
-                if (_health == 19)
+                if (HealthBarFade.EnemyDead)
                 {
-                    dead();
+                    StartCoroutine(Dead(1f)) ;
                 }
-               
+
             }
             else
             {
                 print("non change");
                 // تاثير انه صدها 
             }
-            StartCoroutine(waitForCanvas(0.5f));
+
+            StartCoroutine(waitForCanvas(0.8f));
         }
 
-       
-     
     }
-
-
 
     IEnumerator waitForCanvas (float time)
     {
+       
         yield return new WaitForSeconds(time);
         _canvas.SetActive(false);
     }
 
-
-    
-
-
-
-    void dead()
+    IEnumerator Dead(float time)
     {
-
+        _anim.SetBool("Dead", true);
+        _bulletMood.SetActive(false);
+        yield return new WaitForSeconds(time);
+       
         this.gameObject.SetActive(false);
     }
 
+    IEnumerator waitForLaser(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (_laserCount == 0)
+        {
+            _laserCount = 3;
+        }
 
+        _attack = true;
 
-
-
-
-
-
-        //class
     }
+
+
+
+
+
+
+    //class
+}
