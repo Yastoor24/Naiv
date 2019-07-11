@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2664222433553344323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.91, y: 0.7, z: 0}
+  m_LocalPosition: {x: -2.35, y: 0.7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3360415490345184472}
@@ -379,7 +379,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.71, y: 1.1}
+  m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -538,8 +538,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _speed: 10
-  _fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
-    type: 3}
+  _fireBullet: {fileID: 0}
   _canMove: 1
   HitBox1: {fileID: 3546624520428447616}
   HitBox2: {fileID: 4155135282040432193}
@@ -577,7 +576,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 99fd4bac279fd8b429488c26e1628e18, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0268626b7e325484e979918db74709e2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -758,9 +757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrelTip: {fileID: 3360415490813731815}
-  _fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
-    type: 3}
-  _bullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4, type: 3}
+  _fireBullet: {fileID: 0}
+  _bullet: {fileID: 0}
   _maxBullets: 5
 --- !u!95 &3360415491718110498
 Animator:
@@ -948,7 +946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4047953130885351208}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 0.64, z: 0}
+  m_LocalPosition: {x: 2.13, y: 0.64, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3360415490345184472}
@@ -1144,10 +1142,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223115947, guid: 3a35d5acfc279e844b98c58a746656e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a35d5acfc279e844b98c58a746656e4, type: 3}

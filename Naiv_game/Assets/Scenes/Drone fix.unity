@@ -595,24 +595,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3360415491622315059, guid: 636b21e7f395b1642b6bcfa951fc6579,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360415491622315059, guid: 636b21e7f395b1642b6bcfa951fc6579,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3360415491622315059, guid: 636b21e7f395b1642b6bcfa951fc6579,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.45
-      objectReference: {fileID: 0}
     - target: {fileID: 3360415491622315062, guid: 636b21e7f395b1642b6bcfa951fc6579,
         type: 3}
       propertyPath: _fireBullet
+      value: 
+      objectReference: {fileID: 1074788635}
+    - target: {fileID: 3360415491718110493, guid: 636b21e7f395b1642b6bcfa951fc6579,
+        type: 3}
+      propertyPath: _fireBullet
+      value: 
+      objectReference: {fileID: 1074788635}
+    - target: {fileID: 3360415491718110493, guid: 636b21e7f395b1642b6bcfa951fc6579,
+        type: 3}
+      propertyPath: _bullet
       value: 
       objectReference: {fileID: 1074788635}
     m_RemovedComponents: []
