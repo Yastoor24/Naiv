@@ -21,7 +21,7 @@ public class MenuButton : MonoBehaviour
 		{
 			animator.SetBool ("selected", true);
 			if(Input.GetAxis ("Submit") == 1){
-                LoadScene(Scene);
+                NewGameBtn(Scene);
                 animator.SetBool ("pressed", true);
 				  
 			}else if (animator.GetBool ("pressed")){
@@ -29,7 +29,7 @@ public class MenuButton : MonoBehaviour
                 animator.SetBool ("pressed", false);
                 if (Input.GetAxis("Submit") == 2)
                 {
-                    LoadScene(Scene);
+                    NewGameBtn(Scene);
                     animatorFunctions.disableOnce = true;
                 }
             }
@@ -37,13 +37,13 @@ public class MenuButton : MonoBehaviour
 			animator.SetBool ("selected", false);
             if (Input.GetAxis("Submit") == 3)
             {
-                LoadScene(Scene);
+                NewGameBtn(Scene);
             }
 
             }
     }
    // the method for PLay .. which will take u to the first level
-		public void LoadScene(string _newGameLevel)
+		public void NewGameBtn(string _newGameLevel)
     {
         SceneManager.LoadScene(_newGameLevel);
 
