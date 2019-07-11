@@ -10,8 +10,9 @@ public class Coin : MonoBehaviour
     private Text _aidBoxTextScore;
     private int _lifeCount = 2;
     private int _aidBoxCount;
-  
 
+    private Transform _fallout;
+    private Transform _box;
 
 
     void Start()
@@ -127,6 +128,14 @@ public class Coin : MonoBehaviour
             print("dead");
             // player dead and back to last place
 
+
+        if(transform.position == _fallout.position)
+            {
+                _lifeCount--;
+                _lifeTextScore.text = "Life " + _lifeCount;
+                print("dead");
+                transform.position = _box.position;
+            }
             /* كود شيماء */
 
         }
