@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
 
         // if the user pressed on O then will be attack by bullet
-        if (Input.GetKeyDown(KeyCode.J) )
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxB") )
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
         }
 
         // if the user pressed on space then will be jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
         {
 
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
