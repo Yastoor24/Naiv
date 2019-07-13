@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
 
     void Awake()
     {
-        _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
+       // _GunAudio = GameObject.Find("Bullet").GetComponent<AudioSource>();
         _bullets = _maxBullets;
           _AmmoText = GameObject.FindWithTag("ScreenManagerAmmo").GetComponent<AmmoText>();
          anim = GetComponent<Animator>();

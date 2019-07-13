@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    private float _speed = 10f;
+    private float _speed = 30f;
     private Animator _anim;
     private bool _canMove;
 
@@ -65,6 +65,6 @@ public class FireBullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D target)
     {
         //
-
+        gameObject.SetActive(false);
     }
 }

@@ -13,6 +13,10 @@ public class Crosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButton("XboxLB"))
+        {
+            this.transform.position = Input.mousePosition;
+        }
         this.transform.position = Input.mousePosition;
     }
 }

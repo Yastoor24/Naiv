@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 5.0f;
     private SpriteRenderer _PlayerSprite;
-    //private SpriteRenderer _SwordArcSprite;
+    
     private SpriteRenderer _BulletSprite;
     public static PlayerAnimation _PlayerAnim;
     private bool _grounded = false;
@@ -27,14 +27,13 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
-    [SerializeField]
-    public Transform HitBox2;
+   
 
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
     {
-       // _SwordAudio = GameObject.Find("Sword_Arc").GetComponent<AudioSource>();
+       
 
     }
 
@@ -45,47 +44,25 @@ public class Player : MonoBehaviour
         _rigid = GetComponent<Rigidbody2D>();
         _PlayerAnim = GetComponent<PlayerAnimation>();
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
-       // _SwordArcSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+      
         _anim = GetComponentInChildren<Animator>();
         _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
 
 
     }
-//if(_rigid.velocity.y == 0){
-//  _rigid.AddForce(new Vector2(0,_jumpForce),ForceMode2D.Force);
-//}
-//  }
 
-//  void Fire(){
-
-
-//  }
     // Update is called once per frame
     void Update()
     {
-//directionX = CrossPlatformInputManager.GetAxis("Horizontal");
-  //_rigid.velocity = new Vector2(directionX*10 , 0);
-
-  // if( CrossPlatformInputManager.GetButtonDown("Jump")){
-     //DoJump();
-//  }
-
-  // if( CrossPlatformInputManager.GetButtonDown("Fire")){
-//   Fire();
-  //  }
+        HitBox1.gameObject.SetActive(false);
+      
         if (_canMove)
         {
             //ShootBullet();
             Movement();
 
-            // if the user pressed on O then will be attack by sword
-            if (Input.GetKeyDown(KeyCode.H) && isGrounded() == true)
-            {
-                _PlayerAnim.Attack();
-                //_SwordAudio.Play();
-
-            }
+          
         }
 
 
@@ -108,6 +85,7 @@ public class Player : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
+            HitBox1.gameObject.SetActive(true);
 
 
             if (move > 0 || _PlayerSprite.flipX == false)
@@ -130,13 +108,14 @@ public class Player : MonoBehaviour
             {
 
                  _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x ;
-
-                _bullet.GetComponent<FireBullet>().transform.position = HitBox2.position;
+               
+                Vector3 pos = HitBox1.position;
+                pos.x = -2.7f;
+                pos.y = 0f;
+                HitBox1.position = pos + HitBox1.position;
+                _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                _bullet.transform.rotation = Quaternion.Euler(0f,0f,-180);
-                _anim.Play("Shoot");
-
-
-            }
+                _anim.Play("Shoot");}
 
 
         }
@@ -171,7 +150,7 @@ public class Player : MonoBehaviour
     bool isGrounded()
     {
 
-        // LayerMask mask = (1 <<8 );
+        
         // collider grounded and jump
          RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down , 1f, 1<<8);
 
