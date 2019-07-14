@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WelcomeMenu.unity
     guid: 616ea04194ceb8648800e9a4cfaccdf7
+  - enabled: 1
+    path: Assets/Prefabs/Scenc Prefabs/Old Village House.unity
+    guid: 8b7c21aec555d45c798d17b5010c4944
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/The village Jalilah.unity
     guid: 71f2eee669076cf4ebd86e27a20f21d9
   - enabled: 0
@@ -29,9 +32,6 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Prefabs/Scenc Prefabs/Old Village House.unity
-    guid: 8b7c21aec555d45c798d17b5010c4944
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
