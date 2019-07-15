@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Player : MonoBehaviour
+using UnityStandardAssets.CrossPlatformInput;
+public class PlayerMobile : MonoBehaviour
 {
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
@@ -24,7 +25,8 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
-  
+    public Joystick joystick;
+    public float move;
 
     //use his for init
     // Start is called before the first frame update
@@ -42,25 +44,21 @@ public class Player : MonoBehaviour
     void Update()
     {
         HitBox1.gameObject.SetActive(false);
+
         if (_canMove)
         {
-
             Movement();
         }
     }
 
     public void Movement()
     {
-
-
-        // player move horizontal (left and right )
-        float move = Input.GetAxisRaw("Horizontal");
-        float movedown = Input.GetAxisRaw("Vertical");
+        float verticalMove = joystick.Vertical;
+        move = joystick.Horizontal;
         _grounded = isGrounded();
 
-
         // if the user pressed on O then will be attack by bullet
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxB"))
+        if (CrossPlatformInputManager.GetButtonDown("shoot"))
         {
 
             // An existing object that you want to make a copy of, take three thing
@@ -68,19 +66,19 @@ public class Player : MonoBehaviour
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
             HitBox1.gameObject.SetActive(true);
-
+            // _GunAudio.Play();
 
             if (move > 0 || _PlayerSprite.flipX == false)
             {
-                // when the player in a left side then will be used gun in the left side 
+                // when the player in a left side then will be used gun in the left side
+
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                 _anim.Play("Shoot");
-            }
 
+            }
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
-
                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
                 Vector3 pos = HitBox1.position;
                 pos.x = -2.7f;
@@ -92,7 +90,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.J) && movedown < 0) || Input.GetButton("XboxX"))
+        if ((verticalMove <= -0.5f) && isGrounded() == true)
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
@@ -123,7 +121,6 @@ public class Player : MonoBehaviour
                 _anim.Play("ShootDown");
             }
         }
-
         // when player just move without any anthor action
         if (move > 0)
         {
@@ -137,16 +134,16 @@ public class Player : MonoBehaviour
         }
 
         // if the user pressed on space then will be jump
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
+        if ((verticalMove >= 0.5f) && isGrounded() == true)
         {
-
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
             StartCoroutine(ResetJumpedRoutine());
             _PlayerAnim.Jump(true);
         }
 
+
         // speed for the player jump
-        _rigid.velocity = new Vector2(move * _speed, _rigid.velocity.y);
+        _rigid.velocity = new Vector2((move) * _speed, _rigid.velocity.y);
         _PlayerAnim.Move(move);
     }
 
@@ -155,13 +152,11 @@ public class Player : MonoBehaviour
         // collider grounded and jump
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 8);
 
-
         if (hitInfo.collider != null)
         {
             // if the palyer jump false then collider for grounded true
             if (_resetJumped == false)
             {
-
                 _PlayerAnim.Jump(false);
                 return true;
             }
@@ -224,7 +219,6 @@ public class Player : MonoBehaviour
 
     }
 
-
     IEnumerator WaitBuff()
     {
         yield return new WaitForSeconds(5f);
@@ -233,3 +227,5 @@ public class Player : MonoBehaviour
         _jumpForce = 5f;
     }
 }
+
+

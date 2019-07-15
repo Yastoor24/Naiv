@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class PanelOpener : MonoBehaviour
 {
 
-    public float delay = 0.01f;
+    public float delay = 0;
     public string fullText;
-    public string currentText = "";
-    public Text text;
+    private string currentText = "";
 
     void Start()
     {
-        currentText = text.text;
+      
         StartCoroutine(ShowText());
     }
 
@@ -22,13 +21,10 @@ public class PanelOpener : MonoBehaviour
         for (int i = 0; i < fullText.Length; i++)
         {
             currentText = fullText.Substring(0, i);
-            this.GetComponent<Text>().text = currentText;
+            this.GetComponent<Text>().text += currentText;
             yield return new WaitForSeconds(delay);
 
         }
+         
     }
-
-
-   
-
 }
