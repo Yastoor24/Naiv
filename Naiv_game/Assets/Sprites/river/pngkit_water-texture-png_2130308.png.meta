@@ -1,0 +1,712 @@
+fileFormatVersion: 2
+guid: 6a4db68d66ce74df7ae4aa48246fd13c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2070630122223924868
+    second: pngkit_water-texture-png_2130308_0
+  - first:
+      213: -6201554184850903065
+    second: pngkit_water-texture-png_2130308_1
+  - first:
+      213: -7294314655877249772
+    second: pngkit_water-texture-png_2130308_2
+  - first:
+      213: -8834931624728486180
+    second: pngkit_water-texture-png_2130308_3
+  - first:
+      213: -4267072352944318079
+    second: pngkit_water-texture-png_2130308_4
+  - first:
+      213: 7279988628585255414
+    second: pngkit_water-texture-png_2130308_5
+  - first:
+      213: -6640785310831890114
+    second: pngkit_water-texture-png_2130308_6
+  - first:
+      213: 3856508817640807134
+    second: pngkit_water-texture-png_2130308_7
+  - first:
+      213: 1716379484043212429
+    second: pngkit_water-texture-png_2130308_8
+  - first:
+      213: -2011982740230358697
+    second: pngkit_water-texture-png_2130308_9
+  - first:
+      213: -6092192938587196325
+    second: pngkit_water-texture-png_2130308_10
+  - first:
+      213: 3933205407139599420
+    second: pngkit_water-texture-png_2130308_11
+  - first:
+      213: -6397706345233915055
+    second: pngkit_water-texture-png_2130308_12
+  - first:
+      213: -3988831712364920670
+    second: pngkit_water-texture-png_2130308_13
+  - first:
+      213: 1190096329019404297
+    second: pngkit_water-texture-png_2130308_14
+  - first:
+      213: -4214055263904888522
+    second: pngkit_water-texture-png_2130308_15
+  - first:
+      213: 4010743907948777786
+    second: pngkit_water-texture-png_2130308_16
+  - first:
+      213: -3436220698903420231
+    second: pngkit_water-texture-png_2130308_17
+  - first:
+      213: 3174373625701754287
+    second: pngkit_water-texture-png_2130308_18
+  - first:
+      213: -5868281408162056460
+    second: pngkit_water-texture-png_2130308_19
+  - first:
+      213: 1940830005017197893
+    second: pngkit_water-texture-png_2130308_20
+  - first:
+      213: -2144440253840971114
+    second: pngkit_water-texture-png_2130308_21
+  - first:
+      213: -5790324443849570140
+    second: pngkit_water-texture-png_2130308_22
+  - first:
+      213: 6970931623725293999
+    second: pngkit_water-texture-png_2130308_23
+  - first:
+      213: 8547544309579631734
+    second: pngkit_water-texture-png_2130308_24
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 220
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e643a6df2444f91af6f8a9dac7152e
+      internalID: 2070630122223924868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 219
+        width: 78
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d757101a86944a7394787dddef1edf5
+      internalID: -6201554184850903065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 224
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b900c1cfef41b4fa8aa8cee7a18d3271
+      internalID: -7294314655877249772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_3
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 217
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c858ac088765e421683ff534d4d23c96
+      internalID: -8834931624728486180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_4
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 214
+        width: 81
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1cdcf94768004511b7df7e85a48c64e
+      internalID: -4267072352944318079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_5
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 218
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e714ac5921c14e2b97b7abb306b44cc
+      internalID: 7279988628585255414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_6
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 217
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9c5359e2fa214af88fa1b49938eae87
+      internalID: -6640785310831890114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_7
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 216
+        width: 83
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4d2810279ae4a8895b8cb402b8308e
+      internalID: 3856508817640807134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_8
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 214
+        width: 85
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2b2b756bef64acbac712bed107a43e
+      internalID: 1716379484043212429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_9
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 0
+        width: 192
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db21dddcb9aef4d0babac5dff98e5f61
+      internalID: -2011982740230358697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 220
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44eab769494d3402db95b0fd6ecab15b
+      internalID: -6092192938587196325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_11
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 218
+        width: 18
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41235710ccd484101b0edcd15cde5a44
+      internalID: 3933205407139599420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_12
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 213
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e5d31c59d2341b58ea2428f59a3bea
+      internalID: -6397706345233915055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 28
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38de61c199279413599d6c4a6076e16d
+      internalID: -3988831712364920670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_14
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 27
+        width: 78
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fa4068a34db426fb654f16784bd4bf
+      internalID: 1190096329019404297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 32
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f2dbe1c56104b0cb0bd9bf67e76f90
+      internalID: -4214055263904888522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_16
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 25
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a43f4a43d604d4914955139cbd53be8d
+      internalID: 4010743907948777786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_17
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 22
+        width: 81
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad028254ffde436fa47ecf64decb385
+      internalID: -3436220698903420231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_18
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 26
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6dc30efc8cc84aba8cc6e5844df6166
+      internalID: 3174373625701754287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_19
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 25
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd6e8da743674452a5cb8f59495fd39
+      internalID: -5868281408162056460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_20
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 24
+        width: 83
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ec5eb1db8464bba8521be9c5f986b0
+      internalID: 1940830005017197893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_21
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 22
+        width: 85
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae537e74e517b468986a7250fecb58d1
+      internalID: -2144440253840971114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_22
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 28
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d2a5447b6f3436aa19f12c76af1262
+      internalID: -5790324443849570140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_23
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 26
+        width: 18
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a196acd029441efb7578f6c519a1d7
+      internalID: 6970931623725293999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pngkit_water-texture-png_2130308_24
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 21
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24bd081c4c3e2421eb2fe408773cb711
+      internalID: 8547544309579631734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 02c93091943884ae68a8123b8eec3f72
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
