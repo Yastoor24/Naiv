@@ -1,11 +1,18 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-public class Player : MonoBehaviour
+public class Playercontrol : MonoBehaviour
 {
 
   
+    // Start is called before the first frame update
+ 
+
+    // Update is called once per frame
+
+
+        
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
     [SerializeField]
@@ -27,18 +34,18 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
+    public Joystick joystick;
     public float move;
-    
+
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
-    {  }
+    { }
 
     //use his for init
     // Start is called before the first frame update
     void Start()
     {
 
-       
         _rigid = GetComponent<Rigidbody2D>();
         _PlayerAnim = GetComponent<PlayerAnimation>();
         _PlayerSprite = GetComponentInChildren<SpriteRenderer>();
@@ -56,22 +63,20 @@ public class Player : MonoBehaviour
         {
             //ShootBullet();
             Movement();
-     }
- }
+        }
+    }
 
     public void Movement()
     {
-
-       
+        float verticalMove = joystick.Vertical;
+        move = joystick.Horizontal;
         // player move horizontal (left and right )
-        float move1 = Input.GetAxisRaw("Horizontal");
-
-        float movedown = Input.GetAxisRaw("Vertical");
+       // float move1 = Input.GetAxisRaw("Horizontal");
         _grounded = isGrounded();
 
 
         // if the user pressed on O then will be attack by bullet
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxB") )
+        if ( CrossPlatformInputManager.GetButtonDown("shoot"))
         {
 
             // An existing object that you want to make a copy of, take three thing
@@ -79,9 +84,9 @@ public class Player : MonoBehaviour
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
             HitBox1.gameObject.SetActive(true);
-           // _GunAudio.Play();
+            // _GunAudio.Play();
 
-            if ( move1 > 0 || _PlayerSprite.flipX == false)
+            if (move > 0 || _PlayerSprite.flipX == false)
             {
                 // when the player in a left side then will be used gun in the left side
 
@@ -92,7 +97,7 @@ public class Player : MonoBehaviour
                 _anim.Play("Shoot");
 
             }
-            else if ( move1 < 0 || _PlayerSprite.flipX == true)
+            else if (move < 0 || _PlayerSprite.flipX == true)
             {
 
                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
@@ -103,70 +108,25 @@ public class Player : MonoBehaviour
                 HitBox1.position = pos + HitBox1.position;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                 _bullet.transform.rotation = Quaternion.Euler(0f, 0f, -180);
-               // _GunAudio.Play();
+                // _GunAudio.Play();
 
                 _anim.Play("Shoot");
             }
-
-
-
         }
-
-        if ((Input.GetKeyDown(KeyCode.J) && movedown < 0) )
-        {
-
-
-            // An existing object that you want to make a copy of, take three thing
-            //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
-
-            _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
-            HitBox1.gameObject.SetActive(true);
-            // _GunAudio.Play();
-
-            if (move1 > 0 || _PlayerSprite.flipX == false)
-            {
-                // when the player in a left side then will be used gun in the left side
-
-
-                _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
-                _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
-                //_GunAudio.Play();
-                _anim.Play("ShootDown");
-
-            }
-            else if (move1 < 0 || _PlayerSprite.flipX == true)
-            {
-
-                _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
-
-                Vector3 pos = HitBox1.position;
-                pos.x = -2.3f;
-                pos.y = 0f;
-                HitBox1.position = pos + HitBox1.position;
-                _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
-                _bullet.transform.rotation = Quaternion.Euler(0f, 0f, -180);
-                // _GunAudio.Play();
-
-                _anim.Play("ShootDown");
-            }
-        }
-
-
-
-            // when player just move without any anthor action
-            if ( move1 > 0)
+        // when player just move without any anthor action
+        if (move > 0 )
         {
             // the player move in right side
             Flip(true);
         }
-        else if ( move1 < 0)
+        else if (move < 0 )
         {
             //the player move in left side
             Flip(false);
         }
 
         // if the user pressed on space then will be jump
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA") ) && isGrounded() == true)
+        if ((verticalMove >= 0.5f) && isGrounded() == true)
         {
 
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
@@ -175,8 +135,8 @@ public class Player : MonoBehaviour
 
         }
         // speed for the player jump
-        _rigid.velocity = new Vector2((move1 ) * _speed, _rigid.velocity.y);
-        _PlayerAnim.Move(move1 );
+        _rigid.velocity = new Vector2(( move) * _speed, _rigid.velocity.y);
+        _PlayerAnim.Move( move);
     }
 
     bool isGrounded()
@@ -259,7 +219,7 @@ public class Player : MonoBehaviour
 
     }
 
-    
+
     IEnumerator WaitBuff()
     {
         yield return new WaitForSeconds(5f);
@@ -268,3 +228,5 @@ public class Player : MonoBehaviour
         _jumpForce = 5f;
     }
 }
+
+

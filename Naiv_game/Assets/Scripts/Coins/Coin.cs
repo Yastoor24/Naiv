@@ -140,7 +140,7 @@ public class Coin : MonoBehaviour
             StartCoroutine(RestartGame());
             Debug.Log("game over");
 
-
+           
 
 
             // reset the score to default 
