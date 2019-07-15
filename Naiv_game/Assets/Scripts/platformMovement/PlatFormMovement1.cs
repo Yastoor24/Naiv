@@ -47,17 +47,17 @@ public class PlatFormMovement1 : MonoBehaviour
         nexPos = nexPos != posA ? posA : posB;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            other.gameObject.layer = 8;
-            other.transform.SetParent(childTransform);
-        }
-    }
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        other.transform.SetParent(null);
-    }
+   // private void OnCollisionEnter2D(Collision2D other)
+    //{
+      //  if (other.gameObject.tag == "Player")
+       // {
+        //    other.gameObject.layer = 8;
+           // other.transform.SetParent(childTransform);
+        //}
+   // }
+    //private void OnCollisionExit2D(Collision2D other)
+   // {
+      //  other.transform.SetParent(null);
+   // }
 
 }
