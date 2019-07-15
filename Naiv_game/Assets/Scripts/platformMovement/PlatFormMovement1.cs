@@ -18,6 +18,8 @@ public class PlatFormMovement1 : MonoBehaviour
     [SerializeField]
     private Transform transformB;
 
+    public GameObject Player;
+
     // Use this for initialization
     void Start()
     {
@@ -47,17 +49,20 @@ public class PlatFormMovement1 : MonoBehaviour
         nexPos = nexPos != posA ? posA : posB;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject == Player)
         {
-            other.gameObject.layer = 8;
-            other.transform.SetParent(childTransform);
+            Player.transform.parent = transform;
         }
     }
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        other.transform.SetParent(null);
+        if (other.gameObject == Player)
+        {
+            Player.transform.parent = null;
+        }
+
     }
 
 }
