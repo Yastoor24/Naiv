@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 489374}
   - component: {fileID: 5029628}
-  - component: {fileID: 3144954026061307347}
   - component: {fileID: 177742895}
   m_Layer: 8
   m_Name: MovingPlatform
@@ -56,21 +55,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &3144954026061307347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ce6642a8988be4eba2f81570e12afc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  childTransform: {fileID: 0}
-  transformB: {fileID: 0}
 --- !u!114 &177742895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,9 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ce6642a8988be4eba2f81570e12afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   childTransform: {fileID: 413512}
   transformB: {fileID: 416202}
+  Player: {fileID: 0}
 --- !u!1 &148406
 GameObject:
   m_ObjectHideFlags: 0
