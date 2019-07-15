@@ -1,8 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Player : MonoBehaviour
+
+public class PlayerPC : MonoBehaviour
 {
+
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
     [SerializeField]
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
-  
+
 
     //use his for init
     // Start is called before the first frame update

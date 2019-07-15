@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator _anim;
-    //private Animator _sword;
     private Animator _playerBullet;
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponentInChildren<Animator>();
-        // _sword = transform.GetChild(1).GetComponent<Animator>();
+       
        
     }
 
@@ -30,7 +29,6 @@ public class PlayerAnimation : MonoBehaviour
     public void Attack()
     {
         _anim.SetTrigger("Shoot");
-        // _sword.SetTrigger("SwordAnimation");
-        _playerBullet.SetTrigger("bulletAnimation");
+      
     }
 }
