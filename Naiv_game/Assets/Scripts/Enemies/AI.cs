@@ -24,9 +24,10 @@ public class AI : MonoBehaviour
     //public LayerMask _playerLayer;
 
     private bool _canMove;
-    private bool _attack = true;
+    private bool _attack;
+    private bool _canAttack;
 
-    private bool _leftDirction = false;
+    //private bool _leftDirction = false;
 
     GameObject _player;
 
@@ -49,10 +50,10 @@ public class AI : MonoBehaviour
         _anim = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
 
-        _position1 = new Vector3(11.76f, -2.05f,0f);
-        _position2 = new Vector3(-10.96f, -2.05f, 0f);
-        _position3 = new Vector3(-4.69f, 3.04f, 0f);
-        _position4 = new Vector3(4.96f, 3.04f, 0f);
+        _position1 = new Vector3(12f, -2f,0f);
+        _position2 = new Vector3(-11f, -2f, 0f);
+        _position3 = new Vector3(-5f, 3f, 0f);
+        _position4 = new Vector3(5f, 3f, 0f);
 
 
     }
@@ -60,13 +61,18 @@ public class AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_originPosition = transform.position;
-        //_originPosition.x += _distanceToMove;
+        _originPosition = transform.position;
+        _originPosition.x += _distanceToMove;
 
-        //_movePosition = transform.position;
-        //_movePosition.x -= _distanceToMove;
+        _movePosition = transform.position;
+        _movePosition.x -= _distanceToMove;
 
-        _canMove = true;
+        _canMove = false;
+        _attack = false;
+        _canAttack = false;
+
+        //StartCoroutine(WaitToMove(4));
+        StartCoroutine(WaitToCanAttack(4));
 
         _spr = GetComponent<SpriteRenderer>();
 
@@ -75,7 +81,7 @@ public class AI : MonoBehaviour
 
         //_explosionRef = Resources.Load("Explosion");
 
-        StartCoroutine(changePosition(0.1f));
+        //StartCoroutine(changePosition(0.1f));
 
     }
 
@@ -91,63 +97,83 @@ public class AI : MonoBehaviour
     {
         if (_canMove )
         {
-            Vector3 temp = transform.position;
+            //Vector3 temp = transform.position;
 
 
-            if (transform.position.x != _moveDirection.x)
-            {
-                if (transform.position.x < _moveDirection.x)
-                {
-                    temp.x += 0.25f;
+            //Debug.Log("Moved!!");
 
-                }
-                else if (transform.position.x > _moveDirection.x)
-                {
-                    temp.x -= 0.25f;
+            //transform.position = temp;
 
-                }
-            }
-            
+            _anim.SetBool("Walk_Anim",true);
 
-            if (transform.position.y <= _moveDirection.y)
-            {
-                temp.y += 1;
+            transform.Translate(_moveDirection * 3f * Time.smoothDeltaTime);
 
-            }
-            Debug.Log("Moved!!");
-            //_canMove = false;
-
-
-            //transform.Translate(_moveDirection * 2f * Time.smoothDeltaTime);
-
-            
-            transform.position = temp;
-
-            //if (transform.position.x >= _originPosition.x)
-            //{
-            //    _moveDirection = Vector3.left;
-            //    changeDirection();
-            //}
-            //else if (transform.position.x <= _movePosition.x)
-            //{
-            //    _moveDirection = Vector3.right;
-
-            //    changeDirection();
-            //}
         }
+
+        if (_canAttack) {
+            _anim.SetBool("Walk_Anim", false);
+            _anim.SetBool("Roll_Anim", true);
+
+            _canAttack = false;
+            StartCoroutine(WaitToAttack(3));
+        }
+
+        if (_attack)
+        {
+            RollAttack();
+        }
+
+        //if (transform.position.x >= _originPosition.x)
+        //{
+        //    _moveDirection = Vector3.left;
+        //    changeDirection();
+        //}
+        //else if (transform.position.x <= _movePosition.x)
+        //{
+        //    _moveDirection = Vector3.right;
+
+        //    changeDirection();
+        //}
     }
 
 
-    void changeDirection()
+    //void changeDirection()
+    //{
+    //    Vector3 tempScale = transform.localScale;
+    //    tempScale.x = transform.localScale.x * -1f;
+    //    transform.localScale = tempScale;
+
+    //    // transform.transform.Rotate(0f, 180F, 0f);
+
+    //    _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
+    //}
+
+     private void  changeDirection(float _dir)
     {
         Vector3 tempScale = transform.localScale;
-        tempScale.x = transform.localScale.x * -1f;
+
+        if (_dir == 1)
+        {
+            tempScale.x = Mathf.Abs(transform.localScale.x);
+        }else if (_dir == -1)
+        {
+            tempScale.x = Mathf.Abs(transform.localScale.x)*-1;
+
+        }
+        else
+        {
+            tempScale.x = transform.localScale.x * -1f;
+        }
+
         transform.localScale = tempScale;
+        _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
 
         // transform.transform.Rotate(0f, 180F, 0f);
 
-        _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
     }
+
+
+
 
 
     void Fire()
@@ -182,14 +208,14 @@ public class AI : MonoBehaviour
             if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
             {
                 _moveDirection = Vector3.left;
-                changeDirection();
+                changeDirection(-1);
             }
             else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
             {
                 _moveDirection = Vector3.right;
 
 
-                changeDirection();
+                changeDirection(1);
             }
 
         }
@@ -210,21 +236,48 @@ public class AI : MonoBehaviour
             Debug.Log("Health: " + _health);
             if (_health <= 0)
             {
-
-
-                _canMove = false;
-
-                
+                _canMove = false;   
                 StartCoroutine(RobotDead());
-
             }
             else
             {
                 StartCoroutine(ResetMaterial(0.1f));
             }
-
         }
     }
+
+
+
+    private void  RollAttack()
+    {
+        transform.Translate(_moveDirection * 18f * Time.smoothDeltaTime);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "RightEdge")
+        {
+            _attack = false;
+            _anim.SetBool("Roll_Anim", false);
+            Debug.Log("RightEdge");
+            _moveDirection = Vector3.left;
+            changeDirection(-1);
+            StartCoroutine(WaitToMove(2));
+        }
+
+        if (collision.gameObject.tag == "LeftEdge")
+        {
+            _attack = false;
+            _anim.SetBool("Roll_Anim", false);
+            Debug.Log("LeftEdge");
+            _moveDirection = Vector3.right;
+            changeDirection(1);
+            StartCoroutine(WaitToMove(2));
+        }
+
+    }
+
 
     IEnumerator RobotDead()
     {
@@ -281,7 +334,21 @@ public class AI : MonoBehaviour
     }
 
 
+    IEnumerator WaitToMove(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _canMove = true;
+    }
 
+    IEnumerator WaitToCanAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _canAttack = true;
+    }
 
-
+    IEnumerator WaitToAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _attack = true;
+    }
 }

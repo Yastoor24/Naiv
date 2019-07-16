@@ -25,15 +25,17 @@ TagManager:
   - Frog
   - SuperEnemyBullet
   - dialog
+  - RightEdge
+  - LeftEdge
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - lader
   - Player
   - Ground
@@ -41,23 +43,23 @@ TagManager:
   - Falling
   - Platform
   - dialog
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0
