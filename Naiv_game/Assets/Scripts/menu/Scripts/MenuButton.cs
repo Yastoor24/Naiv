@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class MenuButton : MonoBehaviour
 {
@@ -10,27 +11,26 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
 	[SerializeField] string Scene;
-
-
-
     // Update is called once per frame
-
     void Update()
     {
-		if(menuButtonController.index == thisIndex)
+		if(  menuButtonController.index == thisIndex )
 		{
 			animator.SetBool ("selected", true);
-			if(Input.GetAxis ("Submit") == 1){
-                NewGameBtn(Scene);
-                animator.SetBool ("pressed", true);
-				  
+			if(Input.GetAxis ("Submit") == 1) {
+      animator.SetBool ("pressed", true);
+			print("sumbit 1");
+				Time.timeScale =3;
+				NewGameBtn(Scene);
+
 			}else if (animator.GetBool ("pressed")){
 
                 animator.SetBool ("pressed", false);
-                if (Input.GetAxis("Submit") == 2)
+                if ( Input.GetAxis("Submit") == 2)
                 {
                     NewGameBtn(Scene);
                     animatorFunctions.disableOnce = true;
+										print(" subment 2");
                 }
             }
 		}else{
@@ -38,6 +38,7 @@ public class MenuButton : MonoBehaviour
             if (Input.GetAxis("Submit") == 3)
             {
                 NewGameBtn(Scene);
+								print("submit 3");
             }
 
             }
@@ -54,7 +55,7 @@ public class MenuButton : MonoBehaviour
 		{
 				Application.Quit();
 
-		} 
+		}
      //for exit from the level the player gose to welcome m
 
 }
