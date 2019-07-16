@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
 
         GetComponent<Save>().LoadData();
-        //GetComponent<Save>().SaveData();
+        GetComponent<Save>().SaveData();
     }
 
     // Update is called once per frame
