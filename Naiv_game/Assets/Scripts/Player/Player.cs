@@ -24,7 +24,14 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
-  
+
+
+    private void Awake()
+    {
+
+    }
+
+
 
     //use his for init
     // Start is called before the first frame update
@@ -36,6 +43,9 @@ public class Player : MonoBehaviour
         _GunAudio = GetComponent<AudioSource>();
         _anim = GetComponentInChildren<Animator>();
         _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        GetComponent<Save>().LoadData();
+        //GetComponent<Save>().SaveData();
     }
 
     // Update is called once per frame
