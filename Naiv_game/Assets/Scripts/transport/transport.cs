@@ -26,22 +26,24 @@ public class transport : MonoBehaviour
 
         Application.LoadLevel(level);
       
-        print("load");
+        //print("load");
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Canvas");
-        GameObject[] aa = GameObject.FindGameObjectsWithTag("PlayerBullet");
+        //GameObject[] objs = GameObject.FindGameObjectsWithTag("Canvas");
+        //GameObject[] aa = GameObject.FindGameObjectsWithTag("PlayerBullet");
         if (collision.tag == "Player")
         {
-            DontDestroyOnLoad(collision.gameObject);
-           DontDestroyOnLoad(objs[0]);
-            DontDestroyOnLoad(aa[0]);
+            // DontDestroyOnLoad(collision.gameObject);
+            //DontDestroyOnLoad(objs[0]);
+            // DontDestroyOnLoad(aa[0]);
+            collision.gameObject.GetComponent<Save>().SaveData();
+
             LoadHighScoreLevel();
             print("on trigger");
-            collision.gameObject.transform.Translate(x, y, 1);
+            //collision.gameObject.transform.Translate(x, y, 1);
         }
     }
 
