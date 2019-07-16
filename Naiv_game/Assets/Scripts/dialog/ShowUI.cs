@@ -6,6 +6,7 @@ public class ShowUI : MonoBehaviour
 {
 
     public GameObject Panel;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class ShowUI : MonoBehaviour
         {
             Panel.SetActive(true);
             Time.timeScale = 0.0f;
+           
         }
     }
 }

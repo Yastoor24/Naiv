@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    private float _speed = 30f;
+    private float _speed = 60f;
     private Animator _anim;
     private bool _canMove;
 

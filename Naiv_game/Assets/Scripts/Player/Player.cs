@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
-            HitBox1.gameObject.SetActive(true);
+            //HitBox1.gameObject.SetActive(true);
 
 
             if (move > 0 || _PlayerSprite.flipX == false)
@@ -108,20 +108,22 @@ public class Player : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
-            HitBox1.gameObject.SetActive(true);
+          //  HitBox1.gameObject.SetActive(true);
 
 
             if (move > 0 || _PlayerSprite.flipX == false)
             {
                 // when the player in a left side then will be used gun in the left side and down
+              
 
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
+               
                 _anim.Play("ShootDown");
 
             }
             else if (move < 0 || _PlayerSprite.flipX == true)
-            {
+            {  // when the player in a left side then will be used gun in the right side and down
 
                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
                 Vector3 pos = HitBox1.position;

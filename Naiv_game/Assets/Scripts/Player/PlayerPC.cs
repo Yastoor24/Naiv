@@ -57,7 +57,7 @@ public class PlayerPC : MonoBehaviour
 
         // player move horizontal (left and right )
         float move = Input.GetAxisRaw("Horizontal");
-        float movedown = Input.GetAxisRaw("Vertical");
+       
         _grounded = isGrounded();
 
 
@@ -69,7 +69,7 @@ public class PlayerPC : MonoBehaviour
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
-            HitBox1.gameObject.SetActive(true);
+           // HitBox1.gameObject.SetActive(true);
 
 
             if (move > 0 || _PlayerSprite.flipX == false)
@@ -94,13 +94,13 @@ public class PlayerPC : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.J) && movedown < 0) || Input.GetButton("XboxX"))
+        if ((Input.GetKeyDown(KeyCode.H) ) || Input.GetButton("XboxX"))
         {
             // An existing object that you want to make a copy of, take three thing
             //(original *An existing object that you want to make a copy of*, position *Position for the new object* ,rotation *Orientation of the new object* )
 
             _bullet = Instantiate(_fireBullet, transform.position, Quaternion.identity);
-            HitBox1.gameObject.SetActive(true);
+            //HitBox1.gameObject.SetActive(true);
 
 
             if (move > 0 || _PlayerSprite.flipX == false)
