@@ -470,6 +470,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6331584186172240700, guid: 06b51f424ebb5e84c967f83c4b072f09,
+        type: 3}
+      propertyPath: Scene
+      value: Old Village House
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06b51f424ebb5e84c967f83c4b072f09, type: 3}
 --- !u!82 &1432632569 stripped
