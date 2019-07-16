@@ -10,11 +10,12 @@ public class ButtonContinue : MonoBehaviour
 
     public void OpenAnthorPanel()
     {
-        if (Panel != null)
-        {
+       
             Panel.SetActive(false);
             Panel1.SetActive(true);
 
-        }
+   
     }
+
+
 }
