@@ -9,10 +9,10 @@ public class MenuButtonController : MonoBehaviour {
 	public int index;
 	[SerializeField] bool keyDown;
 	[SerializeField] int maxIndex;
-//	public AudioSource audioSource;
+	public AudioSource audioSource;
 
 	void Start () {
-	//	audioSource = GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
