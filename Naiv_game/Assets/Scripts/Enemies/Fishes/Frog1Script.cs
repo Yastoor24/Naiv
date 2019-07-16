@@ -50,7 +50,7 @@ public class Frog1Script : MonoBehaviour
 
     IEnumerator FrogJump()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 4f));
+        yield return new WaitForSeconds(Random.Range(1f, 2f));
 
         animation_Started = true;
         animation_Finished = false;
@@ -84,12 +84,11 @@ public class Frog1Script : MonoBehaviour
             anim.Play("FrogIdleRight");
         }
 
-        if (jumpedTimes == 3)
+        if (jumpedTimes == 1)
         {
             jumpedTimes = 0;
 
             Vector3 tempScale = transform.localScale;
-            tempScale.x *= -1;
             transform.localScale = tempScale;
 
             jumpLeft = !jumpLeft;
