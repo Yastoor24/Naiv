@@ -9,11 +9,10 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     protected bool canMove;
     public float speed;
-
+    protected string deadAnim;
     protected int _enemyHealth;
-    public GameObject _life;
-    public GameObject _aidBox;
-    protected bool _lifeState = false;
+   
+    public GameObject MedKit;
     protected bool _aidBoxtState = false;
 
 
@@ -27,16 +26,17 @@ public class Enemy : MonoBehaviour
     {
         if (target.gameObject.tag == "PlayerBullet")
         {
-            print("bullet good");
-
-            print("enemy health" + _enemyHealth);
+          
             _enemyHealth--;
             if (_enemyHealth == 0)
             {
                 canMove = false;
                 myBody.velocity = new Vector2(0, 0);
-
-                StartCoroutine(ResetMaterial(0.4f));
+                if (deadAnim!= null)
+                {
+                    anim.Play(deadAnim);
+            }
+                StartCoroutine(ResetMaterial(1.3f));
 
             }
 
@@ -80,22 +80,18 @@ public class Enemy : MonoBehaviour
 
 
         }
-        else if (_randNum == 4)
+        else if (_randNum == 4 || _randNum == 7)
         {
-            Vector3 life = transform.position;
-            _life.transform.position = life;
-            _life.SetActive(true);
-            _lifeState = true;
-            ObjectRepetition();
+            
 
 
             // life
         }
-        else if (_randNum == 3 || _randNum == 7 || _randNum == 10)
+        else if (_randNum == 3 || _randNum == 10)
         {
             //   aid
             Vector3 aid = transform.position;
-            _aidBox.transform.position = aid;
+            MedKit.transform.position = aid;
             _aidBoxtState = true;
             ObjectRepetition();
 
@@ -107,16 +103,12 @@ public class Enemy : MonoBehaviour
 
 
     // create more than one coins to DropEnemies method
+
+
     public void ObjectRepetition()
-    {
-        if (_lifeState)
+    { if (_aidBoxtState)
         {
-            GameObject t = Instantiate(_life);
-            _lifeState = false;
-        }
-        else if (_aidBoxtState)
-        {
-            GameObject t = Instantiate(_aidBox);
+            GameObject t = Instantiate(MedKit);
             _aidBoxtState = false;
         }
 

@@ -24,7 +24,8 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
-
+    public GameObject toStar;
+    public bool jumpped = false;
 
     private void Awake()
     {
@@ -82,7 +83,7 @@ public class Player : MonoBehaviour
 
             if (move > 0 || _PlayerSprite.flipX == false)
             {
-                // when the player in a left side then will be used gun in the left side 
+                // when the player in a left side then will be used gun in the left side
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                 _anim.Play("Shoot");
@@ -114,11 +115,11 @@ public class Player : MonoBehaviour
             if (move > 0 || _PlayerSprite.flipX == false)
             {
                 // when the player in a left side then will be used gun in the left side and down
-              
+
 
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
-               
+
                 _anim.Play("ShootDown");
 
             }
@@ -158,6 +159,17 @@ public class Player : MonoBehaviour
         }
 
         // speed for the player jump
+
+        if (jumpped)
+        {
+
+            _rigid.velocity = new Vector2(_rigid.velocity.x,11);
+            StartCoroutine(ResetJumpedRoutine());
+            _PlayerAnim.Jump(true);
+            jumpped = false;
+
+
+        }
         _rigid.velocity = new Vector2(move * _speed, _rigid.velocity.y);
         _PlayerAnim.Move(move);
     }
@@ -233,6 +245,20 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (collision.tag== "startPoint")
+        {
+            toStar.SetActive(true);
+
+        }
+
+        if (collision.gameObject.tag == "Jump")
+        {
+            jumpped = true;
+
+        }
+
+
 
     }
 
