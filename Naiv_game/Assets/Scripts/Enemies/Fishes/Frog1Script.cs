@@ -5,14 +5,8 @@ using UnityEngine;
 public class Frog1Script : MonoBehaviour
 {
     private Animator anim;
-    private int lifeScoreCount;
-    private bool animation_Started;
-    private bool animation_Finished;
 
-    private int jumpedTimes;
-    private bool jumpLeft = true;
-
-    private string coroutine_Name = "FrogJump";
+    private string coroutine_Name = "FrogJumpLeft";
 
     public LayerMask playerLayer;
 
@@ -31,10 +25,7 @@ public class Frog1Script : MonoBehaviour
 
     void Update()
     {
-       // if (Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer))
-        //{
-        //    player.GetComponent<PlayerDamage>().DealDamage();
-        //}
+    
     }
 
     void LateUpdate()
@@ -70,30 +61,6 @@ public class Frog1Script : MonoBehaviour
 
     }
 
-    void AnimationFinished()
-    {
-
-        animation_Finished = true;
-
-        if (jumpLeft)
-        {
-            anim.Play("FrogIdleLeft");
-        }
-        else
-        {
-            anim.Play("FrogIdleRight");
-        }
-
-        if (jumpedTimes == 1)
-        {
-            jumpedTimes = 0;
-
-            Vector3 tempScale = transform.localScale;
-            transform.localScale = tempScale;
-
-            jumpLeft = !jumpLeft;
-        }
-    }
 
   void OnTriggerEnter2D(Collider2D target)
     {
