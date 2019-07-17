@@ -2,123 +2,207 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneScript : Enemy
+public class DroneScript : MonoBehaviour
 {
+    private Rigidbody2D _mybody;
+    private Animator _anim;
 
-    private Vector3 moveDirection = Vector3.left;
-    private Vector3 originPosition;
-    private Vector3 movePosition;
+    public GameObject _firePoint;
 
-    public GameObject droneNet;
-    private bool attacked = true;
+    private Vector3 _moveDirection = Vector3.right;
+    private Vector3 _originPosition;
+    private Vector3 _movePosition;
+
+    public GameObject _bullet;
+    //public LayerMask _playerLayer;
+
+    private bool _canMove;
+    private bool _attack = true;
+
+    private bool _leftDirction = false;
+
+    GameObject _player;
+
+
+    [SerializeField]
+    private int _health = 1;
+
+    private Material _matWahite;
+    private Material _matDefault;
+    SpriteRenderer _spr;
+
+    public UnityEngine.Object _explosionRef;
+
+    public float _distanceToMove = 4f;
 
 
     void Awake()
     {
-        myBody = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        speed = 2f;
+        _mybody = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+
+
+
     }
 
+    // Start is called before the first frame update
     void Start()
     {
-        originPosition = transform.position;
-        originPosition.x += 2f;
+        _originPosition = transform.position;
+        _originPosition.x += _distanceToMove;
 
-        movePosition = transform.position;
-        movePosition.x -= 2f;
+        _movePosition = transform.position;
+        _movePosition.x -= _distanceToMove;
 
-        canMove = true;
+        _canMove = true;
+
+        _spr = GetComponent<SpriteRenderer>();
+
+        _matWahite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        _matDefault = _spr.material;
+
+        //_explosionRef = Resources.Load("Explosion");
     }
 
+    // Update is called once per frame
     void Update()
     {
-        MoveTheDrone();
-        ThrowTheNet();
+        Move();
+        Fire();
     }
 
-    void MoveTheDrone()
+    void Move()
     {
-        if (canMove)
+        if (_canMove)
         {
-            transform.Translate(moveDirection * speed * Time.smoothDeltaTime);
+            transform.Translate(_moveDirection * 2f * Time.smoothDeltaTime);
 
-            if (transform.position.x >= originPosition.x)
+            if (transform.position.x >= _originPosition.x)
             {
-                moveDirection = Vector3.left;
-
-                ChangeDirection(1/5f);
+                _moveDirection = Vector3.left;
+                changeDirection();
             }
-
-            else if (transform.position.x <= movePosition.x)
+            else if (transform.position.x <= _movePosition.x)
             {
-                moveDirection = Vector3.right;
+                _moveDirection = Vector3.right;
 
-                ChangeDirection(-1/5f);
+                changeDirection();
             }
         }
     }
 
-    void ChangeDirection(float direction)
-    { 
+
+    void changeDirection()
+    {
         Vector3 tempScale = transform.localScale;
-        tempScale.x = direction;
+        tempScale.x = transform.localScale.x * -1f;
         transform.localScale = tempScale;
+
+        // transform.transform.Rotate(0f, 180F, 0f);
+
+        _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
     }
 
 
-    private void ThrowTheNet()
+    void Fire()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, playerLayer))
+
+        float _distance = Vector3.Distance(transform.position, _player.transform.position);
+
+        if (_distance > 8f)
         {
+            _canMove = true;
+            _anim.Play("Walk_Rifle_IP");
+        }
 
-            if (attacked == true)
+        if (_distance < 5)
+        {
+            _canMove = false;
+
+            if (_attack)
             {
-                anim.Play("DroneAttack");
-                attacked = false;
-                Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                _anim.Play("Attack_Rifle");
+                Instantiate(_bullet, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
+                _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;   //pass the player position to bullet script
+
+                _attack = false;
+
+                _anim.Play("Idel_Rifle");                               //TODO:change the animation
+
+                StartCoroutine(WaitToFire(1f));
+            }
+
+            //to flip the enemy
+            if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
+            {
+                _moveDirection = Vector3.left;
+                changeDirection();
+            }
+            else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
+            {
+                _moveDirection = Vector3.right;
 
 
-                StartCoroutine(WaitToThrow());
+                changeDirection();
+            }
+
+        }
+
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Destroy(collision.gameObject);
+            //Debug.Log("got Hit");
+            _spr.material = _matWahite;
+            _health -= 1;               // decrease the health
+            Debug.Log("Health: " + _health);
+            if (_health <= 0)
+            {
+
+
+                _canMove = false;
+
+                _anim.Play("Death_Rifle");
+                StartCoroutine(RobotDead());
+
+            }
+            else
+            {
+                StartCoroutine(ResetMaterial(0.1f));
             }
 
         }
     }
 
-
-    IEnumerator WaitToThrow()
+    IEnumerator RobotDead()
     {
-        yield return new WaitForSeconds(3f);
-        attacked = true;
+        yield return new WaitForSeconds(1f);
 
-    }
+        Debug.Log("IT IS DEAD: ");
 
-    IEnumerator DroneDead()
-    {
-        yield return new WaitForSeconds(3f);
+        GameObject _explosion = (GameObject)Instantiate(_explosionRef);
+        _explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         gameObject.SetActive(false);
     }
 
-
-    void OnTriggerEnter2D(Collider2D target)
+    IEnumerator WaitToFire(float time)
     {
-        if (target.tag == "PlayerBullet")
-        {
-            anim.Play("DroneDead");
+        yield return new WaitForSeconds(time);
+        _attack = true;
+    }
 
-            GetComponent<BoxCollider2D>().isTrigger = true;
-            myBody.bodyType = RigidbodyType2D.Dynamic;
-
-            canMove = false;
-
-            StartCoroutine(DroneDead());
-
-
-        }
+    IEnumerator ResetMaterial(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _spr.material = _matDefault;
     }
 
 }
 
-
-
-//class
