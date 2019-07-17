@@ -14,8 +14,6 @@ public class MenuButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
 			print (" this is Update");
 			if( menuButtonController.index == thisIndex  )
 			{
@@ -26,13 +24,12 @@ public class MenuButton : MonoBehaviour
 			//		Time.timeScale =3;
 			    NewGameBtn(Scene);
 				}else if (animator.GetBool ("pressed")){
-
-	                animator.SetBool ("pressed", false);
+	          animator.SetBool ("pressed", false);
 	                //if ( Input.GetAxis("Submit") == 2)
 	                {
 	                //   NewGameBtn(Scene);
 										//print ("Submit 2 ");
-	                    animatorFunctions.disableOnce = true;
+	          animatorFunctions.disableOnce = true;
 
 	                }
 								//	print("Submit ___");
@@ -46,22 +43,31 @@ public class MenuButton : MonoBehaviour
 	          //  }
 
 	            }
-
-
     }
 
   // the method for PLay .. which will take u to the first level
 		public void NewGameBtn(string _newGameLevel)
 		{
-				SceneManager.LoadScene(_newGameLevel);
+
+			 if (_newGameLevel == "Old Village House"){
+				 SceneManager.LoadScene(_newGameLevel);
+			 } else if(_newGameLevel == "optionMenu"){
+				  SceneManager.LoadScene(_newGameLevel);
+			 }
+				//SceneManager.LoadScene(_newGameLevel);
 
 
+		 else if (_newGameLevel == "Exit"){
+			 Application.Quit();
+
+		 } else   {
+				SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
 		}
 
 		// for exit the game ..
-		public void ExitGameBtn()
-		{
-				Application.Quit();
+//		public void ExitGameBtn()
+	//	{
+		//		Application.Quit();
 
 		}
      //for exit from the level the player gose to welcome m
