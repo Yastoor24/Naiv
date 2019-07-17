@@ -111,6 +111,19 @@ public class Coin : MonoBehaviour
 
         }
 
+       else if (target.gameObject.tag == "fallout")
+        {
+
+            playerDead();
+
+            if (_lifeCount > 0)
+            {
+
+                transform.position = BoxReturn.position;
+            }
+
+        }
+
     }
 
 

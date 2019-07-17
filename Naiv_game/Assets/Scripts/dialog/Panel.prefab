@@ -127,6 +127,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenAnthorPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7208503311090313372, guid: 5446c07548b40574caf428b8a74da4e4,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208503311090313372, guid: 5446c07548b40574caf428b8a74da4e4,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208503311090313373, guid: 5446c07548b40574caf428b8a74da4e4,
+        type: 3}
+      propertyPath: fullText
+      value: 'shaima mousa '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5446c07548b40574caf428b8a74da4e4, type: 3}
 --- !u!114 &1122075943138371124 stripped
