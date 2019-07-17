@@ -663,6 +663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drone
       objectReference: {fileID: 0}
+    - target: {fileID: 5417436489584445506, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5417436489584445517, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -737,5 +742,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8347410690804232750, guid: 0a292bf51f4e8430198665e6ce5e17b7,
         type: 3}
+    - target: {fileID: 3481319416699167047, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057, type: 3}

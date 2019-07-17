@@ -68,7 +68,7 @@ public class DroneScript : MonoBehaviour
     void Update()
     {
         Move();
-    
+        Fire();
 
     }
 
