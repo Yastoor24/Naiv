@@ -11,9 +11,9 @@ public class Save : MonoBehaviour
 
     public void SaveData()
     {
-        PlayerPrefs.SetInt("PlayerLifeCount", GetComponent<Coin>()._lifeCount);
-        PlayerPrefs.SetInt("PlayerAidBoxCount", GetComponent<Coin>()._aidBoxCount);
-        PlayerPrefs.SetInt("Scene", SceneManager.GetActiveScene().buildIndex);
+//PlayerPrefs.SetInt("PlayerLifeCount", GetComponent<HealthBarFade>().healthValue);
+  //      PlayerPrefs.SetInt("PlayerAidBoxCount", GetComponent<Coin>()._MedKitCount);
+    //    PlayerPrefs.SetInt("Scene", SceneManager.GetActiveScene().buildIndex);
         //Debug.Log("SAVED");
         //Debug.Log("PlayerLifeCount: " + GetComponent<Coin>()._lifeCount);
         //Debug.Log("PlayerAidBoxCount: " + GetComponent<Coin>()._aidBoxCount);
@@ -24,13 +24,13 @@ public class Save : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("Scene")-1 == 1)
         {
-            gameObject.GetComponent<Coin>()._lifeCount = 1;
-            gameObject.GetComponent<Coin>()._aidBoxCount = 0;
+          //  gameObject.GetComponent<HealthBarFade>().healthValue = 1;
+            //gameObject.GetComponent<Coin>()._MedKitCount = 0;
         }
         else
         {
-            gameObject.GetComponent<Coin>()._lifeCount = PlayerPrefs.GetInt("PlayerLifeCount");
-            gameObject.GetComponent<Coin>()._aidBoxCount = PlayerPrefs.GetInt("PlayerAidBoxCount");
+            //gameObject.GetComponent<HealthBarFade>().healthValue = PlayerPrefs.GetInt("PlayerLifeCount");
+            //gameObject.GetComponent<Coin>()._MedKitCount = PlayerPrefs.GetInt("PlayerAidBoxCount");
         }
         //Debug.Log("Loded");
         //Debug.Log("PlayerLifeCount: " + PlayerPrefs.GetInt("PlayerLifeCount"));

@@ -116,11 +116,11 @@ public class Coin : MonoBehaviour
 
             playerDead();
 
-            if (_lifeCount > 0)
-            {
+            //if (_lifeCount > 0)
+            //{
 
-                transform.position = BoxReturn.position;
-            }
+            //    transform.position = BoxReturn.position;
+            //}
 
         }
 
