@@ -14,12 +14,9 @@ public class ButtonActive : MonoBehaviour
         if (Panel != null  )
         {
             Panel.SetActive(false);
-            Time.timeScale = 1.0f;
            
-
-
-
-        }
+            Time.timeScale = 1.0f;
+           }
 
 
 

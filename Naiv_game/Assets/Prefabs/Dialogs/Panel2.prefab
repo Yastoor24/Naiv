@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'hi hi '
+  m_Text: 
 --- !u!114 &2088207256549630667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.2
-  fullText: {fileID: 2088207256549630666}
+  fullText: 
 --- !u!1 &2088207256578165917
 GameObject:
   m_ObjectHideFlags: 0
