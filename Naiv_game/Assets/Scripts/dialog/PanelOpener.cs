@@ -6,25 +6,30 @@ using UnityEngine.UI;
 public class PanelOpener : MonoBehaviour
 {
 
-    public float delay = 0;
-    public Text fullText;
+    public float delay = 0.1f;
+    public string fullText;
+    public Text firsttext;
     private string currentText = "";
 
     void Start()
     {
-      
-        StartCoroutine(ShowText());
+
+       StartCoroutine(ShowText());
     }
 
     IEnumerator ShowText()
     {
-        for (int i = 0; i < fullText.text.Length; i++)
-        {
-            currentText = fullText.text.Substring(0, i);
-            this.GetComponent<Text>().text = currentText;
-            yield return new WaitForSeconds(delay);
+      for (int i = 0; i < fullText.Length; i++ )
+     {
 
-        }
-         
+           
+                currentText = fullText.Substring(0, i);
+                this.GetComponent<Text>().text = currentText;
+                yield return new WaitForSeconds(delay);
+            
+      }
     }
+
+
+ 
 }

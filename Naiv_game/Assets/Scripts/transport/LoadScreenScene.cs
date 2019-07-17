@@ -9,7 +9,8 @@ public class LoadScreenScene : MonoBehaviour
     public string LoadingSceneName;
     public Text loadingText;
     public Slider sliderBar;
- 
+    public Image image;
+
     // Use this for initialization
     void Start()
     {
@@ -40,8 +41,10 @@ public class LoadScreenScene : MonoBehaviour
             // ...change the instruction text to read "Loading..."
             loadingText.text = "Loading...";
 
+            image.gameObject.SetActive(true);
+
             // ...and start a coroutine that will load the desired scene.
-            
+
             StartCoroutine(LoadNewScene(LoadingSceneName));
          
 
@@ -61,9 +64,14 @@ public class LoadScreenScene : MonoBehaviour
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!async.isDone)
         {
-            float progress = Mathf.Clamp01(async.progress / 0.9f);
+            float progress = Mathf.Clamp01(async.progress / 0.9f  );
+          
+           
             sliderBar.value = progress;
-            loadingText.text = progress * 100f + "%";
+            int o = (int) (progress * 100f);
+
+          
+            loadingText.text  = o + "%";
 
           
             yield return null;
