@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneScript : MonoBehaviour
+public class DroneScript : Enemy
 {
-    private Rigidbody2D myBody;
-    private Animator anim;
 
     private Vector3 moveDirection = Vector3.left;
     private Vector3 originPosition;
     private Vector3 movePosition;
 
     public GameObject droneNet;
-    public LayerMask playerLayer;
     private bool attacked = true;
 
-    private bool canMove;
-
-    private float speed = 2f;
 
     void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        speed = 2f;
     }
 
     void Start()
@@ -52,24 +47,24 @@ public class DroneScript : MonoBehaviour
             {
                 moveDirection = Vector3.left;
 
-                // ChangeDirection(1f);
+                ChangeDirection(1/5f);
             }
 
             else if (transform.position.x <= movePosition.x)
             {
                 moveDirection = Vector3.right;
 
-                // ChangeDirection(-1f);
+                ChangeDirection(-1/5f);
             }
         }
     }
 
-    // void ChangeDirection(float direction)
-    //{
-    //  Vector3 tempScale = transform.localScale;
-    //tempScale.x = direction;
-    //transform.localScale = tempScale;
-    //  }
+    void ChangeDirection(float direction)
+    { 
+        Vector3 tempScale = transform.localScale;
+        tempScale.x = direction;
+        transform.localScale = tempScale;
+    }
 
 
     private void ThrowTheNet()
@@ -79,14 +74,11 @@ public class DroneScript : MonoBehaviour
 
             if (attacked == true)
             {
+                anim.Play("DroneAttack");
                 attacked = false;
                 Instantiate(droneNet, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-                anim.Play("Dronefly");
-//<<<<<<< Updated upstream
-//                anim.Play("Dronefly");
-//=======
-//                anim.Play("Dronefly");
-//>>>>>>> Stashed changes
+
+
                 StartCoroutine(WaitToThrow());
             }
 
