@@ -7,6 +7,8 @@ public class DroneScript : MonoBehaviour
     private Rigidbody2D _mybody;
     private Animator _anim;
 
+    private bool fire = true;
+
     public GameObject _firePoint;
 
     private Vector3 _moveDirection = Vector3.right;
@@ -60,6 +62,7 @@ public class DroneScript : MonoBehaviour
 
         _matWahite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         _matDefault = _spr.material;
+        fire = true; 
 
         //_explosionRef = Resources.Load("Explosion");
     }
@@ -108,49 +111,48 @@ public class DroneScript : MonoBehaviour
 
     void Fire()
     {
-
-        float _distance = Vector3.Distance(transform.position, _player.transform.position);
-
-        if (_distance > 8f)
+        if (fire == true)
         {
-            _canMove = true;
-            _anim.Play("Dronefly");
+            float _distance = Vector3.Distance(transform.position, _player.transform.position);
+
+            if (_distance > 8f)
+            {
+                _canMove = true;
+                _anim.Play("Dronefly");
+            }
+
+            if (_distance < 5)
+            {
+                _canMove = false;
+
+                if (_attack == true)
+                {
+                    _anim.Play("DroneAttack");
+                    Instantiate(_bullet, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
+                    _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;   //pass the player position to bullet script
+
+                    _attack = false;
+
+                    StartCoroutine(WaitToFire(Random.Range(3f, 4f)));
+                }
+
+                //to flip the enemy
+                if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
+                {
+                    _moveDirection = Vector3.left;
+                    changeDirection();
+                }
+                else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
+                {
+                    _moveDirection = Vector3.right;
+
+
+                    changeDirection();
+                }
+
+            }
         }
-
-        if (_distance < 5)
-        {
-            _canMove = false;
-
-            if (_attack)
-            {
-                _anim.Play("DroneAttack");
-                Instantiate(_bullet, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
-                _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;   //pass the player position to bullet script
-
-                _attack = false;
-
-                StartCoroutine(WaitToFire(Random.Range(1f, 3f)));
-            }
-
-            //to flip the enemy
-            if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
-            {
-                _moveDirection = Vector3.left;
-                changeDirection();
-            }
-            else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
-            {
-                _moveDirection = Vector3.right;
-
-
-                changeDirection();
-            }
-
-        }
-
     }
-
-    
 
     private void OnTriggerEnter2D(Collider2D target)
     {
@@ -165,10 +167,10 @@ public class DroneScript : MonoBehaviour
                 _canMove = false;
 
                 StartCoroutine(DroneDead());
+                _attack = false;
         }
 
-
-        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -177,25 +179,36 @@ public class DroneScript : MonoBehaviour
 
             //_mybody.bodyType = RigidbodyType2D.Kinematic;
 
-            //StartCoroutine(DroneDead());
+            StartCoroutine(DroneDead());
 
             OnDestroy();
+
+            _attack = false;
+
+            fire = false;
 
     }
 
     private void OnDestroy()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 1);
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
     }
 
     IEnumerator DroneDead()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(7);
+        _anim.Play("DroneWreckage");
     }
 
     IEnumerator WaitToFire(float time)
     {
         yield return new WaitForSeconds(time);
+        Wait();
         _attack = true;
     }
 
