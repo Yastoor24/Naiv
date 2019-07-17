@@ -31,8 +31,6 @@ public class DroneScript : MonoBehaviour
     private Material _matDefault;
     SpriteRenderer _spr;
 
-    public UnityEngine.Object _explosionRef;
-
     public float _distanceToMove = 4f;
 
 
@@ -70,7 +68,8 @@ public class DroneScript : MonoBehaviour
     void Update()
     {
         Move();
-        Fire();
+    
+
     }
 
     void Move()
@@ -106,6 +105,7 @@ public class DroneScript : MonoBehaviour
     }
 
 
+
     void Fire()
     {
 
@@ -114,7 +114,7 @@ public class DroneScript : MonoBehaviour
         if (_distance > 8f)
         {
             _canMove = true;
-            _anim.Play("Walk_Rifle_IP");
+            _anim.Play("Dronefly");
         }
 
         if (_distance < 5)
@@ -123,15 +123,13 @@ public class DroneScript : MonoBehaviour
 
             if (_attack)
             {
-                _anim.Play("Attack_Rifle");
+                _anim.Play("DroneAttack");
                 Instantiate(_bullet, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
                 _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;   //pass the player position to bullet script
 
                 _attack = false;
 
-                _anim.Play("Idel_Rifle");                               //TODO:change the animation
-
-                StartCoroutine(WaitToFire(1f));
+                StartCoroutine(WaitToFire(Random.Range(1f, 3f)));
             }
 
             //to flip the enemy
@@ -152,10 +150,11 @@ public class DroneScript : MonoBehaviour
 
     }
 
-
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag == "PlayerBullet")
         {
             Destroy(collision.gameObject);
@@ -185,11 +184,6 @@ public class DroneScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        Debug.Log("IT IS DEAD: ");
-
-        GameObject _explosion = (GameObject)Instantiate(_explosionRef);
-        _explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        gameObject.SetActive(false);
     }
 
     IEnumerator WaitToFire(float time)
