@@ -7,18 +7,19 @@ public class Lizard : Enemy
 
     private bool moveLeft;
     private bool attacks;
-
-    
+    private bool stunned;
     [SerializeField]
-    private Transform down_Collision;
+    public Transform  top_Collision, down_Collision;
     private GameObject _player;
+  
+    private Vector3 left_Collision_Pos, right_Collision_Pos;
 
 
     void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-       // _player = GameObject.FindGameObjectWithTag("Player");
+        
         _enemyHealth = 3;
         speed = 1f;
         canMove = true;
@@ -41,19 +42,13 @@ public class Lizard : Enemy
     {
         if (canMove)
         {
-
-            //attack();
-
             if (moveLeft)
             {
                 myBody.velocity = new Vector2(-speed, myBody.velocity.y);
-            
             }
             else
             {
                 myBody.velocity = new Vector2(speed, myBody.velocity.y);
-                
-
             }
         }
 
@@ -61,36 +56,41 @@ public class Lizard : Enemy
 
     }
 
-    void attack()
-    {
-        float _distance = transform.position.x - _player.transform.position.x;
-        if (_distance == 1f || _distance == -1f)
-        {
-            print("test 1");
-            anim.Play("Attack");
-        }
-        else
-        {
-            print("test 2");
-            anim.Play("move");
 
-        }
-       
-
-    }
 
     void CheckCollision()
     {
+        Collider2D topHit = Physics2D.OverlapCircle(top_Collision.position, 0.2f, playerLayer);
 
+        if (topHit != null)
+        {
+            if (topHit.gameObject.tag =="Enemy")
+            {
+                if (!stunned)
+                {
+                    topHit.gameObject.GetComponent<Rigidbody2D>().velocity =
+                        new Vector2(topHit.gameObject.GetComponent<Rigidbody2D>().velocity.x, 7f);
 
+                    canMove = false;
+                    myBody.velocity = new Vector2(0, 0);
 
+                    anim.Play("Dead");
+                    stunned = true;
+                    print("lizard dead");
 
+                    // BEETLE CODE HERE
+                
+                }
+            }
+        }
 
+       
+        // IF we don't detect collision any more do whats in {}
         if (!Physics2D.Raycast(down_Collision.position, Vector2.down, 0.1f))
-
+        {
 
             ChangeDirection();
-
+        }
 
     }
 
@@ -117,19 +117,29 @@ public class Lizard : Enemy
     }
 
 
-    public IEnumerator timer(float time)
+
+
+    public void OnCollisionEnter2D(Collision2D target)
     {
+    
+        if ( ! (target.gameObject.tag == "Ground") )
+        {
+            myBody.velocity = new Vector2(0, 0);
+            anim.Play("Dead");
 
-        yield return new WaitForSeconds(time);
-     
+            StartCoroutine(ttimer(1f));
+            print("lizard dead");
 
+
+        }
+    
     }
 
-
-
-
-
-
+    public IEnumerator ttimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        this.gameObject.SetActive(false);
+    }
 
 
 

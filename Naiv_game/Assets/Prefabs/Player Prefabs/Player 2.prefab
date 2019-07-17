@@ -202,7 +202,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -382,7 +382,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3360415490345184475
@@ -400,7 +400,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -532,8 +532,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d82bc51ef1f7744b8658998197c158d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _jumpForce: 8
   _groundLayer:
     serializedVersion: 2
@@ -543,6 +543,8 @@ MonoBehaviour:
     type: 3}
   _canMove: 1
   HitBox1: {fileID: 3546624520428447616}
+  toStar: {fileID: 0}
+  jumpped: 0
 --- !u!114 &3360415491622315063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,8 +555,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f28865b375e51f54caed825d46ec999c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &3360415491622315060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,10 +567,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c92d6bc230292340969dae126393edd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lifeCount: 2
-  _aidBoxCount: 0
+  m_Name:
+  m_EditorClassIdentifier:
+  medKitBox: {fileID: 5530938978123293892, guid: da000a272951cf6409fe433e93a3bbbb,
+    type: 3}
 --- !u!82 &1275350326
 AudioSource:
   m_ObjectHideFlags: 0
@@ -675,8 +677,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1388c730e6a444b43a4f0a5a37711845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &3360415491718110497
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,8 +771,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48f9b6aa11b2b24699aff5486fe3133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _barrelTip: {fileID: 3360415490813731815}
   _fireBullet: {fileID: 0}
   _bullet: {fileID: 0}
@@ -790,7 +792,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -933,8 +935,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6815e2c3cfb0eb1498528dadd59730ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &4047953130885351208
 GameObject:
   m_ObjectHideFlags: 0
