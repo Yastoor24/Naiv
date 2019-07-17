@@ -17,7 +17,7 @@ public class MenuButton : MonoBehaviour
 
 
 			print (" this is Update");
-			if( menuButtonController.index == thisIndex )
+			if( menuButtonController.index == thisIndex  )
 			{
 				animator.SetBool ("selected", true);
 				if(Input.GetAxis ("Submit") == 1) {
@@ -46,7 +46,7 @@ public class MenuButton : MonoBehaviour
 	          //  }
 
 	            }
-		
+
 
     }
 
@@ -57,9 +57,6 @@ public class MenuButton : MonoBehaviour
 
 
 		}
-
-
-
 
 		// for exit the game ..
 		public void ExitGameBtn()
