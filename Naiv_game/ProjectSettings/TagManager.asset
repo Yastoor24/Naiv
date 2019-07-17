@@ -12,7 +12,6 @@ TagManager:
   - Enemy
   - ScreenManagerAmmo
   - Life
-  - AidBox
   - PlayerBullet
   - EnemyBullet
   - PowerIcon
@@ -24,6 +23,13 @@ TagManager:
   - SGround
   - Frog
   - SuperEnemyBullet
+  - Fire
+  - MedKit
+  - toStar
+  - startPoint
+  - Jump
+  - clamp
+  - moon
   layers:
   - Default
   - TransparentFX

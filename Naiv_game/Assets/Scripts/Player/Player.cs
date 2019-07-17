@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     public Transform HitBox1;
-   
-
+    public GameObject toStar;
+    public bool jumpped = false;
 
     //Awake is used to initialize any variables or game state before the game starts
     void Awake()
@@ -141,6 +141,17 @@ public class Player : MonoBehaviour
 
         }
         // speed for the player jump
+
+        if (jumpped)
+        {
+           
+            _rigid.velocity = new Vector2(_rigid.velocity.x,11);
+            StartCoroutine(ResetJumpedRoutine());
+            _PlayerAnim.Jump(true);
+            jumpped = false;
+           
+
+        }
         _rigid.velocity = new Vector2(move * _speed, _rigid.velocity.y);
         _PlayerAnim.Move(move);
 
@@ -225,6 +236,20 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (collision.tag== "startPoint")
+        {
+            toStar.SetActive(true);
+
+        }
+
+        if (collision.gameObject.tag == "Jump")
+        {
+            jumpped = true;
+
+        }
+
+
+
     }
     IEnumerator WaitBuff()
     {
@@ -233,5 +258,8 @@ public class Player : MonoBehaviour
         _speed = 5f;
         _jumpForce = 5f;
     }
+
+
+
 
 }

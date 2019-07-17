@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_canShoot);
+     //   Debug.Log(_canShoot);
 
 
         if (_canShoot)
@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
             if ((Input.GetMouseButtonDown(0) && _bullets >= 0) || Input.GetButton("XboxY"))
             {
 
-                Debug.Log("HHHHHHHHH");
+
 
                 _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
                 _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;

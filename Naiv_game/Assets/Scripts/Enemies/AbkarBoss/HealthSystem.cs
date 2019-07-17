@@ -6,8 +6,6 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
 
-   // public event EventHandler OnDamaged;
-   // public event EventHandler OnHealed;
 
     public int healthAmount;
     public int healthAmountMax;
@@ -29,7 +27,16 @@ public class HealthSystem : MonoBehaviour
    
     }
 
-    
+    public void Heal(int amount)
+    {
+        healthAmount += amount;
+        if (healthAmount > healthAmountMax)
+        {
+            healthAmount = healthAmountMax;
+        }
+   
+    }
+
 
     public float GetHealthNormalized()
     {

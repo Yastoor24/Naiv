@@ -7,23 +7,11 @@ public class transport : MonoBehaviour
     public string level;
     public int x;
     public int y;
-    //    // Start is called before the first frame update
-    //    void Start()
-    //    {
-
-    //    }
-
-    //    // Update is called once per frame
-    //    void Update()
-    //    {
-
-    //    }
-    //
+  
 
     void LoadHighScoreLevel()
     {
-        // Load the level named "HighScore".
-
+       
         Application.LoadLevel(level);
       
         print("load");
@@ -36,7 +24,7 @@ public class transport : MonoBehaviour
         GameObject[] aa = GameObject.FindGameObjectsWithTag("PlayerBullet");
         if (collision.tag == "Player")
         {
-            DontDestroyOnLoad(collision.gameObject);
+           DontDestroyOnLoad(collision.gameObject);
            DontDestroyOnLoad(objs[0]);
             DontDestroyOnLoad(aa[0]);
             LoadHighScoreLevel();
