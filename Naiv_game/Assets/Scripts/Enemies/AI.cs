@@ -10,7 +10,7 @@ public class AI : MonoBehaviour
 
     public GameObject _firePoint;
 
-    private Vector3 _moveDirection = Vector3.right;
+    private Vector3 _moveDirection = Vector3.left;
     private Vector3 _originPosition;
     private Vector3 _movePosition;
 
@@ -42,6 +42,18 @@ public class AI : MonoBehaviour
     public UnityEngine.Object _explosionRef;
 
     public float _distanceToMove = 4f;
+
+    private int _touches = 0;
+
+    // 1 = RollAttack
+    // 2 = VirticalRollAttack
+    // 3 = RollAndBackAttack
+    // 4 = 1RollAndBackFromUPAttack
+    // 5 = 2RollAndBackFromUPAttack
+    // 
+    private int _typeOfAttack = 3;
+
+    
 
 
     void Awake()
@@ -120,7 +132,9 @@ public class AI : MonoBehaviour
 
         if (_attack)
         {
-            RollAttack();
+            //RollAttack();
+            RollAndBackAttack();
+
         }
 
         //if (transform.position.x >= _originPosition.x)
@@ -253,27 +267,109 @@ public class AI : MonoBehaviour
         transform.Translate(_moveDirection * 18f * Time.smoothDeltaTime);
     }
 
+    private void RollAndBackAttack()
+    {
+        transform.Translate(_moveDirection * 18f * Time.smoothDeltaTime);
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "RightEdge")
         {
-            _attack = false;
-            _anim.SetBool("Roll_Anim", false);
-            Debug.Log("RightEdge");
-            _moveDirection = Vector3.left;
-            changeDirection(-1);
-            StartCoroutine(WaitToMove(2));
-        }
+            switch (_typeOfAttack)
+            {
+                case 1:
+                    _attack = false;
+                    _anim.SetBool("Roll_Anim", false);
+                    Debug.Log("RightEdge");
+                    _moveDirection = Vector3.left;
+                    changeDirection(-1);
+                    StartCoroutine(WaitToMove(2));
+                    return;
 
-        if (collision.gameObject.tag == "LeftEdge")
+                case 2:
+
+                    return;
+
+                case 3:
+                    ++_touches;
+                    if (_touches == 2)
+                    {
+                        _touches = 0;
+                        _attack = false;
+                        _anim.SetBool("Roll_Anim", false);
+                        Debug.Log("RightEdge");
+                        _moveDirection = Vector3.left;
+                        changeDirection(-1);
+                        StartCoroutine(WaitToMove(2));
+                        return;
+                    }
+                    else
+                    {
+                        Debug.Log("RightEdge");
+                        _moveDirection = Vector3.left;
+                        changeDirection(-1);
+                    }
+
+                    return;
+
+                case 4:
+                    return;
+
+                case 5:
+                    return;
+
+            }
+
+        }
+        else if (collision.gameObject.tag == "LeftEdge")
         {
-            _attack = false;
-            _anim.SetBool("Roll_Anim", false);
-            Debug.Log("LeftEdge");
-            _moveDirection = Vector3.right;
-            changeDirection(1);
-            StartCoroutine(WaitToMove(2));
+            switch (_typeOfAttack)
+            {
+                case 1:
+                    _attack = false;
+                    _anim.SetBool("Roll_Anim", false);
+                    Debug.Log("LeftEdge");
+                    _moveDirection = Vector3.right;
+                    changeDirection(1);
+                    StartCoroutine(WaitToMove(2));
+                    return;
+
+                case 2:
+                    return;
+
+                case 3:
+                    ++_touches;
+                    if (_touches == 2)
+                    {
+                        _touches = 0;
+                        _attack = false;
+                        _anim.SetBool("Roll_Anim", false);
+                        Debug.Log("LeftEdge");
+                        _moveDirection = Vector3.right;
+                        changeDirection(1);
+                        StartCoroutine(WaitToMove(2));
+                        return;
+                    }
+                    else
+                    {
+                        Debug.Log("LeftEdge");
+                        _moveDirection = Vector3.right;
+                        changeDirection(1);
+                    }
+
+                    return;
+
+                case 4:
+                    return;
+
+                case 5:
+                    return;
+
+            }
+
+
         }
 
     }
