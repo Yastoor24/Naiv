@@ -7,11 +7,11 @@ public class AbkarBoss : MonoBehaviour
     private Rigidbody2D _myBody;
     private Animator _anim;
     private GameObject _player;
-    [SerializeField]
-    private GameObject _redLaser;
-    [SerializeField]
-    private GameObject _bullet;
-    private GameObject _bulletMood;
+    //[SerializeField]
+    //private GameObject _redLaser;
+    //[SerializeField]
+    //private GameObject _bullet;
+    private string _bulletMood;
     public GameObject _firePoint;
     private Vector3 _moveDirection = Vector3.right;
     private float _bossX;
@@ -72,47 +72,49 @@ public class AbkarBoss : MonoBehaviour
     
         if (_bulletState)
         {
-             _bulletMood = _bullet;
-      
+             _bulletMood = "Attack1";
+
+
         }
         else if (!_bulletState)
         {
-            _bulletMood = _redLaser;
+            _bulletMood = "SuperAttack";
                    }        
 
         if (_playerPostionY < _bossUp && _playerPostionY > _bossDown)
         {
-            // خليه يطلق عليه و ينقص الكاونت ولو خلص حيستدعي مثود الوقت
+            _anim.Play(_bulletMood);
+        //    // خليه يطلق عليه و ينقص الكاونت ولو خلص حيستدعي مثود الوقت
 
-            if (_laserCount>0) {
+        //    if (_laserCount>0) {
 
-                if (_attack)
-                {
-                    Instantiate(_bulletMood, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
+        //        if (_attack)
+        //        {
+        //            Instantiate(_bulletMood, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
                    
-                    if (_bulletState)
-                    {
-                        _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;
-                    }
-                    else if (!_bulletState)
-                    {
-                        _redLaser.gameObject.GetComponent<RedLaser>().target = _player.transform;
-                    }
+        //            if (_bulletState)
+        //            {
+        //                _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;
+        //            }
+        //            else if (!_bulletState)
+        //            {
+        //                _redLaser.gameObject.GetComponent<RedLaser>().target = _player.transform;
+        //            }
 
-                    _laserCount--;
-                    _attack = false;
-                    if (_laserCount > 0)
-                    { StartCoroutine(waitForLaser(0.5f));
-                        print(_laserCount);
-                    }
+        //            _laserCount--;
+        //            _attack = false;
+        //            if (_laserCount > 0)
+        //            { StartCoroutine(waitForLaser(0.5f));
+        //                print(_laserCount);
+        //            }
 
-                    if (_laserCount == 0)
-                    {
-                        StartCoroutine(waitForLaser(5f));
-                    }
-                }
+        //            if (_laserCount == 0)
+        //            {
+        //                StartCoroutine(waitForLaser(5f));
+        //            }
+        //        }
               
-            }
+        //    }
 
            
         }
@@ -212,7 +214,7 @@ public class AbkarBoss : MonoBehaviour
     IEnumerator Dead(float time)
     {
         _anim.SetBool("Dead", true);
-        _bulletMood.SetActive(false);
+        //_bulletMood.SetActive(false);
         yield return new WaitForSeconds(time);
        
         this.gameObject.SetActive(false);

@@ -184,7 +184,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3360415490240839687
@@ -382,7 +382,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3360415490345184475
@@ -538,10 +538,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _speed: 10
-  _fireBullet: {fileID: 0}
+  _fireBullet: {fileID: 8675171590385254316, guid: ad234f7d97470dc44843788ce94b1839,
+    type: 3}
   _canMove: 1
   HitBox1: {fileID: 3546624520428447616}
-  HitBox2: {fileID: 4155135282040432193}
+  toStar: {fileID: 0}
+  jumpped: 0
 --- !u!114 &3360415491622315063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c92d6bc230292340969dae126393edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  medKitBox: {fileID: 5530938978123293892, guid: da000a272951cf6409fe433e93a3bbbb,
+    type: 3}
 --- !u!82 &1275350326
 AudioSource:
   m_ObjectHideFlags: 0
