@@ -152,38 +152,45 @@ public class DroneScript : MonoBehaviour
 
     
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D target)
     {
-
-        if (collision.gameObject.tag == "PlayerBullet")
+        if (target.tag == "PlayerBullet")
         {
-            Destroy(collision.gameObject);
-            //Debug.Log("got Hit");
-            _spr.material = _matWahite;
-            _health -= 1;               // decrease the health
-            Debug.Log("Health: " + _health);
-            if (_health <= 0)
-            {
+                _anim.Play("DroneDead");
+                
+                //GetComponent<BoxCollider2D>().isTrigger = true;
 
-
+                _mybody.bodyType = RigidbodyType2D.Dynamic;
+                
                 _canMove = false;
 
-                _anim.Play("Death_Rifle");
-                StartCoroutine(RobotDead());
+                StartCoroutine(DroneDead());
+        }
 
-            }
-            else
-            {
-                StartCoroutine(ResetMaterial(0.1f));
-            }
 
         }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+            _anim.Play("DroneWreckage");
+
+            //_mybody.bodyType = RigidbodyType2D.Kinematic;
+
+            //StartCoroutine(DroneDead());
+
+            OnDestroy();
+
     }
 
-    IEnumerator RobotDead()
+    private void OnDestroy()
     {
-        yield return new WaitForSeconds(1f);
+        Destroy(gameObject, 3);
+    }
 
+    IEnumerator DroneDead()
+    {
+        yield return new WaitForSeconds(6);
     }
 
     IEnumerator WaitToFire(float time)

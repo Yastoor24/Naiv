@@ -438,12 +438,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!1 &415366252 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3928483826180646563, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
-    type: 3}
-  m_PrefabInstance: {fileID: 1736489660614099602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &676180266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -619,7 +613,7 @@ GameObject:
   - component: {fileID: 1937967062}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,11 +656,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Drone
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417436489584445506, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5417436489584445517, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
         type: 3}
@@ -721,30 +710,6 @@ PrefabInstance:
     - target: {fileID: 5417436489584445517, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417436489584445519, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 5417436489584445518, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1989959326, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057, type: 3}
-      propertyPath: _firePoint
-      value: 
-      objectReference: {fileID: 415366252}
-    - target: {fileID: 1989959326, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057, type: 3}
-      propertyPath: _bullet
-      value: 
-      objectReference: {fileID: 8347410690804232750, guid: 0a292bf51f4e8430198665e6ce5e17b7,
-        type: 3}
-    - target: {fileID: 3481319416699167047, guid: d4ecf4d7f49d54b83aa8ef94d3f5b057,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
