@@ -10,27 +10,18 @@ public class AI : MonoBehaviour
 
     public GameObject _firePoint;
 
-    private Vector3 _moveDirection = Vector3.left;
+    private Vector3 _moveDirection = Vector3.right;
     private Vector3 _originPosition;
     private Vector3 _movePosition;
 
-    private Vector3 _position1;
-    private Vector3 _position2;
-    private Vector3 _position3;
-    private Vector3 _position4;
-
 
     public GameObject _bullet;
-    //public LayerMask _playerLayer;
 
     private bool _canMove;
     private bool _attack;
     private bool _canAttack;
 
-    //private bool _leftDirction = false;
-
     GameObject _player;
-
 
     [SerializeField]
     private int _health = 1;
@@ -43,31 +34,27 @@ public class AI : MonoBehaviour
 
     public float _distanceToMove = 4f;
 
-    private int _touches = 0;
+    private int _touches ;
 
     // 1 = RollAttack
-    // 2 = VirticalRollAttack
+    // 2 = move
     // 3 = RollAndBackAttack
-    // 4 = 1RollAndBackFromUPAttack
-    // 5 = 2RollAndBackFromUPAttack
+    // 4 = RollAndBackFromUP1Attack
+    // 5 = RollAndBackFromUP2Attack
     // 
-    private int _typeOfAttack = 3;
+    private int _typeOfAttack = 4;
 
-    
 
+    public GameObject _midPoint ;
+    public GameObject _groundPoint;
 
     void Awake()
     {
+        _typeOfAttack = Random.Range(1, 4);
+        Debug.Log(_typeOfAttack);
         _mybody = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
-
-        _position1 = new Vector3(12f, -2f,0f);
-        _position2 = new Vector3(-11f, -2f, 0f);
-        _position3 = new Vector3(-5f, 3f, 0f);
-        _position4 = new Vector3(5f, 3f, 0f);
-
-
     }
 
     // Start is called before the first frame update
@@ -101,7 +88,7 @@ public class AI : MonoBehaviour
     void Update()
     {
         Move();
-        Fire();
+        //Fire();
       
     }
 
@@ -109,17 +96,10 @@ public class AI : MonoBehaviour
     {
         if (_canMove )
         {
-            //Vector3 temp = transform.position;
-
-
             //Debug.Log("Moved!!");
+            _anim.SetBool("Walk_Anim", true);
 
-            //transform.position = temp;
-
-            _anim.SetBool("Walk_Anim",true);
-
-            transform.Translate(_moveDirection * 3f * Time.smoothDeltaTime);
-
+            transform.Translate(_moveDirection * 4f * Time.smoothDeltaTime);
         }
 
         if (_canAttack) {
@@ -132,35 +112,28 @@ public class AI : MonoBehaviour
 
         if (_attack)
         {
-            //RollAttack();
-            RollAndBackAttack();
+            switch (_typeOfAttack)
+            {
+                case 1:
+                    RollAttack();
+                    return;
 
+                case 2:
+                    RollAndBackAttack();
+
+
+                    return;
+                case 3:
+                    RollAndBackFromUP1Attack();
+
+                    return;
+
+
+            }
         }
 
-        //if (transform.position.x >= _originPosition.x)
-        //{
-        //    _moveDirection = Vector3.left;
-        //    changeDirection();
-        //}
-        //else if (transform.position.x <= _movePosition.x)
-        //{
-        //    _moveDirection = Vector3.right;
-
-        //    changeDirection();
-        //}
     }
 
-
-    //void changeDirection()
-    //{
-    //    Vector3 tempScale = transform.localScale;
-    //    tempScale.x = transform.localScale.x * -1f;
-    //    transform.localScale = tempScale;
-
-    //    // transform.transform.Rotate(0f, 180F, 0f);
-
-    //    _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
-    //}
 
      private void  changeDirection(float _dir)
     {
@@ -250,7 +223,9 @@ public class AI : MonoBehaviour
             Debug.Log("Health: " + _health);
             if (_health <= 0)
             {
-                _canMove = false;   
+                _canMove = false;
+                _canAttack = false;
+                _attack = false;
                 StartCoroutine(RobotDead());
             }
             else
@@ -258,9 +233,31 @@ public class AI : MonoBehaviour
                 StartCoroutine(ResetMaterial(0.1f));
             }
         }
+
+
     }
 
+    private void RollAndBackFromUP1Attack()
+    {
+        if(_touches == 0)
+        {
+            transform.Translate(_moveDirection * 18f * Time.smoothDeltaTime);
+            Debug.Log("Toutch = "+_touches);
+        }
+        else if (_touches == 1)
+        {
+                Debug.Log("Toutch = " + _touches);
+            transform.Translate(_midPoint.transform.position * 18f * Time.smoothDeltaTime);
+        }
+        else if (_touches == 2)
+        {
+                Debug.Log("Toutch = " + _touches);
 
+            //transform.Translate(_groundPoint.transform.position * 10f * Time.smoothDeltaTime);
+        }
+
+
+    }
 
     private void  RollAttack()
     {
@@ -275,6 +272,7 @@ public class AI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.tag == "RightEdge")
         {
             switch (_typeOfAttack)
@@ -286,13 +284,11 @@ public class AI : MonoBehaviour
                     _moveDirection = Vector3.left;
                     changeDirection(-1);
                     StartCoroutine(WaitToMove(2));
+                    
+                    StartCoroutine(WaitToCanAttack(4));
                     return;
 
                 case 2:
-
-                    return;
-
-                case 3:
                     ++_touches;
                     if (_touches == 2)
                     {
@@ -303,6 +299,9 @@ public class AI : MonoBehaviour
                         _moveDirection = Vector3.left;
                         changeDirection(-1);
                         StartCoroutine(WaitToMove(2));
+
+                        StartCoroutine(WaitToCanAttack(4));
+
                         return;
                     }
                     else
@@ -314,10 +313,23 @@ public class AI : MonoBehaviour
 
                     return;
 
-                case 4:
-                    return;
+                case 3:
+                    Debug.Log("RightEdge");
 
-                case 5:
+                    ++_touches;
+                    if (_touches == 2)
+                    {
+                        _touches = 0;
+                        _attack = false;
+                        _anim.SetBool("Roll_Anim", false);
+                        Debug.Log("RightEdge");
+                        _moveDirection = Vector3.left;
+                        changeDirection(-1);
+                        StartCoroutine(WaitToMove(2));
+
+                        StartCoroutine(WaitToCanAttack(4));
+                    }
+
                     return;
 
             }
@@ -334,12 +346,12 @@ public class AI : MonoBehaviour
                     _moveDirection = Vector3.right;
                     changeDirection(1);
                     StartCoroutine(WaitToMove(2));
+                    
+                    StartCoroutine(WaitToCanAttack(4));
+
                     return;
 
                 case 2:
-                    return;
-
-                case 3:
                     ++_touches;
                     if (_touches == 2)
                     {
@@ -350,6 +362,9 @@ public class AI : MonoBehaviour
                         _moveDirection = Vector3.right;
                         changeDirection(1);
                         StartCoroutine(WaitToMove(2));
+
+                        StartCoroutine(WaitToCanAttack(4));
+
                         return;
                     }
                     else
@@ -361,17 +376,27 @@ public class AI : MonoBehaviour
 
                     return;
 
-                case 4:
-                    return;
+                case 3:
+                    Debug.Log("LeftEdge");
 
-                case 5:
-                    return;
+                    ++_touches;
 
+                    if (_touches == 2)
+                    {
+                        _touches = 0;
+                        _attack = false;
+                        _anim.SetBool("Roll_Anim", false);
+                        Debug.Log("LeftEdge");
+                        _moveDirection = Vector3.right;
+                        changeDirection(1);
+                        StartCoroutine(WaitToMove(2));
+
+                        StartCoroutine(WaitToCanAttack(4));
+
+                    }
+                    return;
             }
-
-
         }
-
     }
 
 
@@ -398,38 +423,6 @@ public class AI : MonoBehaviour
         _spr.material = _matDefault;
     }
 
-    IEnumerator changePosition(float time)
-    {
-        yield return new WaitForSeconds(time);
-        int _random = Random.Range(0, 4);
-
-        switch (_random)
-        {
-            case 0:
-                _moveDirection = _position1 ;
-                break;
-
-            case 1:
-                _moveDirection = _position2;
-
-
-                break;
-
-            case 2:
-                _moveDirection = _position3;
-
-
-                break;
-
-            case 3:
-                _moveDirection = _position4;
-
-                break;
-        }
-
-    }
-
-
     IEnumerator WaitToMove(float time)
     {
         yield return new WaitForSeconds(time);
@@ -439,7 +432,11 @@ public class AI : MonoBehaviour
     IEnumerator WaitToCanAttack(float time)
     {
         yield return new WaitForSeconds(time);
+        _typeOfAttack = Random.Range(1, 4);
+        Debug.Log("Type of attack : " + _typeOfAttack);
+        _canMove = false;
         _canAttack = true;
+        _touches = 0;
     }
 
     IEnumerator WaitToAttack(float time)
