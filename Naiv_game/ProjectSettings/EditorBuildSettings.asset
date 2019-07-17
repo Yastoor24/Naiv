@@ -24,9 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/NewRoad.unity
     guid: a18fd04c1de9a40cfae1e7bcf182cd43
   - enabled: 1
+    path: Assets/Scenes/Nars.unity
+    guid: 73b1c12eeee6a44c3a0dc08e349998ad
+  - enabled: 1
     path: Assets/Scenes/shaimaScence.unity
     guid: 5597c8d695c46f04098414d399df747d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Company.unity
     guid: 89ae727f808b5ae44a8acdb532028836
   - enabled: 0
@@ -41,7 +44,4 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Nars.unity
-    guid: 73b1c12eeee6a44c3a0dc08e349998ad
   m_configObjects: {}

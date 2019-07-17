@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour
     private Text _aidBoxTextScore;
     private int _lifeCount = 2;
     private int _aidBoxCount;
-  
+    public Transform BoxReturn;
 
 
 
@@ -108,6 +108,19 @@ public class Coin : MonoBehaviour
         {
 
             playerDead();
+        }
+
+       else if (target.gameObject.tag == "fallout")
+        {
+
+            playerDead();
+
+            if (_lifeCount > 0)
+            {
+
+                transform.position = BoxReturn.position;
+            }
+
         }
 
     }
