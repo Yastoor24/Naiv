@@ -175,7 +175,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &184662816
 GameObject:
@@ -1800,7 +1800,7 @@ PrefabInstance:
     - target: {fileID: 3360415491622315059, guid: a512a1c181f1cfa48bf1f4aafe3a05c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10.29103
       objectReference: {fileID: 0}
     - target: {fileID: 3360415491622315059, guid: a512a1c181f1cfa48bf1f4aafe3a05c7,
         type: 3}
@@ -1840,6 +1840,11 @@ PrefabInstance:
     - target: {fileID: 3360415491622315059, guid: a512a1c181f1cfa48bf1f4aafe3a05c7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951490519574497335, guid: a512a1c181f1cfa48bf1f4aafe3a05c7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5170319475009158377, guid: a512a1c181f1cfa48bf1f4aafe3a05c7,
@@ -2383,8 +2388,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679564511}
   m_LocalRotation: {x: -0, y: -0, z: 0.014515401, w: 0.9998947}
-  m_LocalPosition: {x: -13.83, y: -9.05, z: 0}
-  m_LocalScale: {x: 1.0222169, y: 0.9617396, z: 1}
+  m_LocalPosition: {x: -14.37, y: -9.34, z: 10.29103}
+  m_LocalScale: {x: 0.66895914, y: 0.6740121, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -2427,7 +2432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbb43105bb03d84f9560ff0702dfea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteDialog: {fileID: 0}
+  _noteDialog: {fileID: 1973919147}
 --- !u!1 &1697329930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,6 +2829,131 @@ Transform:
   m_Father: {fileID: 2001159847}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1973919146
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6342882515563994190, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas Dialog Final
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342882515563994194, guid: 61c81672df2847f47ab5205d9a18162c,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 61c81672df2847f47ab5205d9a18162c, type: 3}
+--- !u!1 &1973919147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6342882516053062251, guid: 61c81672df2847f47ab5205d9a18162c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1973919146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1999117224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3435,21 +3565,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7004005826797434876, guid: ab3f029f23504c14b9c6872996079c76,
-        type: 3}
-      propertyPath: x
-      value: -73
-      objectReference: {fileID: 0}
-    - target: {fileID: 7004005826797434876, guid: ab3f029f23504c14b9c6872996079c76,
-        type: 3}
-      propertyPath: y
-      value: -25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7004005826797434876, guid: ab3f029f23504c14b9c6872996079c76,
-        type: 3}
-      propertyPath: level
-      value: The village Jalilah
-      objectReference: {fileID: 0}
     - target: {fileID: 7004005826797434877, guid: ab3f029f23504c14b9c6872996079c76,
         type: 3}
       propertyPath: m_Offset.y
@@ -3474,6 +3589,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004005826797434876, guid: ab3f029f23504c14b9c6872996079c76,
+        type: 3}
+      propertyPath: x
+      value: -73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004005826797434876, guid: ab3f029f23504c14b9c6872996079c76,
+        type: 3}
+      propertyPath: y
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004005826797434876, guid: ab3f029f23504c14b9c6872996079c76,
+        type: 3}
+      propertyPath: level
+      value: The village Jalilah 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3f029f23504c14b9c6872996079c76, type: 3}
