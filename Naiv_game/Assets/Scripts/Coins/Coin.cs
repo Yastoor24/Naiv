@@ -117,7 +117,7 @@ public class Coin : MonoBehaviour
 
             playerDead();
 
-            if (HealthBarFade.healthValue > 0)
+            if (GetComponentInChildren<HealthBarFade>().healthValue > 0)
             {
 
                 transform.position = BoxReturn.position;

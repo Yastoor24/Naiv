@@ -13,7 +13,7 @@ public class Save : MonoBehaviour
     {
         PlayerPrefs.SetInt("PlayerLifeCount", GetComponentInChildren<HealthBarFade>().healthValue);
         PlayerPrefs.SetInt("PlayerAidBoxCount", GetComponent<Coin>()._MedKitCount);
-        PlayerPrefs.SetInt("Scene", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("Scene", SceneManager.GetActiveScene().buildIndex+1);
         //Debug.Log("SAVED");
         //Debug.Log("PlayerLifeCount: " + GetComponent<Coin>()._lifeCount);
         //Debug.Log("PlayerAidBoxCount: " + GetComponent<Coin>()._aidBoxCount);
