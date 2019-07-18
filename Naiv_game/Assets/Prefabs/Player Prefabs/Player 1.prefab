@@ -96,7 +96,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f28865b375e51f54caed825d46ec999c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &3360415491622315060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,10 +239,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c92d6bc230292340969dae126393edd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  medKitBox: {fileID: 4747947846285454446}
-  _MedKitCount: 0
+  m_Name:
+  m_EditorClassIdentifier:
+  medKitBox: {fileID: 2113090645369655372, guid: 9a9af43754796a14a8e7c16f8c8abd12,
+    type: 3}
+  BoxReturn: {fileID: 1410456168459875664, guid: 949047b4e6d058a4298a13b1b73cec95,
+    type: 3}
 --- !u!114 &2215212645187914811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,8 +255,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20851d50a2165d54ca8cec06a0fd9278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _jumpForce: 8
   _groundLayer:
     serializedVersion: 2
@@ -274,8 +276,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d845a720e5a3e04f9bcc8852b5d8cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _jumpForce: 8
   _groundLayer:
     serializedVersion: 2
@@ -297,8 +299,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1388c730e6a444b43a4f0a5a37711845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &3360415491718110497
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,8 +393,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48f9b6aa11b2b24699aff5486fe3133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _barrelTip: {fileID: 3360415490813731815}
   _fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
     type: 3}
@@ -413,7 +415,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -622,12 +624,6 @@ PrefabInstance:
 --- !u!224 &7951490519574497335 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5002867382900178592, guid: 3a35d5acfc279e844b98c58a746656e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3113288199225013911}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4747947846285454446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7696799606081067769, guid: 3a35d5acfc279e844b98c58a746656e4,
     type: 3}
   m_PrefabInstance: {fileID: 3113288199225013911}
   m_PrefabAsset: {fileID: 0}
@@ -884,5 +880,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
