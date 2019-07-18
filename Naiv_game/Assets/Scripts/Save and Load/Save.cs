@@ -43,5 +43,5 @@ public class Save : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
-    } 
+    }
 }
