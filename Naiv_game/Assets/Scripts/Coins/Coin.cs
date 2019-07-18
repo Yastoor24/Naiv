@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
     public  int _MedKitCount=0;
     private bool state = true;
     private bool yesState = false;
+    public Transform BoxReturn;
 
 
 
@@ -111,6 +112,20 @@ public class Coin : MonoBehaviour
 
         }
 
+       else if (target.gameObject.tag == "fallout")
+        {
+
+            playerDead();
+
+            if (HealthBarFade.healthValue > 0)
+            {
+
+                transform.position = BoxReturn.position;
+
+            }
+
+        }
+
     }
 
 
@@ -118,7 +133,7 @@ public class Coin : MonoBehaviour
     void playerDead()
     {
        // int health = GetComponentInChildren<HealthBarFade>().healthValue;
-        
+
 
         if (GetComponentInChildren<HealthBarFade>().healthValue > 0)
         {
