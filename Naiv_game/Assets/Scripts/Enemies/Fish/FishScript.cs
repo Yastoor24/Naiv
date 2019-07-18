@@ -12,6 +12,8 @@ public class FishScript : MonoBehaviour
     private int jumpedTimes;
     private bool jumpLeft = true;
 
+    public int JumpNums; 
+
     private string coroutine_Name = "FishJump";
 
     public LayerMask playerLayer;
@@ -84,7 +86,7 @@ public class FishScript : MonoBehaviour
             anim.Play("FishIdleRight");
         }
 
-        if (jumpedTimes == 3)
+        if (jumpedTimes == JumpNums)
         {
             jumpedTimes = 0;
 
