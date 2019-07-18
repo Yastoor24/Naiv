@@ -180,12 +180,12 @@ public class AbkarBoss : MonoBehaviour
 
                 HealthBarFade.damState = true;
 
-                if ((HealthBarFade.healthValue<= 70 && HealthBarFade.healthValue <= 80) || (HealthBarFade.healthValue >= 50 && HealthBarFade.healthValue <= 60) || HealthBarFade.healthValue <= 15)
-                {
-                    _bulletState = true;
-                }
-                else
-                { _bulletState = false; }
+                //if ((HealthBarFade.healthValue<= 70 && HealthBarFade.healthValue <= 80) || (HealthBarFade.healthValue >= 50 && HealthBarFade.healthValue <= 60) || HealthBarFade.healthValue <= 15)
+                //{
+                //    _bulletState = true;
+                //}
+                //else
+                //{ _bulletState = false; }
 
                 if (HealthBarFade.EnemyDead)
                 {

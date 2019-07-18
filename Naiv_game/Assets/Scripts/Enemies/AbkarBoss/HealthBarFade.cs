@@ -15,7 +15,7 @@ public class HealthBarFade : MonoBehaviour
     public static bool damState=false;
     public static bool EnemyDead = false;
     public static bool heelState = false;
-    public static int healthValue=100;
+    public  int healthValue=100;
     public static int amount;
 
    

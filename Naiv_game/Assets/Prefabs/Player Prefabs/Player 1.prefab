@@ -96,7 +96,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f28865b375e51f54caed825d46ec999c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3360415491622315060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,9 +239,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c92d6bc230292340969dae126393edd, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  _lifeCount: 2
+  m_Name: 
+  m_EditorClassIdentifier: 
+  medKitBox: {fileID: 4747947846285454446}
+  _MedKitCount: 0
 --- !u!114 &2215212645187914811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +253,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20851d50a2165d54ca8cec06a0fd9278, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   _jumpForce: 8
   _groundLayer:
     serializedVersion: 2
@@ -273,8 +274,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d845a720e5a3e04f9bcc8852b5d8cbc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   _jumpForce: 8
   _groundLayer:
     serializedVersion: 2
@@ -296,11 +297,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1388c730e6a444b43a4f0a5a37711845, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  medKitBox: {fileID: 4747947846285454446}
-  yes: {fileID: 4286849467078367380}
-  no: {fileID: 517332684178515705}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3360415491718110497
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,8 +391,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f48f9b6aa11b2b24699aff5486fe3133, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   _barrelTip: {fileID: 3360415490813731815}
   _fireBullet: {fileID: 8675171590385254316, guid: a551eac7c9941b148b57c7f6f5fd94a4,
     type: 3}
@@ -415,7 +413,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -621,27 +619,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a35d5acfc279e844b98c58a746656e4, type: 3}
---- !u!1 &517332684178515705 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3177694477784453230, guid: 3a35d5acfc279e844b98c58a746656e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3113288199225013911}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4286849467078367380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1173590123732774403, guid: 3a35d5acfc279e844b98c58a746656e4,
+--- !u!224 &7951490519574497335 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5002867382900178592, guid: 3a35d5acfc279e844b98c58a746656e4,
     type: 3}
   m_PrefabInstance: {fileID: 3113288199225013911}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4747947846285454446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7696799606081067769, guid: 3a35d5acfc279e844b98c58a746656e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3113288199225013911}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &7951490519574497335 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5002867382900178592, guid: 3a35d5acfc279e844b98c58a746656e4,
     type: 3}
   m_PrefabInstance: {fileID: 3113288199225013911}
   m_PrefabAsset: {fileID: 0}
@@ -695,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 3223790571413354648, guid: d632d61e04579624aaaef6c6733cbe6b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3223790571413354648, guid: d632d61e04579624aaaef6c6733cbe6b,
         type: 3}
@@ -814,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -898,5 +884,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
