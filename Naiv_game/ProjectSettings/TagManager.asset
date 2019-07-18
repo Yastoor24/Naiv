@@ -17,6 +17,11 @@ TagManager:
   - EnemyBullet
   - MedKit
   - Transport
+  - clamp
+  - Jump
+  - moon
+  - startPoint
+  - toStar
   layers:
   - Default
   - TransparentFX
@@ -27,7 +32,7 @@ TagManager:
   - 
   - 
   - lader
-  - 
+  - Player
   - 
   - 
   - 
