@@ -84,7 +84,7 @@ public class FishScript : MonoBehaviour
             anim.Play("FishIdleRight");
         }
 
-        if (jumpedTimes == 1)
+        if (jumpedTimes == 3)
         {
             jumpedTimes = 0;
 
