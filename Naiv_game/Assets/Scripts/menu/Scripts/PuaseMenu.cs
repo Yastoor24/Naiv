@@ -35,7 +35,7 @@ public class PuaseMenu : MonoBehaviour
        GameIsPaused = true;
 
      }
-    
+
 
       public void LoadMenu(){
          Debug.Log("Loading menu");
