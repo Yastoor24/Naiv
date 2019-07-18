@@ -6,7 +6,7 @@ public class Lizard : Enemy
 {
 
     private bool moveLeft;
-    private bool attacks;
+   
     private bool stunned;
     [SerializeField]
     public Transform  top_Collision, down_Collision;
@@ -30,7 +30,7 @@ public class Lizard : Enemy
     void Start()
     {
         moveLeft = true;
-        attacks = false;
+        
     }
 
     void Update()
@@ -122,13 +122,13 @@ public class Lizard : Enemy
     public void OnCollisionEnter2D(Collision2D target)
     {
     
-        if ( ! (target.gameObject.tag == "Ground") )
+        if ( ! (target.gameObject.tag == "Ground") && !(target.gameObject.tag == "Player"))
         {
             myBody.velocity = new Vector2(0, 0);
             anim.Play("Dead");
 
             StartCoroutine(ttimer(1f));
-            print("lizard dead");
+
 
 
         }

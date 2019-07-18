@@ -27,6 +27,8 @@ public class PlayerMobile : MonoBehaviour
     public Transform HitBox1;
     public Joystick joystick;
     public float move;
+    public GameObject toStar;
+    public bool jumpped = false;
 
     //use his for init
     // Start is called before the first frame update
@@ -141,7 +143,16 @@ public class PlayerMobile : MonoBehaviour
             _PlayerAnim.Jump(true);
         }
 
+        if (jumpped)
+        {
 
+            _rigid.velocity = new Vector2(_rigid.velocity.x, 11);
+            StartCoroutine(ResetJumpedRoutine());
+            _PlayerAnim.Jump(true);
+            jumpped = false;
+
+
+        }
         // speed for the player jump
         _rigid.velocity = new Vector2((move) * _speed, _rigid.velocity.y);
         _PlayerAnim.Move(move);
@@ -216,7 +227,17 @@ public class PlayerMobile : MonoBehaviour
                 }
             }
         }
+        if (collision.tag == "startPoint")
+        {
+            toStar.SetActive(true);
 
+        }
+
+        if (collision.gameObject.tag == "Jump")
+        {
+            jumpped = true;
+
+        }
     }
 
     IEnumerator WaitBuff()

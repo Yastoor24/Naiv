@@ -95,7 +95,7 @@ public class Coin : MonoBehaviour
 
 
 
-        if (target.gameObject.tag == "EnemyBullet"  || target.gameObject.tag == "SuperEnemyBullet")
+        if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "EnemyBullet"  || target.gameObject.tag == "SuperEnemyBullet")
         { playerDead(); }
 
 
@@ -104,7 +104,7 @@ public class Coin : MonoBehaviour
     // detect the collision the player with enemy &  PlayerBullet and decrease the player life or dead him
     void OnCollisionEnter2D(Collision2D target)
     {
-        if (target.gameObject.tag == "Enemy" && target.gameObject.tag == "EnemyBullet")
+        if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "EnemyBullet" || target.gameObject.tag == "SuperEnemyBullet")
         {
 
             playerDead();
