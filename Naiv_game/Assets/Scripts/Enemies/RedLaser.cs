@@ -40,7 +40,7 @@ public class RedLaser : MonoBehaviour
         _slope = (target.position.y - transform.position.y) / (target.position.x - transform.position.x);
         _degree = Mathf.Atan(_slope);
 
-        transform.RotateAroundLocal(dir, _degree);
+        //transform.RotateAroundLocal(dir, _degree);
 
    
     }
