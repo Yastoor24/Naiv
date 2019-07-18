@@ -174,7 +174,8 @@ public class DroneScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.gameObject.tag == "Ground")
+        {
             _anim.Play("DroneWreckage");
 
             //_mybody.bodyType = RigidbodyType2D.Kinematic;
@@ -186,7 +187,12 @@ public class DroneScript : MonoBehaviour
             _attack = false;
 
             fire = false;
+        }
+    }
 
+    void CannotMove()
+    {
+        _canMove = false;
     }
 
     private void OnDestroy()
