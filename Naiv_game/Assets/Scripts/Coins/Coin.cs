@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
     public static int _MedKitCount=0;
     private bool state = true;
     private bool yesState = false;
+    public Transform BoxReturn;
 
 
 
@@ -116,11 +117,12 @@ public class Coin : MonoBehaviour
 
             playerDead();
 
-            //if (_lifeCount > 0)
-            //{
+            if (HealthBarFade.healthValue > 0)
+            {
 
-            //    transform.position = BoxReturn.position;
-            //}
+                transform.position = BoxReturn.position;
+             
+            }
 
         }
 

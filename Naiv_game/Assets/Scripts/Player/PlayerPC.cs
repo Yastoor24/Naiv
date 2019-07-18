@@ -155,7 +155,7 @@ public class PlayerPC : MonoBehaviour
     bool isGrounded()
     {
         // collider grounded and jump
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 8);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, 1 << 8);
 
 
         if (hitInfo.collider != null)

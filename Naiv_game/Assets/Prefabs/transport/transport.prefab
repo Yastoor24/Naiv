@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7004005826797434867}
   - component: {fileID: 7004005826797434877}
   - component: {fileID: 7004005826797434876}
+  - component: {fileID: 8467808352360886459}
   m_Layer: 0
   m_Name: transport
   m_TagString: Transport
@@ -73,3 +74,19 @@ MonoBehaviour:
   level: The village
   x: -75
   y: -32
+--- !u!114 &8467808352360886459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004005826797434878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6bc55e1fe99cf45a6b53f5ef3a2581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadingSceneName: 
+  loadingText: {fileID: 0}
+  sliderBar: {fileID: 0}
+  image: {fileID: 0}
