@@ -8,7 +8,7 @@ public class Coin : MonoBehaviour
 {
     public GameObject medKitBox;
     private Text _MedKitTextScore;
-    public static int _MedKitCount=0;
+    public  int _MedKitCount=0;
     private bool state = true;
     private bool yesState = false;
 
@@ -104,23 +104,10 @@ public class Coin : MonoBehaviour
     // detect the collision the player with enemy &  PlayerBullet and decrease the player life or dead him
     void OnCollisionEnter2D(Collision2D target)
     {
-        if (target.gameObject.tag == "Enemy")
+        if (target.gameObject.tag == "Enemy" && target.gameObject.tag == "EnemyBullet")
         {
 
             playerDead();
-
-        }
-
-       else if (target.gameObject.tag == "fallout")
-        {
-
-            playerDead();
-
-            //if (_lifeCount > 0)
-            //{
-
-            //    transform.position = BoxReturn.position;
-            //}
 
         }
 
@@ -130,10 +117,10 @@ public class Coin : MonoBehaviour
 
     void playerDead()
     {
+       // int health = GetComponentInChildren<HealthBarFade>().healthValue;
+        
 
-
-
-        if (HealthBarFade.healthValue > 0)
+        if (GetComponentInChildren<HealthBarFade>().healthValue > 0)
         {
             // decrease the life by one
             HealthBarFade.damState = true;
@@ -143,7 +130,7 @@ public class Coin : MonoBehaviour
 
 
         }
-        else if (HealthBarFade.healthValue == 0)
+        else if (GetComponentInChildren<HealthBarFade>().healthValue == 0)
         {
 
 

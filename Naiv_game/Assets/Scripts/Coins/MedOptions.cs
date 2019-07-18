@@ -27,8 +27,8 @@ public class MedOptions : MonoBehaviour
         HealthBarFade.amount = 20;
         HealthBarFade.heelState = true;
 
-         Coin._MedKitCount -= 3;
-       _MedKitTextScore.text = "MedKit " + Coin._MedKitCount;
+        GetComponentInParent<Coin>()._MedKitCount -= 3;
+       _MedKitTextScore.text = "MedKit " + GetComponentInParent<Coin>()._MedKitCount;
         medKitBox.SetActive(false);
 
      
