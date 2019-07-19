@@ -11,7 +11,7 @@ public class NoteDialog : MonoBehaviour
 
     private bool _stop = false;
     public GameObject _noteDialog;
-   float duration = 5;
+   float duration = 2;
 
     // Start is called before the first frame update
     void Start()
