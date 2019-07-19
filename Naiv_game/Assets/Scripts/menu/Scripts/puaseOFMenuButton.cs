@@ -19,7 +19,7 @@ public class puaseOFMenuButton : MonoBehaviour
 				if(Input.GetAxis ("Submit") == 1) {
 	      animator.SetBool ("pressed", true);
 			//	print("sumbit 1");
-			//		Time.timeScale =3;
+			//Time.timeScale =3;
 			    NewGameBtn(Scene);
 				}else if (animator.GetBool ("pressed")){
 	          animator.SetBool ("pressed", false);
@@ -48,9 +48,9 @@ public class puaseOFMenuButton : MonoBehaviour
 		{
 
 			 if (_newGameLevel == "WelcomeMenu"){
-				 SceneManager.LoadScene(_newGameLevel);
+			//	 SceneManager.LoadScene(_newGameLevel);
 			 } else if(_newGameLevel == "optionMenu"){
-				  SceneManager.LoadScene(_newGameLevel);
+			//	  SceneManager.LoadScene(_newGameLevel);
 			 }
 				//SceneManager.LoadScene(_newGameLevel);
 
@@ -60,7 +60,7 @@ public class puaseOFMenuButton : MonoBehaviour
 
 		// }
       else   {
-				SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
+		//		SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
 		}
 }
 }
