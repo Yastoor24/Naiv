@@ -12,11 +12,7 @@ public class Coin : MonoBehaviour
     private bool state = true;
     private bool yesState = false;
     public Transform BoxReturn;
-
-
-
-
-
+    
     void Start()
     {
 
@@ -112,16 +108,22 @@ public class Coin : MonoBehaviour
 
         }
 
-       else if (target.gameObject.tag == "fallout")
+       else if (target.gameObject.tag== "fallout")
         {
 
-            playerDead();
+            
 
             if (GetComponentInChildren<HealthBarFade>().healthValue > 0)
             {
-
+                playerDead();
                 transform.position = BoxReturn.position;
 
+            }
+
+
+            else
+            {
+                playerDead();
             }
 
         }

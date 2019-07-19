@@ -245,6 +245,7 @@ MonoBehaviour:
     type: 3}
   BoxReturn: {fileID: 1410456168459875664, guid: 949047b4e6d058a4298a13b1b73cec95,
     type: 3}
+  Fallout: {fileID: 5680658683367781054, guid: 2d47060a7d5dc954398894cb84e70bae, type: 3}
 --- !u!114 &2215212645187914811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,6 +640,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: shoot
       objectReference: {fileID: 0}
+    - target: {fileID: 17100412708730634, guid: d632d61e04579624aaaef6c6733cbe6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3223790571413354648, guid: d632d61e04579624aaaef6c6733cbe6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -757,6 +763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fixed Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
