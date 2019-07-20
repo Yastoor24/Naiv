@@ -174,7 +174,7 @@ public class Coin : MonoBehaviour
     IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(0.25f);
-        SceneManager.LoadScene("Old Village House");
+        SceneManager.LoadScene("GameOver_lastOne");
     }
 
 
