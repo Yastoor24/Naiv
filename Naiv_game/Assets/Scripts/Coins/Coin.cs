@@ -110,15 +110,18 @@ public class Coin : MonoBehaviour
 
        else if (target.gameObject.tag== "fallout")
         {
+           
 
-            
 
             if (HealthBarFade.healthValue > 0)
             {
+                
+
+               transform.position = BoxReturn.position;
                 playerDead();
-                transform.position = BoxReturn.position;
-             
             }
+
+        
 
 
             else
@@ -171,4 +174,6 @@ public class Coin : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene("Old Village House");
     }
+
+  
 }
