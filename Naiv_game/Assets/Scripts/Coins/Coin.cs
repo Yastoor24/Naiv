@@ -12,7 +12,7 @@ public class Coin : MonoBehaviour
     private bool state = true;
     private bool yesState = false;
     public Transform BoxReturn;
-    
+
     void Start()
     {
 
@@ -111,14 +111,19 @@ public class Coin : MonoBehaviour
        else if (target.gameObject.tag== "fallout")
         {
 
-            
+
 
             if (GetComponentInChildren<HealthBarFade>().healthValue > 0)
             {
+
+
+               transform.position = BoxReturn.position;
                 playerDead();
                 transform.position = BoxReturn.position;
 
             }
+
+
 
 
             else
@@ -171,4 +176,6 @@ public class Coin : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         SceneManager.LoadScene("Old Village House");
     }
+
+
 }

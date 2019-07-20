@@ -126,7 +126,8 @@ public class Lizard : Enemy
         {
             myBody.velocity = new Vector2(0, 0);
             anim.Play("Dead");
-
+          
+          
             StartCoroutine(ttimer(1f));
 
 
