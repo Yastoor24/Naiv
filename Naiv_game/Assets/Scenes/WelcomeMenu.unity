@@ -583,6 +583,26 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1432632569}
+    - target: {fileID: 4438617445899611391, guid: 6fc4ae77eb1da86438f47bf6ecc05d72,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -90.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7326674090020696722, guid: 6fc4ae77eb1da86438f47bf6ecc05d72,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35.399998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502128976009105200, guid: 6fc4ae77eb1da86438f47bf6ecc05d72,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -146.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931535051264754683, guid: 6fc4ae77eb1da86438f47bf6ecc05d72,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -201
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fc4ae77eb1da86438f47bf6ecc05d72, type: 3}
 --- !u!1001 &4560397631958633179

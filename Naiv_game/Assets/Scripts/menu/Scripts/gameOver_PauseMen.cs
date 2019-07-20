@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityStandardAssets.CrossPlatformInput;
-
-public class MenuButton : MonoBehaviour
+public class gameOver_PauseMen : MonoBehaviour
 {
-	[SerializeField] MenuButtonController menuButtonController = null;
-	[SerializeField] Animator animator;
-	[SerializeField] AnimatorFunctions animatorFunctions;
-	[SerializeField]   int thisIndex ;
-	[SerializeField] string Scene;
+
+  	[SerializeField] MenuButtonController menuButtonController = null;
+  	[SerializeField] Animator animator;
+  	[SerializeField] AnimatorFunctions animatorFunctions;
+  	[SerializeField]   int thisIndex ;
+  	[SerializeField] string Scene;
+
     // Update is called once per frame
     void Update()
     {
@@ -51,7 +51,7 @@ public class MenuButton : MonoBehaviour
 
 			 if (_newGameLevel == "Old Village House"){
 				 SceneManager.LoadScene(_newGameLevel);
-			 } else if(_newGameLevel == "optionMenu"){
+			 } else if(_newGameLevel == "WelcomeMenu"){
 				  SceneManager.LoadScene(_newGameLevel);
 			 }
 				//SceneManager.LoadScene(_newGameLevel);
@@ -60,8 +60,6 @@ public class MenuButton : MonoBehaviour
 		 else if (_newGameLevel == "Exit"){
 			 Application.Quit();
 
-		 } else if (_newGameLevel == "WelcomeMenu"){
-         SceneManager.LoadScene(_newGameLevel);
 		 } else   {
 				SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
 		}
@@ -72,6 +70,4 @@ public class MenuButton : MonoBehaviour
 		//		Application.Quit();
 
 		}
-     //for exit from the level the player gose to welcome m
-
 }
