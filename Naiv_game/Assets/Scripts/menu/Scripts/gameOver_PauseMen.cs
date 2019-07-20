@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class puaseOFMenuButton : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class gameOver_PauseMen : MonoBehaviour
 {
-  [SerializeField] MenuButtonController menuButtonController = null;
-	[SerializeField] Animator animator;
-	[SerializeField] AnimatorFunctions animatorFunctions;
-	[SerializeField]   int thisIndex ;
-	[SerializeField] string Scene;
+
+  	[SerializeField] MenuButtonController menuButtonController = null;
+  	[SerializeField] Animator animator;
+  	[SerializeField] AnimatorFunctions animatorFunctions;
+  	[SerializeField]   int thisIndex ;
+  	[SerializeField] string Scene;
+
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +21,7 @@ public class puaseOFMenuButton : MonoBehaviour
 				if(Input.GetAxis ("Submit") == 1) {
 	      animator.SetBool ("pressed", true);
 			//	print("sumbit 1");
-			//Time.timeScale =3;
+			//		Time.timeScale =3;
 			    NewGameBtn(Scene);
 				}else if (animator.GetBool ("pressed")){
 	          animator.SetBool ("pressed", false);
@@ -47,20 +49,25 @@ public class puaseOFMenuButton : MonoBehaviour
 		public void NewGameBtn(string _newGameLevel)
 		{
 
-			 if (_newGameLevel == "WelcomeMenu"){
-			//	 SceneManager.LoadScene(_newGameLevel);
-			 } else if(_newGameLevel == "optionMenu"){
-			//	  SceneManager.LoadScene(_newGameLevel);
+			 if (_newGameLevel == "Old Village House"){
+				 SceneManager.LoadScene(_newGameLevel);
+			 } else if(_newGameLevel == "WelcomeMenu"){
+				  SceneManager.LoadScene(_newGameLevel);
 			 }
 				//SceneManager.LoadScene(_newGameLevel);
 
 
-		// else if (_newGameLevel == "Exit"){
-			// Application.Quit();
+		 else if (_newGameLevel == "Exit"){
+			 Application.Quit();
 
-		// }
-      else   {
-		//		SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
+		 } else   {
+				SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
 		}
-}
+
+		// for exit the game ..
+//		public void ExitGameBtn()
+	//	{
+		//		Application.Quit();
+
+		}
 }

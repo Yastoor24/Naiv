@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class NoteDialog : MonoBehaviour
 {
@@ -8,7 +11,7 @@ public class NoteDialog : MonoBehaviour
 
     private bool _stop = false;
     public GameObject _noteDialog;
-
+   float duration = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -16,22 +19,23 @@ public class NoteDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_stop)
-        {
+      //this if for duration of the text how many sec will apear
+      if (Time.time > duration){
+        _stop = false;
+        _noteDialog.SetActive(false);
+
+      }
+
+    //    if (_stop)
+      //  {
             //Time.timeScale = 0f;
            // _noteDialog.SetActive(false);
-        }
-        else
-        {
+        //}
+        //else
+        //{
             //Time.timeScale = 1f;
-
-        }
-
-
+        //}
     }
-
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player") {
@@ -46,6 +50,8 @@ public class NoteDialog : MonoBehaviour
 
 
         }
+
     }
+
 
 }

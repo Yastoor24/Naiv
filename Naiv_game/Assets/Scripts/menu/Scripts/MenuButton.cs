@@ -60,6 +60,8 @@ public class MenuButton : MonoBehaviour
 		 else if (_newGameLevel == "Exit"){
 			 Application.Quit();
 
+		 } else if (_newGameLevel == "WelcomeMenu"){
+         SceneManager.LoadScene(_newGameLevel);
 		 } else   {
 				SceneManager.LoadScene(	PlayerPrefs.GetInt("Scene"));
 		}
