@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishScript : MonoBehaviour
+public class FrogScript : MonoBehaviour
 {
 
     private Animator anim;
@@ -54,7 +54,7 @@ public class FishScript : MonoBehaviour
 
     IEnumerator FishJump()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
+        yield return new WaitForSeconds(3);
 
         animation_Started = true;
         animation_Finished = false;
@@ -100,7 +100,78 @@ public class FishScript : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "PlayerBullet")
+        {
+            anim.Play("FishDead");
+            OnDestroy();
+
+            //GetComponent<BoxCollider2D>().isTrigger = true;
+
+            //myBody.bodyType = RigidbodyType2D.Dynamic;
+
+            //_canMove = false;
+
+        }
+
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(gameObject, 1);
+    }
+
 } // class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
