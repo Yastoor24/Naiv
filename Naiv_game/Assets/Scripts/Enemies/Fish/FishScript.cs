@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FrogScript : MonoBehaviour
+public class FishScript : MonoBehaviour
 {
 
     private Animator anim;
