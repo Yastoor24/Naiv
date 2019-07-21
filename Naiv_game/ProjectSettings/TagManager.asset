@@ -17,6 +17,10 @@ TagManager:
   - EnemyBullet
   - MedKit
   - Transport
+  - SuperEnemyBullet
+  - AbkarCanvas
+  - StartBoss
+  - BossGround
   layers:
   - Default
   - TransparentFX
