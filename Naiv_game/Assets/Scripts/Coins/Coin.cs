@@ -91,9 +91,11 @@ public class Coin : MonoBehaviour
         }
 
 
-
         if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "EnemyBullet"  || target.gameObject.tag == "SuperEnemyBullet")
         { playerDead(); }
+
+
+
 
 
     }

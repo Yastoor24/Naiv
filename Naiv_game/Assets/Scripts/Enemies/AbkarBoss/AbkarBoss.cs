@@ -7,37 +7,33 @@ public class AbkarBoss : MonoBehaviour
     private Rigidbody2D _myBody;
     private Animator _anim;
     private GameObject _player;
-    //[SerializeField]
-    //private GameObject _redLaser;
-    //[SerializeField]
-    //private GameObject _bullet;
+   
     private string _bulletMood;
-    public GameObject _firePoint;
+ 
     private Vector3 _moveDirection = Vector3.right;
     private float _bossX;
     [SerializeField]
     private GameObject _up;
     [SerializeField]
     private GameObject _down;
-    [SerializeField]
-    private GameObject _right;
-    private float _rightGround;
-    [SerializeField]
-    private GameObject _lift;
+   
     [SerializeField]
     private GameObject _canvas;
     private float _bossUp;
     private float _bossDown;
     private float _playerPostionY;
     private float _playerPostionX;
-    private float _liftGround;
-    private float _health = 100f;
-    private int _laserCount =3;
-    private bool _attack = true;
+    private string nameAnim ="Idle";
+    private bool _dead = false;
     private bool _flip = true;
     private bool _bulletState = false;
-    public  HealthBarFade _healthBar;
-
+    public HealthBarFadeAbkar _healthBar;
+    [SerializeField]
+    private GameObject _right;
+    [SerializeField]
+    private GameObject _lift;
+    private float _liftGround;
+    private float _rightGround;
 
     void Awake()
     {
@@ -48,12 +44,12 @@ public class AbkarBoss : MonoBehaviour
         _bossX = _myBody.transform.position.x;
         _liftGround = _lift.transform.position.x;
         _rightGround = _right.transform.position.x;
-      
+
     }
 
     void Start()
     {
-         _healthBar = new HealthBarFade();
+         _healthBar = new HealthBarFadeAbkar();
      
     }
 
@@ -66,59 +62,34 @@ public class AbkarBoss : MonoBehaviour
 
     void bossAttack()
     {
+        _playerPostionX = _player.transform.position.x;
         _playerPostionY = _player.transform.position.y;
         _bossUp = _up.transform.position.y;
         _bossDown = _down.transform.position.y;
-    
-        if (_bulletState)
+
+
+        if ((_playerPostionY < _bossUp) && (_playerPostionY > _bossDown) && (_playerPostionX >= _liftGround && _playerPostionX <= _rightGround))
+
         {
-             _bulletMood = "Attack1";
+            if (_bulletState)
+            {
 
+                nameAnim = "SuperAttack";
 
+            }
+            else if (!_bulletState)
+            {
+                nameAnim = "Attack1";
+
+            }
         }
-        else if (!_bulletState)
-        {
-            _bulletMood = "SuperAttack";
-                   }        
-
-        if (_playerPostionY < _bossUp && _playerPostionY > _bossDown)
-        {
-            _anim.Play(_bulletMood);
-        //    // خليه يطلق عليه و ينقص الكاونت ولو خلص حيستدعي مثود الوقت
-
-        //    if (_laserCount>0) {
-
-        //        if (_attack)
-        //        {
-        //            Instantiate(_bulletMood, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
-                   
-        //            if (_bulletState)
-        //            {
-        //                _bullet.gameObject.GetComponent<RedLaser>().target = _player.transform;
-        //            }
-        //            else if (!_bulletState)
-        //            {
-        //                _redLaser.gameObject.GetComponent<RedLaser>().target = _player.transform;
-        //            }
-
-        //            _laserCount--;
-        //            _attack = false;
-        //            if (_laserCount > 0)
-        //            { StartCoroutine(waitForLaser(0.5f));
-        //                print(_laserCount);
-        //            }
-
-        //            if (_laserCount == 0)
-        //            {
-        //                StartCoroutine(waitForLaser(5f));
-        //            }
-        //        }
-              
-        //    }
-
-           
-        }
+        else
+        { nameAnim = "Idle"; }
+        _anim.Play(nameAnim);
       
+
+
+
 
     }
 
@@ -126,13 +97,14 @@ public class AbkarBoss : MonoBehaviour
     {
         float _playerPostionX = _player.transform.position.x;
 
-
+  
         if (_playerPostionX > _bossX)
         {
+    
             if (!_flip)
             {
                 _flip = true;
-
+              
                 //flip+
                 changeDirection();
             }
@@ -141,10 +113,11 @@ public class AbkarBoss : MonoBehaviour
         }
         else if (_playerPostionX <= _bossX)
         {
+          
             if (_flip)
             {
-                _flip = false;               
-               
+                _flip = false;
+            
                 //flip-
                 changeDirection();
             }
@@ -153,7 +126,7 @@ public class AbkarBoss : MonoBehaviour
          
         }
 
-        bossAttack();
+       bossAttack();
 
 
     }
@@ -161,79 +134,77 @@ public class AbkarBoss : MonoBehaviour
     void changeDirection()
     {
         Vector3 tempScale = transform.localScale;
-        tempScale.x = transform.localScale.x * -1f;
+        tempScale.x = (transform.localScale.x * -1f);
         transform.localScale = tempScale;
 
-        // transform.transform.Rotate(0f, 180F, 0f)
-        _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
+        Vector3 tempPostion = transform.position;
+        tempPostion.x =-100f;
+
+        transform.position = tempPostion;
+
+
+        // transform.transform.Rotate(0f, 180F, 0f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "PlayerBullet")
-        {
-            _canvas.SetActive(true);
-            _playerPostionX = _player.transform.position.x;
-           
-            Destroy(collision.gameObject);
-            if (_playerPostionX <= _rightGround && _playerPostionX > _liftGround) {
+        _playerPostionX = _player.transform.position.x;
 
-                HealthBarFade.damState = true;
+        if (!_dead) { 
+            if (collision.tag == "PlayerBullet")
+            {
+               
 
-                //if ((HealthBarFade.healthValue<= 70 && HealthBarFade.healthValue <= 80) || (HealthBarFade.healthValue >= 50 && HealthBarFade.healthValue <= 60) || HealthBarFade.healthValue <= 15)
-                //{
-                //    _bulletState = true;
-                //}
-                //else
-                //{ _bulletState = false; }
+                Destroy(collision.gameObject);
 
-                if (HealthBarFade.EnemyDead)
+                HealthBarFadeAbkar.damState = true;
+
+                if ((HealthBarFadeAbkar.healthValue >= 50 && HealthBarFadeAbkar.healthValue <= 60) || HealthBarFadeAbkar.healthValue <= 20)
                 {
-                    StartCoroutine(Dead(1f)) ;
+                    
+                    _bulletState = true;
+                    
+                }
+                else
+                {
+                  
+                    _bulletState = false;
+                   
+                }
+
+                if (HealthBarFadeAbkar.EnemyDead)
+                {
+                    _dead = true;
+                    print("dead1");
+                    _anim.Play("Abkardead");
+                    StartCoroutine(Dead(2.5f));
                 }
 
             }
-            else
-            {
-                print("non change");
-                // تاثير انه صدها 
-            }
+         
+    }
 
-            StartCoroutine(waitForCanvas(0.8f));
-        }
 
     }
 
-    IEnumerator waitForCanvas (float time)
-    {
-       
-        yield return new WaitForSeconds(time);
-        _canvas.SetActive(false);
-    }
+    
 
     IEnumerator Dead(float time)
     {
-        _anim.SetBool("Dead", true);
-        //_bulletMood.SetActive(false);
+        
+     
         yield return new WaitForSeconds(time);
-       
         this.gameObject.SetActive(false);
+        _canvas.SetActive(false);
     }
 
-    IEnumerator waitForLaser(float time)
-    {
-        yield return new WaitForSeconds(time);
-        if (_laserCount == 0)
-        {
-            _laserCount = 3;
-        }
+    //IEnumerator wateForATTACK(float time)
+    //{
 
-        _attack = true;
-
-    }
-
-
-
+    //    nameAnim ="Idle";
+    //    yield return new WaitForSeconds(time);
+       
+    //}
 
 
 
