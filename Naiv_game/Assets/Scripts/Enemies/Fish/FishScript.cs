@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FishScript : MonoBehaviour
 {
+
     private Animator anim;
 
     private bool animation_Started;
@@ -12,9 +13,8 @@ public class FishScript : MonoBehaviour
     private int jumpedTimes;
     private bool jumpLeft = true;
 
-    public int JumpNums; 
-
     private string coroutine_Name = "FishJump";
+    public int JumpsNum;
 
     public LayerMask playerLayer;
 
@@ -28,15 +28,17 @@ public class FishScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(coroutine_Name);
-        //player = GameObject.FindGameObjectWithTag(MyTags.PLAYER_TAG);
+        //player = GameObject.FindGameObjectWithTag (MyTags.PLAYER_TAG);
     }
 
     void Update()
     {
-        //if (Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer))
-        //{
-            //player.GetComponent<PlayerDamage>().DealDamage();
+        //if(Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer)) {
+        //player.GetComponent<PlayerDamage> ().DealDamage ();
         //}
+        print("anim start" + animation_Started);
+        print("anim finish" + animation_Finished);
+
     }
 
     void LateUpdate()
@@ -52,7 +54,7 @@ public class FishScript : MonoBehaviour
 
     IEnumerator FishJump()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 4f));
+        yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         animation_Started = true;
         animation_Finished = false;
@@ -86,7 +88,7 @@ public class FishScript : MonoBehaviour
             anim.Play("FishIdleRight");
         }
 
-        if (jumpedTimes == JumpNums)
+        if (jumpedTimes == JumpsNum)
         {
             jumpedTimes = 0;
 
@@ -97,4 +99,10 @@ public class FishScript : MonoBehaviour
             jumpLeft = !jumpLeft;
         }
     }
-}
+
+} // class
+
+
+
+
+
