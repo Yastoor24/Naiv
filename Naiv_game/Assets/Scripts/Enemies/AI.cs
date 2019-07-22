@@ -48,6 +48,8 @@ public class AI : MonoBehaviour
     public GameObject _midPoint ;
     public GameObject _groundPoint;
 
+    public bool _start = false;
+
     void Awake()
     {
         _typeOfAttack = Random.Range(1, 4);
@@ -87,9 +89,13 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        //Fire();
-      
+        if (_start == true)
+        {
+            Move();
+            //Fire();
+        }
+
+
     }
 
     void Move()
