@@ -25,7 +25,7 @@ public class AbkarBoss : MonoBehaviour
     private float _playerPostionX;
     private string nameAnim ="Idle";
     private bool _dead = false;
-    private bool _flip = false;
+    private bool _flip = true;
     private bool _bulletState = false;
     public HealthBarFadeAbkar _healthBar;
     [SerializeField]
@@ -55,8 +55,8 @@ public class AbkarBoss : MonoBehaviour
 
     void Update()
     {
+        
 
-       // _anim.Play(nameAnim);
         bossMovement();
     }
 
@@ -73,30 +73,18 @@ public class AbkarBoss : MonoBehaviour
         {
             if (_bulletState)
             {
-                if (!_flip)
-                { nameAnim = "SuperAttackFlip"; }
-                else { nameAnim = "SuperAttack"; }
-                 
+
+                nameAnim = "SuperAttack";
 
             }
             else if (!_bulletState)
             {
-                if (!_flip)
-                { nameAnim = "Attack1Flip"; }
-                else
-                { nameAnim = "Attack1"; }
-              
+                nameAnim = "Attack1";
 
             }
         }
         else
-        {
-            if (!_flip)
-            { nameAnim = "IdleFlip"; }
-            else
-            { nameAnim = "Idle"; }
-
-            }
+        { nameAnim = "Idle"; }
         _anim.Play(nameAnim);
       
 
@@ -109,86 +97,89 @@ public class AbkarBoss : MonoBehaviour
     {
         float _playerPostionX = _player.transform.position.x;
 
-
+  
         if (_playerPostionX > _bossX)
         {
-
+    
             if (!_flip)
             {
                 _flip = true;
-                //flip-
-            }
-
-
-        }
-            else if (_playerPostionX <= _bossX)
-            {
-
-                if (_flip)
-                {
-                    _flip = false;
               
-                    //flip-
-                    //changeDirection();
-                }
-
-
-
+                //flip+
+                changeDirection();
+            }
+          
+          
+        }
+        else if (_playerPostionX <= _bossX)
+        {
+          
+            if (_flip)
+            {
+                _flip = false;
+            
+                //flip-
+                changeDirection();
             }
 
-            bossAttack();
 
-        
+         
+        }
+
+       bossAttack();
+
+
     }
 
-   
+    void changeDirection()
+    {
+        Vector3 tempScale = transform.localScale;
+        tempScale.x = (transform.localScale.x * -1f);
+        transform.localScale = tempScale;
+
+        Vector3 tempPostion = transform.position;
+        tempPostion.x =-100f;
+
+        transform.position = tempPostion;
+
+
+        // transform.transform.Rotate(0f, 180F, 0f);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         _playerPostionX = _player.transform.position.x;
 
-        if (!_dead) {
+        if (!_dead) { 
             if (collision.tag == "PlayerBullet")
             {
-
+               
 
                 Destroy(collision.gameObject);
 
-                if (_playerPostionX <= _rightGround && _playerPostionX > _liftGround)
-                {
-                    HealthBarFadeAbkar.damState = true;
+                HealthBarFadeAbkar.damState = true;
 
-                if (HealthBarFadeAbkar.healthValue <= 80)
+                if ((HealthBarFadeAbkar.healthValue >= 50 && HealthBarFadeAbkar.healthValue <= 60) || HealthBarFadeAbkar.healthValue <= 20)
                 {
-
+                    
                     _bulletState = true;
-
+                    
                 }
                 else
                 {
-
+                  
                     _bulletState = false;
-
+                   
                 }
 
                 if (HealthBarFadeAbkar.EnemyDead)
                 {
                     _dead = true;
                     print("dead1");
-                    if (_flip)
-                    {
-                        _anim.Play("AbkardeadFlip");
-                            StartCoroutine(Dead(2.5f));
-                        }
-                    else
-
-                    { _anim.Play("Abkardead");
-                            StartCoroutine(Dead(2.5f));
-                        }
-
-                   
+                    _anim.Play("Abkardead");
+                    StartCoroutine(Dead(2.5f));
                 }
 
-            }
             }
          
     }
@@ -207,7 +198,14 @@ public class AbkarBoss : MonoBehaviour
         _canvas.SetActive(false);
     }
 
-  
+    //IEnumerator wateForATTACK(float time)
+    //{
+
+    //    nameAnim ="Idle";
+    //    yield return new WaitForSeconds(time);
+       
+    //}
+
 
 
     //class
