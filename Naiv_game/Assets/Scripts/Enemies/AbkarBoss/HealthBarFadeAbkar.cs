@@ -43,14 +43,14 @@ public class HealthBarFadeAbkar : MonoBehaviour
         {
             if (barImage.fillAmount < damagedBarImage.fillAmount)
             {
-                float shrinkSpeed = 0.3f;
+                float shrinkSpeed = 0.2f;
                 damagedBarImage.fillAmount -= shrinkSpeed * Time.deltaTime;
             }
         }
 
         if (damState)
         {
-            if (healthSystem.healthAmount > 5)
+            if (healthSystem.healthAmount > 0)
             {
                 if (!EnemyDead) { 
                 healthSystem.Damage(5);
@@ -60,11 +60,11 @@ public class HealthBarFadeAbkar : MonoBehaviour
               
             }
             }
-            else if (healthSystem.healthAmount== 5)
+            else if (healthSystem.healthAmount== 0)
             {
                
                 EnemyDead = true;
-              
+               
 
             }
         }
