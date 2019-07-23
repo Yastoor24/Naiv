@@ -56,8 +56,34 @@ public class AbkarBoss : MonoBehaviour
     void Update()
     {
 
-       // _anim.Play(nameAnim);
-        bossMovement();
+    
+       
+
+        if (HealthBarFadeAbkar.EnemyDead)
+        {
+            _dead = true;
+    
+            if (_flip)
+            {
+                _anim.Play("Abkardead");
+              
+             
+            }
+            else
+
+            {
+                _anim.Play("AbkardeadFlip");
+
+           
+            }
+             StartCoroutine(Dead(2.5f));
+
+        }
+        else
+        {
+            bossMovement();
+        }
+
     }
 
     void bossAttack()
@@ -170,23 +196,6 @@ public class AbkarBoss : MonoBehaviour
 
                 }
 
-                if (HealthBarFadeAbkar.EnemyDead)
-                {
-                    _dead = true;
-                    print("dead1");
-                    if (_flip)
-                    {
-                        _anim.Play("AbkardeadFlip");
-                            StartCoroutine(Dead(2.5f));
-                        }
-                    else
-
-                    { _anim.Play("Abkardead");
-                            StartCoroutine(Dead(2.5f));
-                        }
-
-                   
-                }
 
             }
             }

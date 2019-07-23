@@ -106776,6 +106776,11 @@ PrefabInstance:
       propertyPath: AbkarCanvase
       value: 
       objectReference: {fileID: 1761418888}
+    - target: {fileID: 4643787516561755902, guid: 2435409e1b77f0b4c9cff2c2b4553f97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2435409e1b77f0b4c9cff2c2b4553f97, type: 3}
 --- !u!1001 &7109499209137566324
