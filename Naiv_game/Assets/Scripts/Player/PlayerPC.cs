@@ -8,7 +8,7 @@ public class PlayerPC : MonoBehaviour
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
     [SerializeField]
-    private float _jumpForce = 5f;
+    private float _jumpForce = 0f;
     [SerializeField]
     private LayerMask _groundLayer;
     private bool _resetJumped = false;
@@ -59,7 +59,7 @@ public class PlayerPC : MonoBehaviour
 
         // player move horizontal (left and right )
         float move = Input.GetAxisRaw("Horizontal");
-       
+
         _grounded = isGrounded();
 
 
@@ -76,7 +76,7 @@ public class PlayerPC : MonoBehaviour
 
             if (move > 0 || _PlayerSprite.flipX == false)
             {
-                // when the player in a left side then will be used gun in the left side 
+                // when the player in a left side then will be used gun in the left side
                 _bullet.GetComponent<FireBullet>().Speed *= transform.localScale.x;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                 _anim.Play("Shoot");
@@ -84,6 +84,7 @@ public class PlayerPC : MonoBehaviour
 
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
+
 
                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
                 Vector3 pos = HitBox1.position;
@@ -94,6 +95,8 @@ public class PlayerPC : MonoBehaviour
                 _bullet.transform.rotation = Quaternion.Euler(0f, 0f, -180);
                 _anim.Play("Shoot");
             }
+
+
         }
 
         if ((Input.GetKeyDown(KeyCode.H) ) || Input.GetButton("XboxX"))
@@ -140,12 +143,25 @@ public class PlayerPC : MonoBehaviour
             Flip(false);
         }
 
-        // if the user pressed on space then will be jump
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
+
+        if(move == 0 && isGrounded() == true)
+        {
+            _PlayerAnim.Fall(false);
+
+        }
+
+        else if (move == 0 && isGrounded() == false)
+        {
+            _PlayerAnim.Fall(true);
+        }
+
+            // if the user pressed on space then will be jump
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
         {
 
-            _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
-            StartCoroutine(ResetJumpedRoutine());
+           _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
+
+          StartCoroutine(ResetJumpedRoutine());
             _PlayerAnim.Jump(true);
         }
         if (jumpped)
@@ -183,6 +199,7 @@ public class PlayerPC : MonoBehaviour
         return false;
 
     }
+
 
     void Flip(bool faceRight)
     {

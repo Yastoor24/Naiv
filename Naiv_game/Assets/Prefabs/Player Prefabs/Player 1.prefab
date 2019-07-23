@@ -75,7 +75,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.71, y: 1.1}
+  m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -245,7 +245,6 @@ MonoBehaviour:
     type: 3}
   BoxReturn: {fileID: 1410456168459875664, guid: 949047b4e6d058a4298a13b1b73cec95,
     type: 3}
-  Fallout: {fileID: 5680658683367781054, guid: 2d47060a7d5dc954398894cb84e70bae, type: 3}
 --- !u!114 &2215212645187914811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +261,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  _speed: 10
+  _speed: 5
   _fireBullet: {fileID: 8675171590385254316, guid: ad234f7d97470dc44843788ce94b1839,
     type: 3}
   _canMove: 1
@@ -283,7 +282,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  _speed: 10
+  _speed: 5
   _fireBullet: {fileID: 8675171590385254316, guid: ad234f7d97470dc44843788ce94b1839,
     type: 3}
   _canMove: 1
