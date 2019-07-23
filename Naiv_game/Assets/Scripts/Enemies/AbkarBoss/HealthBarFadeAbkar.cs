@@ -52,7 +52,8 @@ public class HealthBarFadeAbkar : MonoBehaviour
         {
             if (healthSystem.healthAmount > 0)
             {
-                if (!EnemyDead) { 
+                if (!EnemyDead) {
+                    print("DAMGE");
                 healthSystem.Damage(5);
                 HealthSystem_OnDamaged();
                 damState = false;
@@ -62,7 +63,7 @@ public class HealthBarFadeAbkar : MonoBehaviour
             }
             else if (healthSystem.healthAmount== 0)
             {
-               
+                print("dEAD");
                 EnemyDead = true;
                
 
