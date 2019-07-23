@@ -30,5 +30,13 @@ public class PlayerAnimation : MonoBehaviour
     {
         _anim.SetTrigger("Shoot");
       
+
+
+    }
+
+    public void Fall(bool falling)
+    {
+        _anim.SetBool("fall",falling );
+
     }
 }

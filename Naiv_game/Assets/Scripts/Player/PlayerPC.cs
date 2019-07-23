@@ -8,7 +8,7 @@ public class PlayerPC : MonoBehaviour
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
     [SerializeField]
-    private float _jumpForce = 5f;
+    private float _jumpForce = 0f;
     [SerializeField]
     private LayerMask _groundLayer;
     private bool _resetJumped = false;
@@ -83,6 +83,7 @@ public class PlayerPC : MonoBehaviour
             else if (move < 0 || _PlayerSprite.flipX == true)
             {
 
+
                 _bullet.GetComponent<FireBullet>().Speed *= -transform.localScale.x;
                 Vector3 pos = HitBox1.position;
                 pos.x = -2.7f;
@@ -92,6 +93,8 @@ public class PlayerPC : MonoBehaviour
                 _bullet.transform.rotation = Quaternion.Euler(0f, 0f, -180);
                 _anim.Play("Shoot");
             }
+
+
         }
 
         if ((Input.GetKeyDown(KeyCode.H) ) || Input.GetButton("XboxX"))
@@ -138,15 +141,29 @@ public class PlayerPC : MonoBehaviour
             Flip(false);
         }
 
-        // if the user pressed on space then will be jump
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
+
+        if(move == 0 && isGrounded() == true)
+        {
+            _PlayerAnim.Fall(false);
+
+        }
+
+        else if (move == 0 && isGrounded() == false)
+        {
+            _PlayerAnim.Fall(true);
+        }
+
+            // if the user pressed on space then will be jump
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
         {
 
-            _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
-            StartCoroutine(ResetJumpedRoutine());
+           _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
+          
+          StartCoroutine(ResetJumpedRoutine());
             _PlayerAnim.Jump(true);
         }
 
+   
         // speed for the player jump
         _rigid.velocity = new Vector2(move * _speed, _rigid.velocity.y);
         _PlayerAnim.Move(move);
@@ -163,7 +180,7 @@ public class PlayerPC : MonoBehaviour
             // if the palyer jump false then collider for grounded true
             if (_resetJumped == false)
             {
-
+                
                 _PlayerAnim.Jump(false);
                 return true;
             }
@@ -172,6 +189,7 @@ public class PlayerPC : MonoBehaviour
         return false;
 
     }
+
 
     void Flip(bool faceRight)
     {
@@ -223,6 +241,13 @@ public class PlayerPC : MonoBehaviour
                 }
             }
         }
+
+        //else if (collision.tag != "Ground")
+        //{
+        //    _PlayerAnim.Fall(true);
+        //    _anim.Play("JumpIdle");
+        //}
+
 
     }
 

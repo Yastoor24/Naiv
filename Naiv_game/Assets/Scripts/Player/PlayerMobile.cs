@@ -7,7 +7,7 @@ public class PlayerMobile : MonoBehaviour
     private AudioSource _GunAudio;
     private Rigidbody2D _rigid;
     [SerializeField]
-    private float _jumpForce = 5f;
+    private float _jumpForce = 3f;
     [SerializeField]
     private LayerMask _groundLayer;
     private bool _resetJumped = false;
@@ -133,6 +133,18 @@ public class PlayerMobile : MonoBehaviour
             Flip(false);
         }
 
+
+        if (move == 0 && isGrounded() == true)
+        {
+            _PlayerAnim.Fall(false);
+
+        }
+
+        else if (move == 0 && isGrounded() == false)
+        {
+            _PlayerAnim.Fall(true);
+        }
+
         // if the user pressed on space then will be jump
         if ((verticalMove >= 0.5f) && isGrounded() == true)
         {
@@ -211,7 +223,7 @@ public class PlayerMobile : MonoBehaviour
                     _canPower = false;
                     _powerPoint = 0;
                     _speed = 8;
-                    _jumpForce = 8;
+                    _jumpForce = 3;
                     StartCoroutine(WaitBuff());
                 }
             }
