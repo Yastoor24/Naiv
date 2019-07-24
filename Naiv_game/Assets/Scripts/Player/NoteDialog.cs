@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class NoteDialog : MonoBehaviour
 {
 
-public GameObject _object;
+
     private bool _stop = false;
     public GameObject _noteDialog;
-   float duration = 8;
+   float duration = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public GameObject _object;
       if (Time.time > duration){
         _stop = false;
         _noteDialog.SetActive(false);
-_object.SetActive(false);
+
       }
 
     //    if (_stop)
@@ -49,9 +49,6 @@ _object.SetActive(false);
             Debug.Log("Dialooog!!");
 
 
-        } 
-        else {
-          _noteDialog.SetActive(false);
         }
 
     }
