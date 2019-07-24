@@ -34,7 +34,7 @@ public class AbkarBoss : MonoBehaviour
     private GameObject _lift;
     private float _liftGround;
     private float _rightGround;
-
+    public GameObject Panel;
     void Awake()
     {
         _myBody = GetComponent<Rigidbody2D>();
@@ -214,6 +214,7 @@ public class AbkarBoss : MonoBehaviour
         yield return new WaitForSeconds(time);
         this.gameObject.SetActive(false);
         _canvas.SetActive(false);
+        Panel.SetActive(true);
     }
 
   
