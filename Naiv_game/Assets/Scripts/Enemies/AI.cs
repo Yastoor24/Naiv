@@ -13,7 +13,7 @@ public class AI : MonoBehaviour
     private Vector3 _moveDirection = Vector3.right;
     private Vector3 _originPosition;
     private Vector3 _movePosition;
-
+    private Vector3 _secondAttack;
 
     public GameObject _bullet;
 
@@ -24,7 +24,7 @@ public class AI : MonoBehaviour
     GameObject _player;
 
     [SerializeField]
-    private int _health = 1;
+    private int _health = 10;
 
     private Material _matWahite;
     private Material _matDefault;
@@ -34,7 +34,7 @@ public class AI : MonoBehaviour
 
     public float _distanceToMove = 4f;
 
-    private int _touches ;
+    private int _touches;
 
     // 1 = RollAttack
     // 2 = move
@@ -42,16 +42,18 @@ public class AI : MonoBehaviour
     // 4 = RollAndBackFromUP1Attack
     // 5 = RollAndBackFromUP2Attack
     // 
-    private int _typeOfAttack = 4;
+    private int _typeOfAttack = 3;
 
 
-    public GameObject _midPoint ;
+    public GameObject _midPoint;
     public GameObject _groundPoint;
+
+    public bool _start = false;
 
     void Awake()
     {
-        _typeOfAttack = Random.Range(1, 4);
-        Debug.Log(_typeOfAttack);
+       // _typeOfAttack = Random.Range(1, 4);
+        //Debug.Log(_typeOfAttack);
         _mybody = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -87,14 +89,19 @@ public class AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        //Fire();
-      
+        if (_start == true)
+        {
+            Move();
+            //Fire();
+        }
+
+
     }
 
     void Move()
     {
-        if (_canMove )
+
+        if (_canMove)
         {
             //Debug.Log("Moved!!");
             _anim.SetBool("Walk_Anim", true);
@@ -102,7 +109,8 @@ public class AI : MonoBehaviour
             transform.Translate(_moveDirection * 4f * Time.smoothDeltaTime);
         }
 
-        if (_canAttack) {
+        if (_canAttack)
+        {
             _anim.SetBool("Walk_Anim", false);
             _anim.SetBool("Roll_Anim", true);
 
@@ -127,24 +135,23 @@ public class AI : MonoBehaviour
                     RollAndBackFromUP1Attack();
 
                     return;
-
-
             }
         }
 
     }
 
 
-     private void  changeDirection(float _dir)
+    private void changeDirection(float _dir)
     {
         Vector3 tempScale = transform.localScale;
 
         if (_dir == 1)
         {
             tempScale.x = Mathf.Abs(transform.localScale.x);
-        }else if (_dir == -1)
+        }
+        else if (_dir == -1)
         {
-            tempScale.x = Mathf.Abs(transform.localScale.x)*-1;
+            tempScale.x = Mathf.Abs(transform.localScale.x) * -1;
 
         }
         else
@@ -171,7 +178,7 @@ public class AI : MonoBehaviour
         if (_distance > 8f)
         {
             //_canMove = true;
-           // _anim.Play("Woman_Rifle_Walk");
+            // _anim.Play("Woman_Rifle_Walk");
         }
 
         if (_distance < 5)
@@ -186,7 +193,7 @@ public class AI : MonoBehaviour
 
                 _attack = false;
 
-               // _anim.Play("Idel_Rifle");                               //TODO:change the animation
+                // _anim.Play("Idel_Rifle");                               //TODO:change the animation
 
                 StartCoroutine(WaitToFire(1f));
             }
@@ -239,27 +246,27 @@ public class AI : MonoBehaviour
 
     private void RollAndBackFromUP1Attack()
     {
-        if(_touches == 0)
+        if (_touches == 0)
         {
             transform.Translate(_moveDirection * 18f * Time.smoothDeltaTime);
-            Debug.Log("Toutch = "+_touches);
+            Debug.Log("Toutch of attack 3 = " + _touches);
         }
         else if (_touches == 1)
         {
-                Debug.Log("Toutch = " + _touches);
-            transform.Translate(_midPoint.transform.position * 18f * Time.smoothDeltaTime);
+            Debug.Log("Toutch of attack 3= " + _touches);
+            transform.Translate(_secondAttack* 10f * Time.smoothDeltaTime);
         }
         else if (_touches == 2)
         {
-                Debug.Log("Toutch = " + _touches);
+            Debug.Log("Toutch of attack 3= " + _touches);
 
-            //transform.Translate(_groundPoint.transform.position * 10f * Time.smoothDeltaTime);
+            transform.Translate(_groundPoint.transform.position * 10f * Time.smoothDeltaTime);
         }
 
 
     }
 
-    private void  RollAttack()
+    private void RollAttack()
     {
         transform.Translate(_moveDirection * 18f * Time.smoothDeltaTime);
     }
@@ -273,7 +280,7 @@ public class AI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "RightEdge")
+        if (collision.gameObject.tag == "RightEdge" || collision.gameObject.tag == "Player")
         {
             switch (_typeOfAttack)
             {
@@ -284,7 +291,7 @@ public class AI : MonoBehaviour
                     _moveDirection = Vector3.left;
                     changeDirection(-1);
                     StartCoroutine(WaitToMove(2));
-                    
+
                     StartCoroutine(WaitToCanAttack(4));
                     return;
 
@@ -317,6 +324,9 @@ public class AI : MonoBehaviour
                     Debug.Log("RightEdge");
 
                     ++_touches;
+
+                   _secondAttack = new Vector3(-1, 1, 0);
+
                     if (_touches == 2)
                     {
                         _touches = 0;
@@ -335,7 +345,7 @@ public class AI : MonoBehaviour
             }
 
         }
-        else if (collision.gameObject.tag == "LeftEdge")
+        else if (collision.gameObject.tag == "LeftEdge" || collision.gameObject.tag == "Player")
         {
             switch (_typeOfAttack)
             {
@@ -346,7 +356,7 @@ public class AI : MonoBehaviour
                     _moveDirection = Vector3.right;
                     changeDirection(1);
                     StartCoroutine(WaitToMove(2));
-                    
+
                     StartCoroutine(WaitToCanAttack(4));
 
                     return;
@@ -381,6 +391,9 @@ public class AI : MonoBehaviour
 
                     ++_touches;
 
+                    _secondAttack = new Vector3(1, 1, 0);
+
+
                     if (_touches == 2)
                     {
                         _touches = 0;
@@ -397,6 +410,8 @@ public class AI : MonoBehaviour
                     return;
             }
         }
+
+
     }
 
 
@@ -432,7 +447,9 @@ public class AI : MonoBehaviour
     IEnumerator WaitToCanAttack(float time)
     {
         yield return new WaitForSeconds(time);
-        _typeOfAttack = Random.Range(1, 4);
+        //_typeOfAttack = Random.Range(1, 4);
+        _typeOfAttack = 3;
+
         Debug.Log("Type of attack : " + _typeOfAttack);
         _canMove = false;
         _canAttack = true;
@@ -442,6 +459,19 @@ public class AI : MonoBehaviour
     IEnumerator WaitToAttack(float time)
     {
         yield return new WaitForSeconds(time);
+        if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
+        {
+            _moveDirection = Vector3.left;
+            changeDirection(-1);
+        }
+        else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
+        {
+            _moveDirection = Vector3.right;
+
+
+            changeDirection(1);
+        }
+
         _attack = true;
     }
 }
