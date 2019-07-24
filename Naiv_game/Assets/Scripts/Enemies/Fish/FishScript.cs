@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FishScript : MonoBehaviour
 {
+
     private Animator anim;
 
     private bool animation_Started;
@@ -13,6 +14,7 @@ public class FishScript : MonoBehaviour
     private bool jumpLeft = true;
 
     private string coroutine_Name = "FishJump";
+    public int JumpsNum;
 
     public LayerMask playerLayer;
 
@@ -26,15 +28,17 @@ public class FishScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(coroutine_Name);
-        //player = GameObject.FindGameObjectWithTag(MyTags.PLAYER_TAG);
+        //player = GameObject.FindGameObjectWithTag (MyTags.PLAYER_TAG);
     }
 
     void Update()
     {
-        //if (Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer))
-        //{
-            //player.GetComponent<PlayerDamage>().DealDamage();
+        //if(Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer)) {
+        //player.GetComponent<PlayerDamage> ().DealDamage ();
         //}
+        print("anim start" + animation_Started);
+        print("anim finish" + animation_Finished);
+
     }
 
     void LateUpdate()
@@ -50,7 +54,7 @@ public class FishScript : MonoBehaviour
 
     IEnumerator FishJump()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 4f));
+        yield return new WaitForSeconds(3);
 
         animation_Started = true;
         animation_Finished = false;
@@ -84,7 +88,7 @@ public class FishScript : MonoBehaviour
             anim.Play("FishIdleRight");
         }
 
-        if (jumpedTimes == 3)
+        if (jumpedTimes == JumpsNum)
         {
             jumpedTimes = 0;
 
@@ -95,4 +99,81 @@ public class FishScript : MonoBehaviour
             jumpLeft = !jumpLeft;
         }
     }
-}
+
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "PlayerBullet")
+        {
+            anim.Play("FishDead");
+            OnDestroy();
+
+            //GetComponent<BoxCollider2D>().isTrigger = true;
+
+            //myBody.bodyType = RigidbodyType2D.Dynamic;
+
+            //_canMove = false;
+
+        }
+
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(gameObject, 1);
+    }
+
+} // class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
