@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7945756004810470458
+--- !u!1 &8031658188191706392
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7945756004810470459}
-  - component: {fileID: 7945756004810470461}
-  - component: {fileID: 7945756004810470460}
+  - component: {fileID: 8031658188191706393}
+  - component: {fileID: 8031658188191706399}
+  - component: {fileID: 8031658188191706398}
   m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
@@ -18,27 +18,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7945756004810470459
+--- !u!4 &8031658188191706393
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004810470458}
+  m_GameObject: {fileID: 8031658188191706392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7945756004846595627}
+  m_Father: {fileID: 8031658188299269897}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7945756004810470461
+--- !u!114 &8031658188191706399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004810470458}
+  m_GameObject: {fileID: 8031658188191706392}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -47,13 +47,13 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &7945756004810470460
+--- !u!114 &8031658188191706398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004810470458}
+  m_GameObject: {fileID: 8031658188191706392}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
---- !u!1 &7945756004846595639
+--- !u!1 &8031658188299269909
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,30 +74,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7945756004846595627}
-  - component: {fileID: 7945756004846595626}
-  - component: {fileID: 7945756004846595625}
-  - component: {fileID: 7945756004846595624}
+  - component: {fileID: 8031658188299269897}
+  - component: {fileID: 8031658188299269896}
+  - component: {fileID: 8031658188299269899}
+  - component: {fileID: 8031658188299269898}
   m_Layer: 5
-  m_Name: Canvas ABKAR Boss
+  m_Name: Canvas AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &7945756004846595627
+  m_IsActive: 1
+--- !u!224 &8031658188299269897
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004846595639}
+  m_GameObject: {fileID: 8031658188299269909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 7945756003047587861}
-  - {fileID: 7945756004810470459}
+  - {fileID: 8031658189989992759}
+  - {fileID: 8031658188191706393}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,13 +106,13 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!223 &7945756004846595626
+--- !u!223 &8031658188299269896
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004846595639}
+  m_GameObject: {fileID: 8031658188299269909}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
@@ -127,13 +127,13 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &7945756004846595625
+--- !u!114 &8031658188299269899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004846595639}
+  m_GameObject: {fileID: 8031658188299269909}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -149,13 +149,13 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &7945756004846595624
+--- !u!114 &8031658188299269898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7945756004846595639}
+  m_GameObject: {fileID: 8031658188299269909}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -166,12 +166,12 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &3191449393217987766
+--- !u!1001 &3276542714065550740
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7945756004846595627}
+    m_TransformParent: {fileID: 8031658188299269897}
     m_Modifications:
     - target: {fileID: 4759936112866141348, guid: 5ef637dbdf1b9d747b5b0aba39259542,
         type: 3}
@@ -386,7 +386,8 @@ PrefabInstance:
     - target: {fileID: 2293535382168197136, guid: 5ef637dbdf1b9d747b5b0aba39259542,
         type: 3}
       propertyPath: fullText
-      value: Abkar, the man behind Naiv, I have to see for myself.
+      value: Congratulations, You've won the game. You killed Abkar and saved the
+        world from the evil of his domination.
       objectReference: {fileID: 0}
     - target: {fileID: 2293535382168197137, guid: 5ef637dbdf1b9d747b5b0aba39259542,
         type: 3}
@@ -464,9 +465,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ef637dbdf1b9d747b5b0aba39259542, type: 3}
---- !u!224 &7945756003047587861 stripped
+--- !u!224 &8031658189989992759 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4759936112866141347, guid: 5ef637dbdf1b9d747b5b0aba39259542,
     type: 3}
-  m_PrefabInstance: {fileID: 3191449393217987766}
+  m_PrefabInstance: {fileID: 3276542714065550740}
   m_PrefabAsset: {fileID: 0}

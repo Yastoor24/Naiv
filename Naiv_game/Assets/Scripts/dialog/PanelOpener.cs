@@ -9,7 +9,7 @@ public class PanelOpener : MonoBehaviour
     public float delay = 0.05f;
     public string fullText;
 
-    private string currentText = " ";
+    public string currentText = " ";
 
     void Start()
     {
