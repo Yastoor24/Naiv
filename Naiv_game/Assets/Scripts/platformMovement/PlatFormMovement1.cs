@@ -51,16 +51,16 @@ public class PlatFormMovement1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == Player)
+        if (other.tag == "Player")
         {
-            Player.transform.parent = transform;
+            other.transform.parent = transform;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == Player)
+        if (other.tag == "Player")
         {
-            Player.transform.parent = null;
+            other.transform.parent = null;
         }
 
     }
