@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonActive : MonoBehaviour
 {
-    public GameObject start;
+   public GameObject start;
     public GameObject Panel;
  
 
@@ -14,7 +14,7 @@ public class ButtonActive : MonoBehaviour
         if (Panel != null  )
         {
             Panel.SetActive(false);
-            start.SetActive(false);
+           start.SetActive(false);
             Time.timeScale = 1.0f;
            }
 
