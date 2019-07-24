@@ -4878,7 +4878,29 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 12800000, guid: 6603be2882fb4f345acf6540cba1a6d1,
+        type: 3}
+    - target: {fileID: 5114304787800094777, guid: 4d15c6877a1d1284a885978de240c67e,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114304787800094777, guid: 4d15c6877a1d1284a885978de240c67e,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114304787800094777, guid: 4d15c6877a1d1284a885978de240c67e,
+        type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114304787800094776, guid: 4d15c6877a1d1284a885978de240c67e,
+        type: 3}
+      propertyPath: fullText
+      value: "I\u2019 m  a t t h e company\u2019s door now\u2026 let\u2019s see how
+        this goes  "
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d15c6877a1d1284a885978de240c67e, type: 3}
 --- !u!1 &1192643193 stripped
@@ -15367,6 +15389,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5114304787800094777, guid: 0fc0bfc5969d5374b8819299998afc76,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7fcd10b208930974fa06b2551d01bf21,
+        type: 3}
     - target: {fileID: 1525067659973515104, guid: 0fc0bfc5969d5374b8819299998afc76,
         type: 3}
       propertyPath: start

@@ -9,7 +9,7 @@ public class PanelOpener : MonoBehaviour
     public float delay = 0.05f;
     public string fullText;
 
-    private string currentText = "";
+    private string currentText = " ";
 
     void Start()
     {
@@ -20,8 +20,8 @@ public class PanelOpener : MonoBehaviour
     IEnumerator ShowText()
     {
       for (int i = 0; i < fullText.Length; i++ )
-     {          currentText = fullText.Substring(0,i+1);
-                this.GetComponent<Text>().text = currentText + "   " ;
+     {          currentText = fullText.Substring( 0 , i + 1 );
+                this .  GetComponent <  Text  >( ) .text = currentText  +  "    "  ;
             yield return new WaitForSeconds(delay);
 
         }
