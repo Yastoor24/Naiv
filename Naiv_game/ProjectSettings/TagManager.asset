@@ -21,6 +21,15 @@ TagManager:
   - toStar
   - startPoint
   - Tree
+  - GroundPoint
+  - MidPoint
+  - LeftEdge
+  - RightEdge
+  - AidBox
+  - PlayerBullet
+  - BossGround
+  - StartBoss
+  - fallout
   layers:
   - Default
   - TransparentFX
@@ -30,8 +39,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - lader
   - 
   - 
   - 

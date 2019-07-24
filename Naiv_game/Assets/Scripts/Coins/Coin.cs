@@ -13,14 +13,15 @@ public class Coin : MonoBehaviour
     private bool yesState = false;
     public Transform BoxReturn;
 
+
+
     void Start()
     {
 
         _MedKitTextScore = GameObject.Find("MedKitText").GetComponent<Text>();
 
         load();
-
-
+       
     }
 
     private void Update()
@@ -146,6 +147,7 @@ public class Coin : MonoBehaviour
 
         if (GetComponentInChildren<HealthBarFade>().healthValue > 0)
         {
+            
             // decrease the life by one
             HealthBarFade.damState = true;
 

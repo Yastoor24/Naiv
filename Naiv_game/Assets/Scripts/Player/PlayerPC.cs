@@ -40,6 +40,11 @@ public class PlayerPC : MonoBehaviour
         _GunAudio = GetComponent<AudioSource>();
         _anim = GetComponentInChildren<Animator>();
         _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        //sound 
+     
+      
+        
+       
     }
 
     // Update is called once per frame
@@ -61,7 +66,7 @@ public class PlayerPC : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
 
         _grounded = isGrounded();
-
+     
 
         // if the user pressed on O then will be attack by bullet
         if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxB"))
@@ -158,8 +163,9 @@ public class PlayerPC : MonoBehaviour
             // if the user pressed on space then will be jump
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButton("XboxA")) && isGrounded() == true)
         {
+            
 
-           _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
+            _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
 
           StartCoroutine(ResetJumpedRoutine());
             _PlayerAnim.Jump(true);

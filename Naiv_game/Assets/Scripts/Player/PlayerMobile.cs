@@ -29,7 +29,8 @@ public class PlayerMobile : MonoBehaviour
     public float move;
     public GameObject toStar;
     public bool jumpped = false;
-
+ 
+    
     //use his for init
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,9 @@ public class PlayerMobile : MonoBehaviour
         _GunAudio = GetComponent<AudioSource>();
         _anim = GetComponentInChildren<Animator>();
         _BulletSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        //sound
+        
+    
     }
 
     // Update is called once per frame
@@ -58,6 +62,7 @@ public class PlayerMobile : MonoBehaviour
         float verticalMove = joystick.Vertical;
         move = joystick.Horizontal;
         _grounded = isGrounded();
+        
 
         // if the user pressed on O then will be attack by bullet
         if (CrossPlatformInputManager.GetButtonDown("shoot"))
@@ -150,6 +155,7 @@ public class PlayerMobile : MonoBehaviour
         // if the user pressed on space then will be jump
         if ((verticalMove >= 0.5f) && isGrounded() == true)
         {
+           
             _rigid.velocity = new Vector2(_rigid.velocity.x, _jumpForce);
             StartCoroutine(ResetJumpedRoutine());
             _PlayerAnim.Jump(true);
