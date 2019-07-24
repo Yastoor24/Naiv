@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 634320137}
   - component: {fileID: 634320139}
   - component: {fileID: 634320138}
+  - component: {fileID: 634320140}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -399,8 +400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.3, y: -34.724976}
-  m_SizeDelta: {x: 773.5, y: 260.85}
+  m_AnchoredPosition: {x: -0.000022888, y: 79.3}
+  m_SizeDelta: {x: 376.7, y: 276.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634320138
 MonoBehaviour:
@@ -422,7 +423,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b490fcd99754f0f4bada22113c407561, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58d9951bfbbeda14e93aa949e51dbda1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -439,6 +440,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634320136}
   m_CullTransparentMesh: 0
+--- !u!95 &634320140
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634320136}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 050d6f246c8c9fd42b15729c3204e0b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &715834063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1389,11 @@ PrefabInstance:
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 2036292926}
+    - target: {fileID: 7224095426904012870, guid: d02577b0e23bc244087daf354a57a15c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02577b0e23bc244087daf354a57a15c, type: 3}
 --- !u!1001 &4560397631958633179
