@@ -15,31 +15,20 @@ public class AudioManager : MonoBehaviour
         MusicSource.clip = MusicClip;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (sound)
-        {
-
-            MusicSource.Play();
-        }
-       
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
+     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            sound = true;
-
+            MusicSource.Play();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+     void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.tag == "Player")
         {
-            sound = true;
-
+      
+            MusicSource.Play();
         }
     }
 }
