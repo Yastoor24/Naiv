@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 
     public float resetSpeed = 0.5f;
     public float cameraSpeed = 0.3f;
-    public GameObject building;
+   // public GameObject building;
 
 
     public Bounds cameraBounds;
@@ -50,8 +50,8 @@ public class CameraFollow : MonoBehaviour
 
                  transform.position = new Vector3(newCameraPosition.x, transform.position.y,
                     newCameraPosition.z);
-                building.transform.position = -new Vector3(newCameraPosition.x, transform.position.y,
-                    newCameraPosition.z);
+               // building.transform.position = -new Vector3(newCameraPosition.x, transform.position.y,
+                  //  newCameraPosition.z);
                 lastTargetPosition = target.position;
             }
         }
