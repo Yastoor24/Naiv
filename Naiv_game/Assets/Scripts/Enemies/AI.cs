@@ -32,7 +32,7 @@ public class AI : MonoBehaviour
 
     public UnityEngine.Object _explosionRef;
 
-    public float _distanceToMove = 4f;
+    public float _distanceToMove = 5f;
 
     private int _touches;
 
@@ -49,10 +49,11 @@ public class AI : MonoBehaviour
     public GameObject _groundPoint;
 
     public bool _start = false;
-
+    public GameObject _rightEdge;
+    public GameObject _door;
     void Awake()
     {
-       // _typeOfAttack = Random.Range(1, 4);
+        _typeOfAttack = Random.Range(1, 4);
         //Debug.Log(_typeOfAttack);
         _mybody = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
@@ -220,28 +221,62 @@ public class AI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerBullet")
+        if (_start)
         {
-            Destroy(collision.gameObject);
-            //Debug.Log("got Hit");
-            _spr.material = _matWahite;
-            _health -= 1;               // decrease the health
-            _anim.Play("Woman_FH_Get_Hit");
-            Debug.Log("Health: " + _health);
-            if (_health <= 0)
+
+            if (collision.gameObject.tag == "PlayerBullet")
             {
-                _canMove = false;
-                _canAttack = false;
-                _attack = false;
-                StartCoroutine(RobotDead());
+                Destroy(collision.gameObject);
+                //Debug.Log("got Hit");
+                _spr.material = _matWahite;
+                _health -= 1;               // decrease the health
+                _anim.Play("Woman_FH_Get_Hit");
+                Debug.Log("Health: " + _health);
+                if (_health <= 0)
+                {
+                    if (transform.position.x >= _player.transform.position.x && _moveDirection != Vector3.left)
+                    {
+                        _moveDirection = Vector3.left;
+                        changeDirection(-1);
+                    }
+                    else if (transform.position.x <= _player.transform.position.x && _moveDirection == Vector3.left)
+                    {
+                        _moveDirection = Vector3.right;
+
+
+                        changeDirection(1);
+                    }
+
+
+                    _canMove = false;
+                    _canAttack = false;
+                    _attack = false;
+                    _start = false;
+                    if(!_anim.GetBool("Roll_Anim"))
+                    {
+                        _anim.Play("anim_Idle_Loop_S 0");
+                    }
+                    else
+                    {
+                        _anim.Play("anim_open");
+
+                    }
+                    _anim.SetBool("Roll_Anim", false);
+                    _anim.SetBool("Walk_Anim", false);
+                    _anim.SetBool("Open_Anim", true);
+                    _rightEdge.SetActive(false);
+                    _door.GetComponent<activeDoor>()._anim.Play("OpenDoor");
+                    _door.GetComponent<BoxCollider2D>().isTrigger = true;
+
+                    StartCoroutine(RobotDead());
+                }
+                else
+                {
+                    StartCoroutine(ResetMaterial(0.1f));
+                }
             }
-            else
-            {
-                StartCoroutine(ResetMaterial(0.1f));
-            }
+
         }
-
-
     }
 
     private void RollAndBackFromUP1Attack()
@@ -280,26 +315,11 @@ public class AI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "RightEdge" || collision.gameObject.tag == "Player")
-        {
-            switch (_typeOfAttack)
+            if (collision.gameObject.tag == "RightEdge" || collision.gameObject.tag == "Player")
             {
-                case 1:
-                    _attack = false;
-                    _anim.SetBool("Roll_Anim", false);
-                    Debug.Log("RightEdge");
-                    _moveDirection = Vector3.left;
-                    changeDirection(-1);
-                    StartCoroutine(WaitToMove(2));
-
-                    StartCoroutine(WaitToCanAttack(4));
-                    return;
-
-                case 2:
-                    ++_touches;
-                    if (_touches == 2)
-                    {
-                        _touches = 0;
+                switch (_typeOfAttack)
+                {
+                    case 1:
                         _attack = false;
                         _anim.SetBool("Roll_Anim", false);
                         Debug.Log("RightEdge");
@@ -308,64 +328,63 @@ public class AI : MonoBehaviour
                         StartCoroutine(WaitToMove(2));
 
                         StartCoroutine(WaitToCanAttack(4));
+                        return;
+
+                    case 2:
+                        ++_touches;
+                        if (_touches == 2)
+                        {
+                            _touches = 0;
+                            _attack = false;
+                            _anim.SetBool("Roll_Anim", false);
+                            Debug.Log("RightEdge");
+                            _moveDirection = Vector3.left;
+                            changeDirection(-1);
+                            StartCoroutine(WaitToMove(2));
+
+                            StartCoroutine(WaitToCanAttack(4));
+
+                            return;
+                        }
+                        else
+                        {
+                            Debug.Log("RightEdge");
+                            _moveDirection = Vector3.left;
+                            changeDirection(-1);
+                        }
 
                         return;
-                    }
-                    else
-                    {
+
+                    case 3:
                         Debug.Log("RightEdge");
-                        _moveDirection = Vector3.left;
-                        changeDirection(-1);
-                    }
 
-                    return;
+                        ++_touches;
 
-                case 3:
-                    Debug.Log("RightEdge");
+                        _secondAttack = new Vector3(-1, 1, 0);
 
-                    ++_touches;
+                        if (_touches == 2)
+                        {
+                            _touches = 0;
+                            _attack = false;
+                            _anim.SetBool("Roll_Anim", false);
+                            Debug.Log("RightEdge");
+                            _moveDirection = Vector3.left;
+                            changeDirection(-1);
+                            StartCoroutine(WaitToMove(2));
 
-                   _secondAttack = new Vector3(-1, 1, 0);
+                            StartCoroutine(WaitToCanAttack(4));
+                        }
 
-                    if (_touches == 2)
-                    {
-                        _touches = 0;
-                        _attack = false;
-                        _anim.SetBool("Roll_Anim", false);
-                        Debug.Log("RightEdge");
-                        _moveDirection = Vector3.left;
-                        changeDirection(-1);
-                        StartCoroutine(WaitToMove(2));
+                        return;
 
-                        StartCoroutine(WaitToCanAttack(4));
-                    }
-
-                    return;
+                }
 
             }
-
-        }
-        else if (collision.gameObject.tag == "LeftEdge" || collision.gameObject.tag == "Player")
-        {
-            switch (_typeOfAttack)
+            else if (collision.gameObject.tag == "LeftEdge" || collision.gameObject.tag == "Player")
             {
-                case 1:
-                    _attack = false;
-                    _anim.SetBool("Roll_Anim", false);
-                    Debug.Log("LeftEdge");
-                    _moveDirection = Vector3.right;
-                    changeDirection(1);
-                    StartCoroutine(WaitToMove(2));
-
-                    StartCoroutine(WaitToCanAttack(4));
-
-                    return;
-
-                case 2:
-                    ++_touches;
-                    if (_touches == 2)
-                    {
-                        _touches = 0;
+                switch (_typeOfAttack)
+                {
+                    case 1:
                         _attack = false;
                         _anim.SetBool("Roll_Anim", false);
                         Debug.Log("LeftEdge");
@@ -376,40 +395,60 @@ public class AI : MonoBehaviour
                         StartCoroutine(WaitToCanAttack(4));
 
                         return;
-                    }
-                    else
-                    {
+
+                    case 2:
+                        ++_touches;
+                        if (_touches == 2)
+                        {
+                            _touches = 0;
+                            _attack = false;
+                            _anim.SetBool("Roll_Anim", false);
+                            Debug.Log("LeftEdge");
+                            _moveDirection = Vector3.right;
+                            changeDirection(1);
+                            StartCoroutine(WaitToMove(2));
+
+                            StartCoroutine(WaitToCanAttack(4));
+
+                            return;
+                        }
+                        else
+                        {
+                            Debug.Log("LeftEdge");
+                            _moveDirection = Vector3.right;
+                            changeDirection(1);
+                        }
+
+                        return;
+
+                    case 3:
                         Debug.Log("LeftEdge");
-                        _moveDirection = Vector3.right;
-                        changeDirection(1);
-                    }
 
-                    return;
+                        ++_touches;
 
-                case 3:
-                    Debug.Log("LeftEdge");
-
-                    ++_touches;
-
-                    _secondAttack = new Vector3(1, 1, 0);
+                        _secondAttack = new Vector3(1, 1, 0);
 
 
-                    if (_touches == 2)
-                    {
-                        _touches = 0;
-                        _attack = false;
-                        _anim.SetBool("Roll_Anim", false);
-                        Debug.Log("LeftEdge");
-                        _moveDirection = Vector3.right;
-                        changeDirection(1);
-                        StartCoroutine(WaitToMove(2));
+                        if (_touches == 2)
+                        {
+                            _touches = 0;
+                            _attack = false;
+                            _anim.SetBool("Roll_Anim", false);
+                            Debug.Log("LeftEdge");
+                            _moveDirection = Vector3.right;
+                            changeDirection(1);
+                            StartCoroutine(WaitToMove(2));
 
-                        StartCoroutine(WaitToCanAttack(4));
+                            StartCoroutine(WaitToCanAttack(4));
 
-                    }
-                    return;
-            }
+                        }
+                        return;
+                }
+            
+
+
         }
+        
 
 
     }
@@ -421,9 +460,9 @@ public class AI : MonoBehaviour
 
         Debug.Log("IT IS DEAD: ");
 
-        GameObject _explosion = (GameObject)Instantiate(_explosionRef);
-        _explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        gameObject.SetActive(false);
+        //GameObject _explosion = (GameObject)Instantiate(_explosionRef);
+        //_explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        //gameObject.SetActive(false);
     }
 
     IEnumerator WaitToFire(float time)
@@ -447,8 +486,8 @@ public class AI : MonoBehaviour
     IEnumerator WaitToCanAttack(float time)
     {
         yield return new WaitForSeconds(time);
-        //_typeOfAttack = Random.Range(1, 4);
-        _typeOfAttack = 3;
+        _typeOfAttack = Random.Range(1, 4);
+        
 
         Debug.Log("Type of attack : " + _typeOfAttack);
         _canMove = false;

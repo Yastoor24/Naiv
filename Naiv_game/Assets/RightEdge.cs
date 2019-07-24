@@ -30,6 +30,8 @@ public class RightEdge : MonoBehaviour
             _door.GetComponent<activeDoor>()._anim.Play("CloseDoor");
             _door.GetComponent<BoxCollider2D>().isTrigger = false;
             _AI.GetComponent<AI>()._start = true;
+            Debug.Log("Worked");
+            gameObject.SetActive(false);
         }
     }
 
@@ -42,6 +44,9 @@ public class RightEdge : MonoBehaviour
             _door.GetComponent<activeDoor>()._anim.Play("CloseDoor");
             GameObject AI = GameObject.FindGameObjectWithTag("AI");
             AI.GetComponent<AI>()._start = true;
+            Debug.Log("Worked");
+            gameObject.SetActive(false);
+            
         }
     }
 
