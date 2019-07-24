@@ -8,7 +8,7 @@ public class RightEdge : MonoBehaviour
 
     public GameObject _rightEdge;
     public GameObject _door;
-
+    public GameObject _AI;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,8 @@ public class RightEdge : MonoBehaviour
         {
             _rightEdge.SetActive(true);
             _door.GetComponent<activeDoor>()._anim.Play("CloseDoor");
+            _door.GetComponent<BoxCollider2D>().isTrigger = false;
+            _AI.GetComponent<AI>()._start = true;
         }
     }
 

@@ -26,7 +26,7 @@ public class Coin : MonoBehaviour
     private void Update()
     {
         _MedKitTextScore.text = "MedKit " + _MedKitCount;
-        if (_MedKitCount == 3)
+        if (_MedKitCount <= 3)
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
