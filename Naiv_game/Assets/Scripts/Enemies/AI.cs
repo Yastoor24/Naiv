@@ -265,7 +265,7 @@ public class AI : MonoBehaviour
                     _anim.SetBool("Walk_Anim", false);
                     _anim.SetBool("Open_Anim", true);
                     _rightEdge.SetActive(false);
-                    _door.GetComponent<activeDoor>()._anim.Play("OpenDoor");
+                    _door.GetComponent<activeDoor>()._anim.Play("DoorOpen");
                     _door.GetComponent<BoxCollider2D>().isTrigger = true;
 
                     StartCoroutine(RobotDead());
