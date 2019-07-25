@@ -27,7 +27,7 @@ public class RightEdge : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             _rightEdge.SetActive(true);
-            _door.GetComponent<activeDoor>()._anim.Play("CloseDoor");
+            _door.GetComponent<activeDoor>()._anim.Play("DoorClose");
             _door.GetComponent<BoxCollider2D>().isTrigger = false;
             _AI.GetComponent<AI>()._start = true;
             Debug.Log("Worked");

@@ -30,9 +30,9 @@ public class activeDoor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            _anim.Play("OpenDoor");
+            _anim.Play("DoorOpen");
             GetComponent<BoxCollider2D>().isTrigger = true;
-            
+            Debug.Log("BLA");
         }
     }
 }
