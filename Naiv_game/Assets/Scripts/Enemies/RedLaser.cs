@@ -11,7 +11,7 @@ public class RedLaser : MonoBehaviour
 
 
     
-    private float _speed = 7f;
+    private float _speed = 6f;
 
    
 
