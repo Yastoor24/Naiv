@@ -23,8 +23,8 @@ public class AI : MonoBehaviour
 
     GameObject _player;
 
-    [SerializeField]
-    private int _health = 10;
+    
+    private int _health = 100;
 
     private Material _matWahite;
     private Material _matDefault;
