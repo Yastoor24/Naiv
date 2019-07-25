@@ -90,6 +90,8 @@ public class PlayerPC : MonoBehaviour
                 Vector3 pos = HitBox1.position;
                 pos.x = -2.7f;
                 pos.y = 0f;
+                pos.z = 0f;
+
                 HitBox1.position = pos + HitBox1.position;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                 _bullet.transform.rotation = Quaternion.Euler(0f, 0f, -180);
@@ -124,6 +126,8 @@ public class PlayerPC : MonoBehaviour
                 Vector3 pos = HitBox1.position;
                 pos.x = -2.3f;
                 pos.y = 0f;
+                pos.z = 0f;
+
                 HitBox1.position = pos + HitBox1.position;
                 _bullet.GetComponent<FireBullet>().transform.position = HitBox1.position;
                 _bullet.transform.rotation = Quaternion.Euler(0f, 0f, -180);

@@ -121,7 +121,7 @@ public class Coin : MonoBehaviour
 
                transform.position = BoxReturn.position;
                 playerDead();
-                transform.position = BoxReturn.position;
+               
 
             }
 
