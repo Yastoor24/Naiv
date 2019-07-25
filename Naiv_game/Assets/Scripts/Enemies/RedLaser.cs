@@ -10,8 +10,8 @@ public class RedLaser : MonoBehaviour
     private Animator _anim;
 
 
-    [SerializeField]
-    private float _speed = 0.5f;
+    
+    private float _speed = 6f;
 
    
 
@@ -63,7 +63,7 @@ public class RedLaser : MonoBehaviour
     void Move()
     {
 
-        transform.Translate(dir * distanceThisFrame, Space.World);
+        transform.Translate(dir * distanceThisFrame * _speed, Space.World);
 
     }
 
@@ -73,7 +73,7 @@ public class RedLaser : MonoBehaviour
     {
 
         //_anim.Play("Destroy");              //change the name of the animation
-        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "PowerIcon")
+        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "PowerIcon" && collision.gameObject.tag != "EnemyBullet")
         {
             Debug.Log(collision.gameObject.name);
             gameObject.SetActive(false);        //to destroy the bullet
