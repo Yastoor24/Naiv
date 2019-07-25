@@ -6,85 +6,72 @@ public class FrogScript : MonoBehaviour {
 
 	private Animator anim;
 
-	private bool animation_Started;
-	private bool animation_Finished;
-
-	private int jumpedTimes;
-	private bool jumpLeft = true;
-
-	private string coroutine_Name = "FrogJump";
-    public int JumpsNum;
-
 	public LayerMask playerLayer;
 
 	private GameObject player;
 
-	void Awake() {
+    private bool fire = true;
+
+    private bool attack = true;
+
+    public GameObject _bullet;
+
+    public GameObject _firePoint;
+
+
+	void Awake() 
+    {
 		anim = GetComponent<Animator> ();
 	}
 
-	void Start () {
-		StartCoroutine (coroutine_Name);
-		//player = GameObject.FindGameObjectWithTag (MyTags.PLAYER_TAG);
+	void Start () 
+    {
+        fire = true; 
 	}
 
-	void Update() {
-        //if(Physics2D.OverlapCircle(transform.position, 0.5f, playerLayer)) {
-        //player.GetComponent<PlayerDamage> ().DealDamage ();
-        //}
-        print("anim start" + animation_Started);
-        print("anim finish" + animation_Finished);
+	void Update() 
+    {
 
     }
 
-    void LateUpdate () {
-		if (animation_Finished && animation_Started) {
-			animation_Started = false;
+    void Fire()
+    {
+        if (fire == true)
+        {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
 
-			transform.parent.position = transform.position;
-			transform.localPosition = Vector3.zero;
-		}
-	}
+            if (distance > 8f)
+            {
+                anim.Play("FrogIdleLeft");
+            }
 
-	IEnumerator FrogJump() {
-		yield return new WaitForSeconds(3);
+            if (distance < 5)
+            {
+                if (attack == true)
+                {
+                    anim.Play("FrogAttack");
+                    Instantiate(_bullet, _firePoint.gameObject.transform.position, _firePoint.gameObject.transform.rotation);
+                    _bullet.gameObject.GetComponent<RedLaser>().target = player.transform;   //pass the player position to bullet script
 
-		animation_Started = true;
-		animation_Finished = false;
+                    attack = false;
 
-		jumpedTimes++;
+                    StartCoroutine(WaitToFire(Random.Range(3f, 4f)));
+                }
 
-		if (jumpLeft) {
-			anim.Play ("FrogJumpLeft");
-		} else {
-			anim.Play ("FrogJumpRight");
-		}
+            }
+        }
+    }
 
-		StartCoroutine (coroutine_Name);
+    void changeDirection()
+    {
+        Vector3 tempScale = transform.localScale;
+        tempScale.x = transform.localScale.x * -1f;
+        transform.localScale = tempScale;
 
-	}
+        // transform.transform.Rotate(0f, 180F, 0f);
 
-	void AnimationFinished() {
-
-		animation_Finished = true;
-
-		if (jumpLeft) {
-			anim.Play ("FrogIdleLeft");
-		} else {
-			anim.Play ("FrogIdleRight");
-		}
-
-		if (jumpedTimes == JumpsNum) {
-			jumpedTimes = 0;
-
-			Vector3 tempScale = transform.localScale;
-			tempScale.x *= -1;
-			transform.localScale = tempScale;
-
-			jumpLeft = !jumpLeft;
-		}
-	}
-
+        _firePoint.gameObject.transform.transform.Rotate(0f, 180F, 0f); // to flip the position of firing
+    }
 
     private void OnTriggerEnter2D(Collider2D target)
     {
@@ -92,15 +79,7 @@ public class FrogScript : MonoBehaviour {
         {
             anim.Play("FrogDead");
             OnDestroy();
-
-            //GetComponent<BoxCollider2D>().isTrigger = true;
-
-            //myBody.bodyType = RigidbodyType2D.Dynamic;
-
-            //_canMove = false;
-
         }
-
     }
 
     IEnumerator Wait()
@@ -112,6 +91,14 @@ public class FrogScript : MonoBehaviour {
     {
         Destroy(gameObject, 1);
     }
+
+    IEnumerator WaitToFire(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Wait();
+        attack = true;
+    }
+
 
 } // class
 
