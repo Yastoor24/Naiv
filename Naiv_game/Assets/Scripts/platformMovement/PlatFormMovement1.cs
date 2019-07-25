@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlatFormMovement1 : MonoBehaviour
 {
@@ -20,7 +21,14 @@ public class PlatFormMovement1 : MonoBehaviour
 
     public GameObject Player;
 
-    // Use this for initialization
+    [SerializeField]
+
+    private Vector3 speedVar;
+
+    private bool platformMoving;
+
+
+
     void Start()
     {
         posA = childTransform.localPosition;
@@ -31,9 +39,39 @@ public class PlatFormMovement1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Move();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            platformMoving = true;
+            collision.collider.transform.SetParent(transform);
+        }
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+    
+        platformMoving = false;
+        collision.collider.transform.SetParent(null);
+    
+    }
+
+
+    private void FixedUpdate()
+    
+    {
+        if (platformMoving)
+        {
+            transform.position += (speedVar * Time.deltaTime);
+        }
+    }
+
+            // Use this for initialization
+    
     private void Move()
     {
         childTransform.localPosition = Vector3.MoveTowards(childTransform.localPosition, nexPos, speed * Time.deltaTime);
@@ -49,20 +87,21 @@ public class PlatFormMovement1 : MonoBehaviour
         nexPos = nexPos != posA ? posA : posB;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            other.transform.parent = transform;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            other.transform.parent = null;
-        }
+    //public void OnTriggerEnter2D(Collider2D other)
+    //{
+        //if (other.tag == "Player")
+        //{
+            //other.transform.parent = transform;
+        //}
+    //}
 
-    }
+    //public void OnTriggerExit2D(Collider2D other)
+    //{
+        //if (other.gameObject.CompareTag("Ground") && playerctrl.isJumping)
+        //{
+            //playerctrl.isJumping = false;
+        //}
+
+    //}
 
 }
