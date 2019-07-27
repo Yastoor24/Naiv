@@ -21,6 +21,20 @@ TagManager:
   - toStar
   - startPoint
   - Tree
+  - GroundPoint
+  - MidPoint
+  - LeftEdge
+  - RightEdge
+  - Fire
+  - fallout
+  - ScreenManagerAmmo
+  - Crab
+  - AidBox
+  - PowerIcon
+  - PlayerBullet
+  - BossGround
+  - StartBoss
+  - CameraForAIBoss
   layers:
   - Default
   - TransparentFX
@@ -30,7 +44,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - CameraForAIBoss
   - 
   - 
   - 

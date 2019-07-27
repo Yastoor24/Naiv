@@ -267,7 +267,7 @@ public class AI : MonoBehaviour
                     _rightEdge.SetActive(false);
                     _door.GetComponent<activeDoor>()._anim.Play("DoorOpen");
                     _door.GetComponent<BoxCollider2D>().isTrigger = true;
-
+                    GameObject.FindGameObjectWithTag("CameraForAIBoss").SetActive(false);
                     StartCoroutine(RobotDead());
                 }
                 else
